@@ -8,3 +8,9 @@ Current status:
 TODO:
 - Improve the GUI experience
 - Setup ZSH?
+
+
+Push to GitHub with:
+```
+git push -u github main
+```
