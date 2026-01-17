@@ -20,6 +20,7 @@
     userEmail = "42501418+MachXNU@users.noreply.github.com";
     extraConfig = {
       init.defaultBranch = "main";
+      push.autoSetupRemote = true;
     };
   };
 }
