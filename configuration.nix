@@ -40,6 +40,8 @@
     # xwayland.enable = true;
   };
 
+  environment.variables.EDITOR = "nvim";
+
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
@@ -71,7 +73,6 @@
     packages = with pkgs; [
       tree
       neofetch
-      neovim
     ];
   };
 
