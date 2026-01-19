@@ -6,6 +6,7 @@
   imports = [
     ./gui
     ./cli
+    ./fonts
 ];
   programs.bash = {
     enable = true;
