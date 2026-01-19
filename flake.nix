@@ -18,7 +18,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.jb = import ./users/jb/home.nix;
+            users.jb = import ./home-manager/jb.nix;
             backupFileExtension = "backup";
           };
         }
