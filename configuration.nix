@@ -35,6 +35,22 @@
   # };
 
   services.getty.autologinUser = "jb";
+  
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "stsart-hyprland";
+        user = "jb";
+      };
+
+      # optional: skip the greeter entirely
+      initial_session = {
+        command = "start-hyprland";
+        user = "jb";
+      };
+    };
+  };
   programs.hyprland = {
     enable = true;
     # xwayland.enable = true;

@@ -7,6 +7,7 @@
     ./gui
     ./cli
     ./fonts
+    ./desktop
   ];
 
   services.ssh-agent.enable = true;
@@ -33,11 +34,11 @@
     shellAliases = {
       btw = "echo i use nixos btw";
     };
-    profileExtra = ''
-      if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-        exec hyprland
-      fi
-    '';
+    # profileExtra = ''
+    #   if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
+    #     exec hyprland
+    #   fi
+    # '';
   };
 
   programs.neovim = {
