@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
 {
+  home.packages = with pkgs; [
+    swww
+  ];
+
   wayland.windowManager.hyprland.enable = true;
 
   wayland.windowManager.hyprland.settings = {
