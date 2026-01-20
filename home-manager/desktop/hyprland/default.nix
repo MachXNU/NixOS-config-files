@@ -9,5 +9,6 @@
   
   imports = [
     ./binds.nix
+    ./decoration.nix
   ];
 }
