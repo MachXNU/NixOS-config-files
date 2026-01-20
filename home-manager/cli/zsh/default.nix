@@ -8,6 +8,19 @@
     syntaxHighlighting.enable = true;
     defaultKeymap = "emacs";
 
+    oh-my-zsh = {
+      enable = true;
+
+      theme = "robbyrussell"; 
+
+      plugins = [
+        "git"
+        "sudo"
+        "history"
+        "command-not-found"
+      ];
+    };
+
     shellAliases = {
       # update = "sudo nixos-rebuild switch";
     };

@@ -8,6 +8,8 @@
       size = 11;
     };
     settings = {
+      shell = ".";
+
       italic_font = "auto";
       bold_font = "auto";
       bold_italic_font = "auto";
