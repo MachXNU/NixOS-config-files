@@ -16,6 +16,10 @@ _: {
         "$mod, P, pseudo, # dwindle"
         "$mod, J, togglesplit, # dwindle"
 
+        # Should not be needed: as we are using Nix, we are not supposed to
+        #                       manually reload the config file.
+        # "$mod SHIFT, R, exec, hyprctl reload"
+
         # Move focus with mainMod + arrow keys
         "$mod, left, movefocus, l"
         "$mod, right, movefocus, r"
