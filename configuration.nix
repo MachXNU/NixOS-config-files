@@ -40,7 +40,7 @@
     enable = true;
     settings = {
       default_session = {
-        command = "stsart-hyprland";
+        command = "start-hyprland";
         user = "jb";
       };
 
