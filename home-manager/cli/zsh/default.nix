@@ -6,6 +6,7 @@
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+    defaultKeymap = "emacs";
 
     shellAliases = {
       # update = "sudo nixos-rebuild switch";
