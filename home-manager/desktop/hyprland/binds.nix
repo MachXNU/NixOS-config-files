@@ -20,7 +20,7 @@ _: {
         #                       manually reload the config file.
         # "$mod SHIFT, R, exec, hyprctl reload"
 
-        # Move focus with mainMod + arrow keys
+        # Move focus with mod + arrow keys
         "$mod, left, movefocus, l"
         "$mod, right, movefocus, r"
         "$mod, up, movefocus, u"
@@ -38,5 +38,11 @@ _: {
         )
       9)
     );
+
+    bindm = [
+      # Move/resize windows with mod + LMB/RMB and dragging
+      "$mod, mouse:272, movewindow"
+      "$mod, mouse:273, resizewindow"
+    ];
   };
 }
