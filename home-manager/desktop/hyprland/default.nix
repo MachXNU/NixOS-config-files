@@ -13,5 +13,6 @@
     ./binds.nix
     ./decoration.nix
     ./general.nix
+    ./animations.nix
   ];
 }
