@@ -29,5 +29,23 @@
     format-charging = "{capacity}% ";
     format-icons = [ "" "" "" "" ""];
   };
+
+  network = {
+    interface = null;
+    format = "{ifname}";
+    format-wifi = "{essid} {icon}";
+    format-ethernet = "{ipaddr}/{cidr} 󰈀";
+    format-disconnected = "DOWN"; # An empty format will hide the module.
+    tooltip-format = "{ifname} via {gwaddr} 󰈀";
+    tooltip-format-wifi = "{essid} ({signalStrength}%) {icon}";
+    tooltip-format-ethernet = "{ifname} 󰈀";
+    tooltip-format-disconnected = "Disconnected";
+    max-length = 50;
+
+    format-icons = {
+      wifi = [ "󰤯" "󰤟" "󰤢" "󰤥" "󰤨" ];
+      ethernet = "󰈀";
+    };
+  };
 }
 

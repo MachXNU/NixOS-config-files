@@ -23,6 +23,7 @@ in
 
           modules-right = [
             "pulseaudio"
+            "network"
             "battery"
           ];
         }
