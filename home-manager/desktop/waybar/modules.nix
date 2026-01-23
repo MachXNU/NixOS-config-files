@@ -47,5 +47,10 @@
       ethernet = "󰈀";
     };
   };
+
+  "hyprland/workspaces" = {
+    format = "{name}";
+    on-click = "activate";
+  };
 }
 

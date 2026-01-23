@@ -19,6 +19,7 @@ in
           modules-left = [ 
             "custom/launcher"
             "clock"
+            "hyprland/workspaces"
           ];
 
           modules-right = [
