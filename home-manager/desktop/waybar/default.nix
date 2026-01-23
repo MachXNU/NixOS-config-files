@@ -19,6 +19,10 @@ in
             "custom/launcher"
             "clock"
           ];
+
+          modules-right = [
+            "pulseaudio"
+          ];
         }
 
         moduleSettings

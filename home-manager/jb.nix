@@ -61,4 +61,8 @@
   };
 
   programs.wofi.enable = true;
+
+  home.packages = with pkgs; [
+    pavucontrol
+  ];
 }
