@@ -22,5 +22,12 @@
     on-click = "pavucontrol";
     ignored-sinks = [ "Easy Effects Sink" ];
   };
+
+  battery = {
+    interval = 60;
+    format = "{capacity}% {icon}";
+    format-charging = "{capacity}% ";
+    format-icons = [ "" "" "" "" ""];
+  };
 }
 

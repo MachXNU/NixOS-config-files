@@ -7,6 +7,7 @@
 
 let
   moduleSettings = import ./modules.nix { }; 
+  customModuleSettings = import ./custom-modules.nix { };
 in
 {
   programs.waybar = {
@@ -22,10 +23,12 @@ in
 
           modules-right = [
             "pulseaudio"
+            "battery"
           ];
         }
 
         moduleSettings
+        customModuleSettings
       ])
     ];
   };
