@@ -59,4 +59,6 @@
     viAlias = true;
     vimAlias = true;
   };
+
+  programs.wofi.enable = true;
 }
