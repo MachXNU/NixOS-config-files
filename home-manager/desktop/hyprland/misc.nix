@@ -9,5 +9,7 @@ _: {
     exec-once = [
       "waybar"
     ];
+  
+    monitor = ",1920x1080x60,auto,1";
   };
 }
