@@ -12,12 +12,15 @@ _: {
         enabled = true;
         range = 4;
         render_power = 3;
-        color = "rgba(1a1a1aee)";
+        color = "$shadow";
       };
 
       # https://wiki.hypr.land/Configuring/Variables/#blur
       blur = {
         enabled = true;
+        xray = false;
+        special = false;
+        new_optimizations = true;
         size = 8;
         passes = 2;
 

@@ -74,7 +74,7 @@ in
   
   xdg.configFile."matugen/config.toml".source =
     toml.generate "config.toml" {
-      config.mode = "dark";
+      config.mode = "light";
 
       templates.kitty = {
         input_path = kittyTemplate; 

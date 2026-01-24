@@ -10,7 +10,7 @@ _: {
       "col.active_border" = "$primary"; 
       # was "rgba(33ccffee) rgba(00ff99ee) 45deg";
       
-      "col.inactive_border" = "$on_secondary_fixed";
+      "col.inactive_border" = "$surface";
       # was "rgba(595959aa)";
 
       resize_on_border = false;
@@ -18,6 +18,8 @@ _: {
       allow_tearing = false;
 
       layout = "master";
+
+      snap.enabled = true;
     };
   };
 }
