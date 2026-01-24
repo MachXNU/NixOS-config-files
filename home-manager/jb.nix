@@ -3,6 +3,7 @@
 let
   toml = pkgs.formats.toml {};
   kittyTemplate = ./desktop/matugen/templates/kitty-colors.conf;
+  hyprTemplate  = ./desktop/matugen/templates/hyprland-colors.conf;
 in
 {
   home.stateVersion = "25.11";
@@ -79,6 +80,13 @@ in
         input_path = kittyTemplate; 
         output_path =
           "${config.home.homeDirectory}/.config/kitty/colors.json";
+      };
+
+      templates.hypr = {
+        input_path = hyprTemplate;
+        output_path = 
+          "${config.home.homeDirectory}/.config/hypr/matugen.conf";
+        post_hook = "hyprctl reload";
       };
     };
 }
