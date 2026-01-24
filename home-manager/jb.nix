@@ -1,7 +1,16 @@
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
+let
+  toml = pkgs.formats.toml {};
+  kittyTemplate = ./desktop/matugen/templates/kitty-colors.conf;
+in
 {
   home.stateVersion = "25.11";
+
+  home.packages = with pkgs; [
+    pavucontrol
+    inputs.matugen.packages.${pkgs.system}.default
+  ];
 
   imports = [
     ./gui
@@ -61,8 +70,15 @@
   };
 
   programs.wofi.enable = true;
+  
+  xdg.configFile."matugen/config.toml".source =
+    toml.generate "config.toml" {
+      config.mode = "dark";
 
-  home.packages = with pkgs; [
-    pavucontrol
-  ];
+      templates.kitty = {
+        input_path = kittyTemplate; 
+        output_path =
+          "${config.home.homeDirectory}/.config/kitty/colors.json";
+      };
+    };
 }
