@@ -25,6 +25,9 @@ _: {
         "$mod, right, movefocus, r"
         "$mod, up, movefocus, u"
         "$mod, down, movefocus, d"
+
+        # Exit Hyprland with Ctrl Alt Del
+        "CTRL ALT, Delete, exec, hyprctl dispatch exit 0"
       ]
       ++ (
         # workspaces
