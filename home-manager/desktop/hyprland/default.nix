@@ -16,5 +16,6 @@
     ./general.nix
     ./animations.nix
     ./misc.nix
+    ./inputs.nix
   ];
 }
