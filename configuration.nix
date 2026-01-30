@@ -7,7 +7,8 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      # not needed anymore, due to the hosts separation
+      # ./hardware-configuration.nix
     ];
 
   # Use the systemd-boot EFI boot loader.

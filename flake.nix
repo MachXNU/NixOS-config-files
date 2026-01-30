@@ -10,11 +10,16 @@
     matugen.url = "github:InioX/Matugen?rev=0bd628f263b1d97f238849315f2ce3ab4439784e";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }: {
-    nixosConfigurations.nixos-vm = nixpkgs.lib.nixosSystem {
-      system = "aarch64-linux";
+  outputs = inputs@{ nixpkgs, home-manager, ... }: 
+  let
+    mkSystem = system: hostName:
+    nixpkgs.lib.nixosSystem {
+      inherit system;
       modules = [
         ./configuration.nix
+        ./hosts/${hostName}/default.nix
+        ./hosts/${hostName}/hardware-configuration.nix
+
         home-manager.nixosModules.home-manager {
           home-manager = {
             useGlobalPkgs = true;
@@ -26,5 +31,11 @@
         }
       ];
     };
+  in
+  {
+    nixosConfigurations = {
+      nixos-vm  = mkSystem "aarch64-linux" "nixos-vm";
+      laptop-laptop = mkSystem "x86_64-linux" "nixos-laptop";
+  };
   };
 }
