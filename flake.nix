@@ -35,7 +35,7 @@
   {
     nixosConfigurations = {
       nixos-vm  = mkSystem "aarch64-linux" "nixos-vm";
-      laptop-laptop = mkSystem "x86_64-linux" "nixos-laptop";
-  };
+      nixos-laptop = mkSystem "x86_64-linux" "nixos-laptop";
+    };
   };
 }
