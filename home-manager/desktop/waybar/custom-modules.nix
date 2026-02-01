@@ -1,8 +1,8 @@
 { ... }:
 
 {
-   "custom/launcher" = { 
-    format = "󱄅 ";
+   "custom/appmenu" = { 
+    format = "󱄅";
     on-click = "fuzzel";
   };
 }

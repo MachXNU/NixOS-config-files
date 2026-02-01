@@ -2,26 +2,19 @@
 
 {
   clock = {
-    format = "{:%I:%M %p}";
-    format-alt = "{:%a, %d. %b}";
-    tooltip-format = "<tt><small>{calendar}</small></tt>";
+    format = "󰥔 {:%I:%M %p}";
+    format-alt = "󰥔 {:%I:%M %p}  {:%a, %d. %b}";
+    tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
     calendar = {
-      mode =       "year";
+      mode = "month";
+      on-scroll = 1;
       mode-mon-col = 3;
-      weeks-pos    = "right";
-      on-scroll    = 1;
       format = {
-        months   = "<span color='#ffead3'><b>{}</b></span>";
-        days     = "<span color='#ecc6d9'><b>{}</b></span>";
-        weeks    = "<span color='#99ffdd'><b>W{}</b></span>";
-        weekdays = "<span color='#ffcc66'><b>{}</b></span>";
-        today    = "<span color='#ff6699'><b><u>{}</u></b></span>";
+        today = "<span color='#ff6699'><b><u>{}</u></b></span>";
       };
-      actions = {
-        on-click-right = "mode";
-        on-scroll-up   = "shift_up";
-        on-scroll-down = "shift_down";
-      };
+    };
+    actions = {
+      on-click-right= "mode";
     };
   };
 

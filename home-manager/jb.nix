@@ -5,6 +5,7 @@ let
   kittyTemplate  = ./desktop/matugen/templates/kitty-colors.conf;
   hyprTemplate   = ./desktop/matugen/templates/hyprland-colors.conf;
   fuzzelTemplate = ./desktop/matugen/templates/fuzzel-colors.ini;
+  waybarTemplate = ./desktop/matugen/templates/waybar-colors.css;
 in
 {
   home.stateVersion = "25.11";
@@ -92,6 +93,12 @@ in
         input_path = fuzzelTemplate;
         output_path = 
           "${config.home.homeDirectory}/.config/fuzzel/matugen-colors.ini";
-    };
+      };
+
+      templates.waybar = {
+        input_path = waybarTemplate;
+        output_path = 
+          "${config.home.homeDirectory}/.config/waybar/matugen-colors.css";
+      };
   };
 }

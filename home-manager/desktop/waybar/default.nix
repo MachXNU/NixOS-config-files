@@ -27,7 +27,7 @@ in
           reload_style_on_change = true;
 
           modules-left = [ 
-            "custom/launcher"
+            "custom/appmenu"
             "clock"
             "hyprland/workspaces"
           ];
@@ -44,4 +44,5 @@ in
       ])
     ];
   };
+  xdg.configFile."waybar/style.css".source = ./style.css;
 }
