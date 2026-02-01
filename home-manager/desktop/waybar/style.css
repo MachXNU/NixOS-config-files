@@ -26,28 +26,28 @@ button {
     background-color 200ms ease-in-out;
 }
 
-#workspaces,
 #custom-appmenu,
-#quicklinks,
-#media,
-#hardware,
 #clock,
-#custom-notification {
+#systemutils {
   background-color: @surface;
   border-radius: 999px;
   box-shadow: 0px 0px 8px 4px @shadow inset;
 }
 
+#network,
+#pulseaudio,
 #custom-appmenu {
-  font-size: 24px;
   min-width: 32px;
   min-height: 32px;
   padding-right: 6px;
   border-radius: 999px;
 }
 
-#media,
-#hardware,
+#custom-appmenu {
+  font-size: 24px;
+}
+
+#systemutils,
 #clock {
   padding: 0 8px;
 }

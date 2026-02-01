@@ -13,6 +13,7 @@ in
   home.packages = with pkgs; [
     pavucontrol
     inputs.matugen.packages.${pkgs.system}.default
+    networkmanagerapplet
   ];
 
   imports = [

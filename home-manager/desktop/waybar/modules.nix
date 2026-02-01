@@ -19,7 +19,7 @@
   };
 
   pulseaudio = {
-    format = "{volume}% {icon}";
+    format = "{icon}";
     format-bluetooth = "{volume}% {icon}";
     format-muted = "";
     format-icons = {
@@ -28,11 +28,12 @@
       headset = "";
       phone = "";
       phone-muted = "";
-      default = [ "" "" ];
+      default = [ "" "" "" ];
     };
-    scroll-step = 1;
+    scroll-step = 5;
     on-click = "pavucontrol";
-    ignored-sinks = [ "Easy Effects Sink" ];
+    tooltip = true;
+    tooltip-format = "{desc} ({volume}%)";
   };
 
   battery = {
@@ -45,18 +46,20 @@
   network = {
     interface = null;
     format = "{ifname}";
-    format-wifi = "{essid} {icon}";
-    format-ethernet = "{ipaddr}/{cidr} 󰈀";
-    format-disconnected = "DOWN"; # An empty format will hide the module.
+    format-wifi = "{icon}";
+    format-ethernet = "{icon}";
+    format-disconnected = "󰲛"; # An empty format will hide the module.
     tooltip-format = "{ifname} via {gwaddr} 󰈀";
-    tooltip-format-wifi = "{essid} ({signalStrength}%) {icon}";
-    tooltip-format-ethernet = "{ifname} 󰈀";
+    tooltip-format-wifi = "{essid} ({signalStrength}%)";
+    tooltip-format-ethernet = "{ifname} ({ipaddr}/{cidr})";
     tooltip-format-disconnected = "Disconnected";
     max-length = 50;
+    interval = 1;
+    on-click = "nm-connection-editor";
 
     format-icons = {
       wifi = [ "󰤯" "󰤟" "󰤢" "󰤥" "󰤨" ];
-      ethernet = "󰈀";
+      ethernet = "";
     };
   };
 
