@@ -2,8 +2,8 @@
 
 {
   clock = {
-    format = "󰥔 {:%I:%M %p}";
-    format-alt = "󰥔 {:%I:%M %p}  {:%a, %d. %b}";
+    format = "{:%I:%M %p}";
+    format-alt = "{:%I:%M %p - %a, %d %b %Y}";
     tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
     calendar = {
       mode = "month";
