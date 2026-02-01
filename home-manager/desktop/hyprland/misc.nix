@@ -7,7 +7,8 @@ _: {
     };
 
     exec-once = [
-      "waybar"
+      "killall -q swww;  sleep .5 && swww-daemon"
+      "killall -q waybar;sleep .5 && waybar"
     ];
   
     monitor = ",1920x1080x60,auto,1";
