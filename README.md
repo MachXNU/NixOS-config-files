@@ -1,15 +1,33 @@
 # NixOS Configuration Files
 
+![Screenshot](./screenshots/screenshot-vm.png)
+
 Current status:
 - Uses Home Manager
 - Uses flakes
-- Hyprland (very basic)
+- Hyprland (quite ok, but needs improvement)
+- Waybar config (getting better, but WIP)
 - wallpaper via `swww`
 
 TODO:
-- Improve the GUI experience
-- Setup ZSH?
-
+- Improve the prompt
+- Waybar audio: show simple slider (with yad?)
+- Theme GTK apps
+- Theme kitty
+- Improve fuzzel theming (transparency)
+- Add swaync and a notification center
+- Change Hyprland's mouse cursor
+- Add a login manager (no auto-login)
+- Make a macOS-like menu on NixOS icon (sleep, lock, system info, kill, etc.)
+- Test waybar's pulseaudio with Bluetooth accessories
+- Add an icon for mic in Waybar?
+- Extract and show all shortcuts/keybinds
+- vim config
+- Web browser with privacy settings
+- Theme grub bootlader
+- Wallpaper selector
+- Find a nice file browser (CLI and/or GUI?)
+- Improve fastfetch look (make it simpler)
 
 ## Hyprland
 
@@ -18,11 +36,11 @@ TODO:
 - Hyprland can be disabled by setting `wayland.windowManager.hyprland.enable = false;` in `./home-manager/desktop/hyprland/default.nix`
 
 
-### `swww`
-- The `swww` (server and client that sets the wallpaper) daemons are started as a `systemd` unit.
-- These units depend on `graphical-session.target`.
-- So, if Hyprland is disabled, these targets are not reached, and `swww` does not start.
+## Inspiration
 
+- [notscripter's Configuration from Waybar examples](https://gitlab.com/mrinmoyin/dotfiles)
+- [Matuprland](https://github.com/Abhra00/Matuprland)
+- [HyprAccelerator](https://saneaspect.gumroad.com/l/hypraccelerator)
 
 Push to GitHub with:
 ```
