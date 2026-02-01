@@ -2,8 +2,9 @@
 
 let
   toml = pkgs.formats.toml {};
-  kittyTemplate = ./desktop/matugen/templates/kitty-colors.conf;
-  hyprTemplate  = ./desktop/matugen/templates/hyprland-colors.conf;
+  kittyTemplate  = ./desktop/matugen/templates/kitty-colors.conf;
+  hyprTemplate   = ./desktop/matugen/templates/hyprland-colors.conf;
+  fuzzelTemplate = ./desktop/matugen/templates/fuzzel-colors.ini;
 in
 {
   home.stateVersion = "25.11";
@@ -69,9 +70,7 @@ in
     viAlias = true;
     vimAlias = true;
   };
-
-  programs.wofi.enable = true;
-  
+ 
   xdg.configFile."matugen/config.toml".source =
     toml.generate "config.toml" {
       config.mode = "light";
@@ -88,5 +87,11 @@ in
           "${config.home.homeDirectory}/.config/hypr/matugen.conf";
         post_hook = "hyprctl reload";
       };
+
+      templates.fuzzel = {
+        input_path = fuzzelTemplate;
+        output_path = 
+          "${config.home.homeDirectory}/.config/fuzzel/matugen-colors.ini";
     };
+  };
 }

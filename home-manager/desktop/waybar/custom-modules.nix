@@ -2,7 +2,7 @@
 
 {
    "custom/launcher" = { 
-    format = "󱄅";
-    on-click = "wofi --show drun";
+    format = "󱄅 ";
+    on-click = "fuzzel";
   };
 }
