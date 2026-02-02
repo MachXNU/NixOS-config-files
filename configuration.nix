@@ -99,11 +99,10 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-    foot
     kitty
     waybar
     git
-    hyprpaper
+    adw-gtk3
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
