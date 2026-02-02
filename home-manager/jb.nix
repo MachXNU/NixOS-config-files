@@ -6,7 +6,8 @@ let
   hyprTemplate   = ./desktop/matugen/templates/hyprland-colors.conf;
   fuzzelTemplate = ./desktop/matugen/templates/fuzzel-colors.ini;
   waybarTemplate = ./desktop/matugen/templates/waybar-colors.css;
-  gtkTemplate    = ./desktop/matugen/templates/matugen-gtk.css;
+  gtk3Template   = ./desktop/matugen/templates/matugen-gtk3-colors.css;
+  gtk4Template   = ./desktop/matugen/templates/matugen-gtk4-colors.css;
 in
 {
   home.stateVersion = "25.11";
@@ -104,14 +105,14 @@ in
       };
       
       templates.gtk3 = {
-        input_path = gtkTemplate;
+        input_path = gtk3Template;
         output_path = 
           "${config.home.homeDirectory}/.config/gtk-3.0/gtk.css";
       };
 
 
       templates.gtk4 = {
-        input_path = gtkTemplate;
+        input_path = gtk4Template;
         output_path = 
           "${config.home.homeDirectory}/.config/gtk-4.0/gtk.css";
       };
