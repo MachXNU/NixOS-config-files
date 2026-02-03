@@ -82,7 +82,8 @@ in
       templates.kitty = {
         input_path = kittyTemplate; 
         output_path =
-          "${config.home.homeDirectory}/.config/kitty/colors.json";
+          "${config.home.homeDirectory}/.config/kitty/themes/Matugen.conf";
+          post_hook = "kill -SIGUSR1 $(pgrep kitty)";
       };
 
       templates.hypr = {

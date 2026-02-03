@@ -14,14 +14,29 @@
       bold_font = "auto";
       bold_italic_font = "auto";
 
-      # cursor = "#8fee96";
+      remember_window_size = "no";
+      cursor_blink_interval = "0.5";
 
-      background_opacity = "0.85";
+      cursor_trail = "1";
+      cursor_trail_decay = "0.1 0.4";
+      cursor_trail_start_threshold = "6";
+
+      wheel_scroll_min_lines = "1";
+      enable_audio_bell = "no";
+
+      window_padding_width = "10 15";
+      hide_window_decorations = "yes";
+      background_opacity = 0.6;
       dynamic_background_opacity = "yes";
 
-      confirm_os_window_close = 0;
+      # cursor = "#8fee96";
 
-      include = "./floraverse.conf";
+      confirm_os_window_close = 0;
+      linux_display_server = "wayland";
+
+      shell_integration = "enabled";
+
+      include = "themes/Matugen.conf";
     };
   };
 }
