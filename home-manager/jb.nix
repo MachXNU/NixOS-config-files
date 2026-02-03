@@ -117,4 +117,12 @@ in
           "${config.home.homeDirectory}/.config/gtk-4.0/gtk.css";
       };
   };
+
+  home.pointerCursor = {
+    name = "Bibata-Modern-Ice"; # or Bibata-Modern-Amber
+    package = pkgs.bibata-cursors;
+    size = 24;
+    gtk.enable = true;
+    x11.enable = true;
+  };
 }

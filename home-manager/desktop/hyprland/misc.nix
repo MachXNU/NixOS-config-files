@@ -15,5 +15,9 @@ _: {
 
     source = "~/.config/hypr/matugen.conf";
 
+    env = [
+      "XCURSOR_THEME,Bibata-Modern-Ice"
+      "XCURSOR_SIZE,24"
+    ];
   };
 }
