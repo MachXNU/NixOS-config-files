@@ -14,24 +14,22 @@
   background-clip: border-box;
 }
 
-button {
-  min-width: 32px;
-  min-height: 32px;
+#custom-appmenu,
+#systemutils,
+#clock {
+  /* background-color: @surface_80; */
+  color: @on_secondary_container;
+  box-shadow: 0px 0px 10px 14px @surface_container_high_95 inset;
   border-radius: 999px;
-  color: @on_primary_container;
-  box-shadow: 0px 0px 8px 4px @shadow inset;
-  transition:
-    all 50ms cubic-bezier(0.55, 0, 0.28, 1.682),
-    box-shadow 50ms ease-in-out,
-    background-color 200ms ease-in-out;
 }
 
-#custom-appmenu,
-#clock,
-#systemutils {
-  background-color: @surface;
-  border-radius: 999px;
-  box-shadow: 0px 0px 8px 4px @shadow inset;
+
+#custom-appmenu:hover,
+#clock:hover,
+#pulseaudio:hover,
+#network:hover,
+#battery:hover {
+  box-shadow: 0px 0px 10px 14px @surface_bright_90 inset;
 }
 
 #network,
@@ -53,9 +51,9 @@ button {
 }
 
 tooltip box {
-  background-color: @surface;
+  background-color: @surface_80;
+  color: @on_surface;
   padding: 8px;
   border: 2px solid @on_primary_container;
   border-radius: 8px;
 }
-

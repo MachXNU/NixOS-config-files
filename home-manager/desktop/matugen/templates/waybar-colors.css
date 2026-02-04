@@ -3,5 +3,29 @@
 * Generated with Matugen
 */
 <* for name, value in colors *>
-    @define-color {{name}} {{value.default.hex}};
+@define-color {{ name }} {{ value.default.hex }};
+@define-color {{ name }}_90 rgba(
+  {{ value.default.red }},
+  {{ value.default.green }},
+  {{ value.default.blue }},
+  0.9
+);
+@define-color {{ name }}_85 rgba(
+  {{ value.default.red }},
+  {{ value.default.green }},
+  {{ value.default.blue }},
+  0.85
+);
+@define-color {{ name }}_80 rgba(
+  {{ value.default.red }},
+  {{ value.default.green }},
+  {{ value.default.blue }},
+  0.8
+);
+@define-color {{ name }}_95 rgba(
+  {{ value.default.red }},
+  {{ value.default.green }},
+  {{ value.default.blue }},
+  0.95
+);
 <* endfor *>
