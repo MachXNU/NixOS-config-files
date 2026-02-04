@@ -1,6 +1,6 @@
 :root {
     --accent-color: {{colors.primary.default.hex}};
-    --accent-bg-color: {{colors.primary_container.default.hex}};
+    --accent-bg-color: {{colors.inverse_primary.default.hex}}; 
     --accent-fg-color: {{colors.on_primary_container.default.hex}};
     --destructive-color: {{colors.error.default.hex}};
     --destructive-bg-color: {{colors.error_container.default.hex}};
