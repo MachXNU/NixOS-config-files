@@ -1,24 +1,27 @@
 # NixOS Configuration Files
 
-![Screenshot](./screenshots/screenshot2-vm.png)
+![Screenshot](./screenshots/screenshot3-vm.png)
 
 Current status:
 - Uses Home Manager
 - Uses flakes
-- Hyprland (quite ok, but needs improvement)
-- Waybar config (getting better, but WIP)
+- Hyprland
+- Waybar config
 - wallpaper via `swww`
-- GTK theming (quite good, but could be better)
-- Kitty theming
+- theming via `matugen`
+- GTK apps themed (quite good, but could benefit some extra work)
+- Kitty (themed)
 - Cursor via Bibata-Moderm-Ice
+- App launcher via `fuzzel`
 
 TODO:
-- Improve the prompt
+- Improve the prompt (fuzzel) (?)
 - Waybar audio: show simple slider (with yad?)
+- Work on Hyprland workspaces icons in Waybar
 - Colors fine-tuning in GTK apps
-- Improve fuzzel theming (transparency and colors)
+- Sort/manage app launcher entries 
 - Add swaync and a notification center
-- Change the mouse cursor's colors with Matugen
+- Change the mouse cursor's colors with Matugen (?)
 - Add a login manager (no auto-login)
 - Make a macOS-like menu on NixOS icon (sleep, lock, system info, kill, etc.)
 - Test waybar's pulseaudio with Bluetooth accessories
@@ -28,7 +31,7 @@ TODO:
 - Web browser with privacy settings
 - Theme grub bootlader
 - Wallpaper selector
-- Light/dark mode switch via Matugen
+- Light/dark mode switch via Matugen (WIP)
 - Find a nice file browser (CLI and/or GUI?)
 - Improve fastfetch look (make it simpler)
 
