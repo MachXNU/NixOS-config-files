@@ -8,7 +8,7 @@ _: {
       border_size = 2;
 
       "col.active_border" = "$primary"; 
-      # was "rgba(33ccffee) rgba(00ff99ee) 45deg";
+        # was "rga(33ccffee) rgba(00ff99ee) 45deg";
       
       "col.inactive_border" = "$surface";
       # was "rgba(595959aa)";

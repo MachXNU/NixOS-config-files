@@ -2,8 +2,8 @@ _: {
 
   wayland.windowManager.hyprland.settings = {
     decoration = {
-      rounding       = 18;
-      rounding_power = 4;
+      rounding       = 12;
+      rounding_power = 2;
 
       active_opacity   = 1.0;
       inactive_opacity = 0.85;
@@ -11,19 +11,8 @@ _: {
       # https://wiki.hypr.land/Configuring/Variables/#blur
       blur = {
         enabled = true;
-        xray = false;
-        special = false;
-        new_optimizations = true;
-        size = 14;
-        passes = 3;
-        brightness = 1;
-        noise= 0.01;
-        contrast = 1;
-        popups = true;
-        popups_ignorealpha = 0.6;
-        input_methods = true;
-        input_methods_ignorealpha = 0.8;
-
+        size = 3;
+        passes = 2;
         vibrancy = 0.1696;
       };
 
@@ -39,6 +28,14 @@ _: {
       dim_inactive = true;
       dim_strength = 0.025;
       dim_special = 0.07;
+    };
+
+    layerrule = {
+      name = "noctalia";
+      "match:namespace" = "noctalia-background-.*";
+      ignore_alpha = 0.3;
+      blur_popups = true;
+      blur = true;
     };
 
     group = {
