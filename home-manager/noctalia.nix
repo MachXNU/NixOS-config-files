@@ -11,7 +11,7 @@
       # configure noctalia here; defaults will
       # be deep merged with these attributes.
       bar = {
-        backgroundOpacity = 0.3;
+        backgroundOpacity = 0.35;
         barType = "floating";
         capsuleOpacity = 0.75;
         density = "default";
@@ -76,6 +76,19 @@
       location = {
         monthBeforeDay = true;
         name = "Paris, France";
+      };
+      templates = {
+        activeTemplates = [
+          {
+            enabled = true;
+            id = "hyprland";
+          }
+          {
+            enabled = true;
+            id = "kitty";
+          }
+        ];
+        enableUserTheming = false;
       };
       ui = {
         fontDefault = "DejaVu Sans";

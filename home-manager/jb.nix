@@ -9,7 +9,7 @@
   ];
 
   imports = [
-    # ./gui
+    ./gui
     ./cli
     ./fonts
     ./desktop

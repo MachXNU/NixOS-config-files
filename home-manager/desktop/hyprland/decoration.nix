@@ -22,7 +22,7 @@ _: {
         range = 30;
         offset = "0 2";
         render_power = 4;
-        color = "$shadow";
+        color = "rgb(000000)";
       };
 
       dim_inactive = true;

@@ -36,7 +36,7 @@
 
       shell_integration = "enabled";
 
-      include = "themes/Matugen.conf";
+      include = "themes/noctalia.conf";
     };
   };
 }

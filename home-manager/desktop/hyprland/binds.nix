@@ -2,6 +2,7 @@ _: {
 
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
+    "$menu" = "noctalia-shell ipc call launcher toggle";
     bind =
       [
         # Many more can be added, see documentation and default config for examples
@@ -12,7 +13,7 @@ _: {
         "$mod, M, exec, command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit"
         "$mod, E, exec, $fileManager"
         "$mod, V, togglefloating"
-        "$mod, R, exec, $menu"
+        "$mod, D, exec, $menu"
         "$mod, P, pseudo, # dwindle"
         "$mod, J, togglesplit, # dwindle"
 

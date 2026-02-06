@@ -2,6 +2,6 @@ _: {
   imports = [
     # GUI plugins
     ./kitty
-    ./gtk3
+    # ./gtk3
   ];
 }

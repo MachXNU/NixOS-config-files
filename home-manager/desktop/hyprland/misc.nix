@@ -14,7 +14,7 @@ _: {
   
     monitor = ",1920x1080x60,auto,1";
 
-    source = "~/.config/hypr/matugen.conf";
+    source = "~/.config/hypr/noctalia/noctalia-colors.conf";
 
     env = [
       "XCURSOR_THEME,Bibata-Modern-Ice"
