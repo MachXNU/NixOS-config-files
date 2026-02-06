@@ -8,13 +8,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     matugen.url = "github:InioX/Matugen?rev=0bd628f263b1d97f238849315f2ce3ab4439784e";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ nixpkgs, home-manager, ... }: 
   let
     mkSystem = system: hostName:
     nixpkgs.lib.nixosSystem {
-      inherit system;
+      specialArgs = {
+        inherit system;
+        inherit inputs;
+      };
       modules = [
         ./configuration.nix
         ./hosts/${hostName}/default.nix
@@ -29,6 +36,8 @@
             extraSpecialArgs = { inherit inputs; };
           };
         }
+
+        ./noctalia.nix
       ];
     };
   in

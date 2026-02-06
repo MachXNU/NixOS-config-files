@@ -1,14 +1,4 @@
 { inputs, config, pkgs, lib, ... }:
-
-let
-  toml = pkgs.formats.toml {};
-  kittyTemplate  = ./desktop/matugen/templates/kitty-colors.conf;
-  hyprTemplate   = ./desktop/matugen/templates/hyprland-colors.conf;
-  fuzzelTemplate = ./desktop/matugen/templates/fuzzel-colors.ini;
-  waybarTemplate = ./desktop/matugen/templates/waybar-colors.css;
-  gtk3Template   = ./desktop/matugen/templates/matugen-gtk3-colors.css;
-  gtk4Template   = ./desktop/matugen/templates/matugen-gtk4-colors.css;
-in
 {
   home.stateVersion = "25.11";
 
@@ -19,10 +9,11 @@ in
   ];
 
   imports = [
-    ./gui
+    # ./gui
     ./cli
     ./fonts
     ./desktop
+    inputs.noctalia.homeModules.default
   ];
 
   services.ssh-agent.enable = true;
@@ -75,50 +66,6 @@ in
     vimAlias = true;
   };
  
-  xdg.configFile."matugen/config.toml".source =
-    toml.generate "config.toml" {
-      config.mode = "light";
-
-      templates.kitty = {
-        input_path = kittyTemplate; 
-        output_path =
-          "${config.home.homeDirectory}/.config/kitty/themes/Matugen.conf";
-          post_hook = "kill -SIGUSR1 $(pgrep kitty)";
-      };
-
-      templates.hypr = {
-        input_path = hyprTemplate;
-        output_path = 
-          "${config.home.homeDirectory}/.config/hypr/matugen.conf";
-        post_hook = "hyprctl reload";
-      };
-
-      templates.fuzzel = {
-        input_path = fuzzelTemplate;
-        output_path = 
-          "${config.home.homeDirectory}/.config/fuzzel/matugen-colors.ini";
-      };
-
-      templates.waybar = {
-        input_path = waybarTemplate;
-        output_path = 
-          "${config.home.homeDirectory}/.config/waybar/matugen-colors.css";
-      };
-      
-      templates.gtk3 = {
-        input_path = gtk3Template;
-        output_path = 
-          "${config.home.homeDirectory}/.config/gtk-3.0/gtk.css";
-      };
-
-
-      templates.gtk4 = {
-        input_path = gtk4Template;
-        output_path = 
-          "${config.home.homeDirectory}/.config/gtk-4.0/gtk.css";
-      };
-  };
-
   home.pointerCursor = {
     name = "Bibata-Modern-Ice"; # or Bibata-Modern-Amber
     package = pkgs.bibata-cursors;
@@ -126,4 +73,62 @@ in
     gtk.enable = true;
     x11.enable = true;
   };
+
+  programs.noctalia-shell = {
+      enable = true;
+      settings = {
+        # configure noctalia here; defaults will
+        # be deep merged with these attributes.
+        bar = {
+          density = "compact";
+          position = "right";
+          showCapsule = false;
+          widgets = {
+            left = [
+              {
+                id = "SidePanelToggle";
+                useDistroLogo = true;
+              }
+              {
+                id = "WiFi";
+              }
+              {
+                id = "Bluetooth";
+              }
+            ];
+            center = [
+              {
+                hideUnoccupied = false;
+                id = "Workspace";
+                labelMode = "none";
+              }
+            ];
+            right = [
+              {
+                alwaysShowPercentage = false;
+                id = "Battery";
+                warningThreshold = 30;
+              }
+              {
+                formatHorizontal = "HH:mm";
+                formatVertical = "HH mm";
+                id = "Clock";
+                useMonospacedFont = true;
+                usePrimaryColor = true;
+              }
+            ];
+          };
+        };
+        colorSchemes.predefinedScheme = "Monochrome";
+        general = {
+          radiusRatio = 0.2;
+        };
+        location = {
+          monthBeforeDay = true;
+          name = "Marseille, France";
+        };
+      };
+      # this may also be a string or a path to a JSON file,
+      # but in this case must include *all* settings.
+    };
 }

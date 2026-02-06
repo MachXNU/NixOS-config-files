@@ -1,7 +1,7 @@
 _: {
   imports = [
     ./hyprland
-    ./waybar
-    ./fuzzel
+    # ./waybar
+    # ./fuzzel
   ];
 }

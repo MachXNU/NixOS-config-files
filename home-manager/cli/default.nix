@@ -2,7 +2,6 @@
 
 {
   imports = [
-    # CLI plugins
     ./git
     ./zsh
   ];
