@@ -27,6 +27,8 @@
   # Set your time zone.
   time.timeZone = "Europe/Paris";
 
+  networking.firewall.checkReversePath = false;
+
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -105,6 +107,7 @@
     waybar
     git
     adw-gtk3
+    wireguard-tools 
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

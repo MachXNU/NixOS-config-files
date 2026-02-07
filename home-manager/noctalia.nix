@@ -34,6 +34,9 @@
             {
               id = "MediaMini";
             }
+            {
+              id = "VPN";
+            }
           ];
           center = [
             {
@@ -64,7 +67,7 @@
       };
       colorSchemes = {
         darkMode = false;
-        generationMethod = "tonal-spot";
+        generationMethod = "fruit-salad";
         manualSunrise = "06:30";
         manualSunset = "20:00";
         predefinedScheme = "Monochrome";
@@ -106,6 +109,7 @@
       };
       sessionMenu = {
         enableCountdown = false;
+        largeButtonsStyle = false;
         position = "top_left";
       };
       templates = {
@@ -131,6 +135,7 @@
       };
       wallpaper = {
         directory = ./desktop/Wallpapers;
+        hideWallpaperFilenames = true;
       };
     };
     # this may also be a string or a path to a JSON file,
