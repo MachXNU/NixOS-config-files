@@ -19,6 +19,10 @@
 
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
+  hardware.bluetooth.enable = true;
+
+  services.power-profiles-daemon.enable = true;
+  services.upower.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Paris";
@@ -86,7 +90,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jb = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "power" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
   };
   

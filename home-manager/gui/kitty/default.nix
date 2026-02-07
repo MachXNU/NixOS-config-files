@@ -8,6 +8,7 @@
       size = 11;
     };
     settings = {
+      include = "themes/noctalia.conf";
       shell = ".";
 
       italic_font = "auto";
@@ -26,7 +27,7 @@
 
       window_padding_width = "10 15";
       hide_window_decorations = "yes";
-      background_opacity = 0.6;
+      background_opacity = 0.9;
       dynamic_background_opacity = "yes";
 
       # cursor = "#8fee96";
@@ -35,8 +36,6 @@
       linux_display_server = "wayland";
 
       shell_integration = "enabled";
-
-      include = "themes/noctalia.conf";
     };
   };
 }

@@ -11,7 +11,7 @@ _: {
       # https://wiki.hypr.land/Configuring/Variables/#blur
       blur = {
         enabled = true;
-        size = 3;
+        size = 7;
         passes = 2;
         vibrancy = 0.1696;
       };

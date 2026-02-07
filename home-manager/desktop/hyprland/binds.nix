@@ -29,6 +29,10 @@ _: {
 
         # Exit Hyprland with Ctrl Alt Del
         "CTRL ALT, Delete, exec, hyprctl dispatch exit 0"
+
+        # Brightness keys
+        ", XF86MonBrightnessDown, exec, noctalia-shell ipc call brightness decrease"
+        ", XF86MonBrightnessUp, exec, noctalia-shell ipc call brightness increase"
       ]
       ++ (
         # workspaces

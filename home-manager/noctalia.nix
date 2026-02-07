@@ -42,8 +42,12 @@
           right = [
             {
               alwaysShowPercentage = false;
+              deviceNativePath = "__default__";
+              displayMode = "icon-hover";
+              hideIfNotDetected = true;
               id = "Battery";
               warningThreshold = 30;
+              showPowerProfiles = true;
             }
             {
               formatHorizontal = "HH:mm";
@@ -59,23 +63,29 @@
         darkMode = false;
         generationMethod = "tonal-spot";
         manualSunrise = "06:30";
-        manualSunset = "20;00";
+        manualSunset = "20:00";
         predefinedScheme = "Monochrome";
         schedulingMode = "manual";
         useWallpaperColors = true;
       };
       general = {
         animationSpeed = 1.35;
+        avatarImage = ./.face;
         dimmerOpacity = 0.3;
+        enableLockScreenCountdown = false;
         forceBlackScreenCorners = true;
         iRadiusRatio = 0.98;
         radiusRatio = 0.75;
         screenRadiusRatio = 0.55;
+        showScreenCorners = true;
         telemetryEnabled = false;
       };
       location = {
         monthBeforeDay = true;
         name = "Paris, France";
+      };
+      sessionMenu = {
+        enableCountdown = false;
       };
       templates = {
         activeTemplates = [
@@ -95,7 +105,7 @@
         fontDefaultScale = 1;
         fontFixed = "Fira Mono";
         fontFixedScale = 1;
-        panelBackgroundOpacity = 0.76;
+        #panelBackgroundOpacity = 0.76;
         panelsAttachedToBar = true;
       };
       wallpaper = {
