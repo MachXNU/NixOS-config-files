@@ -61,6 +61,21 @@
     ];
     Default = "DuckDuckGo";
   };
+  ExtensionSettings = {
+    "*" = {
+      private_browsing = true;
+    };
+    "addon@darkreader.org" = {
+      install_url = "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi";      
+      installation_mode = "force_installed";
+      private_browsing = true;
+    };
+    "uBlock0@raymondhill.net" = {
+      install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+      installation_mode = "force_installed";
+      private_browsing = true;
+    };
+  };
   SkipTermsOfUse = true;
   Preferences = {
     "extensions.pocket.enabled" = {

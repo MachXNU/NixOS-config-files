@@ -31,6 +31,9 @@
             {
               id = "Bluetooth";
             }
+            {
+              id = "MediaMini";
+            }
           ];
           center = [
             {
@@ -68,9 +71,26 @@
         schedulingMode = "manual";
         useWallpaperColors = true;
       };
+      controlCenter = {
+        shortcuts = {
+          left = [
+            { id = "Network"; }
+            { id = "Bluetooth"; }
+            { id = "WallpaperSelector"; }
+            { id = "DarkMode"; }
+          ];
+          right = [            
+            { id = "Notifications"; }
+            { id = "PowerProfile"; }
+            { id = "KeepAwake"; }
+            { id = "NightLight"; }
+          ];
+        };
+      };
       general = {
         animationSpeed = 1.35;
-        avatarImage = ./.face;
+      avatarImage = ./.face;
+      clockFormat = "h:mm AP";
         dimmerOpacity = 0.3;
         enableLockScreenCountdown = false;
         forceBlackScreenCorners = true;
@@ -86,6 +106,7 @@
       };
       sessionMenu = {
         enableCountdown = false;
+        position = "top_left";
       };
       templates = {
         activeTemplates = [
