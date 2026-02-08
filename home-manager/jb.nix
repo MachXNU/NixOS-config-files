@@ -14,6 +14,7 @@
     ./fonts
     ./desktop
     ./noctalia.nix
+    ./pywalfox.nix
   ];
 
   services.ssh-agent.enable = true;

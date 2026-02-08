@@ -122,6 +122,10 @@
             enabled = true;
             id = "kitty";
           }
+          {
+            enabled = true;
+            id = "pywalfox";
+          }
         ];
         enableUserTheming = false;
       };
