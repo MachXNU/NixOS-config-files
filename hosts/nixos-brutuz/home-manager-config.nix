@@ -1,5 +1,9 @@
 { ... }:
 {
+  imports = [
+    ../common/KVM/home-manager-config.nix
+  ];
+
   wayland.windowManager.hyprland.settings = {
     monitor = ",2560x1440@144,auto,1";
     env = [

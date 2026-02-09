@@ -98,7 +98,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jb = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "power" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "power" ];
     shell = pkgs.zsh;
   };
   
