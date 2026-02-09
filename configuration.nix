@@ -41,6 +41,12 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "nvidia-x11"
+      "nvidia-settings"
+    ];
+
   services.getty.autologinUser = "jb";
   
   services.greetd = {

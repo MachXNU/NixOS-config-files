@@ -2,7 +2,5 @@
   imports = [
     ./hyprland
     ./firefox
-    # ./waybar
-    # ./fuzzel
   ];
 }

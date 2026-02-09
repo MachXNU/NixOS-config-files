@@ -7,7 +7,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    matugen.url = "github:InioX/Matugen?rev=0bd628f263b1d97f238849315f2ce3ab4439784e";
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,8 +17,9 @@
   let
     mkSystem = system: hostName:
     nixpkgs.lib.nixosSystem {
+      inherit system;
+
       specialArgs = {
-        inherit system;
         inherit inputs;
       };
       modules = [
@@ -31,7 +31,12 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.jb = import ./home-manager/jb.nix;
+            users.jb = { ... }: {
+              imports = [
+                ./home-manager/jb.nix
+                ./hosts/${hostName}/home-manager-config.nix
+              ];
+            };
             backupFileExtension = "backup";
             extraSpecialArgs = { inherit inputs; };
           };
@@ -45,6 +50,7 @@
     nixosConfigurations = {
       nixos-vm  = mkSystem "aarch64-linux" "nixos-vm";
       nixos-laptop = mkSystem "x86_64-linux" "nixos-laptop";
+      nixos-brutuz = mkSystem "x86_64-linux" "nixos-brutuz";
     };
   };
 }

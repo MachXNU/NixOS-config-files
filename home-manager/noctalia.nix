@@ -90,11 +90,14 @@
           ];
         };
       };
+      dock = {
+        enabled = false;
+      };
       general = {
         animationSpeed = 1.35;
-      avatarImage = ./.face;
-      clockFormat = "h:mm AP";
-        dimmerOpacity = 0.3;
+        avatarImage = ./.face;
+        clockFormat = "h:mm AP";
+        dimmerOpacity = 0.35;
         enableLockScreenCountdown = false;
         forceBlackScreenCorners = true;
         iRadiusRatio = 0.98;
