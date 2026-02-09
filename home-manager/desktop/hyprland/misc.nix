@@ -10,6 +10,7 @@ _: {
       # "killall -q swww;  sleep .5 && swww-daemon"
       # "killall -q waybar;sleep .5 && waybar"
       "noctalia-shell"
+      "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
     ];
   
     source = "~/.config/hypr/noctalia/noctalia-colors.conf";

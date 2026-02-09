@@ -5,7 +5,7 @@
   ];
 
   wayland.windowManager.hyprland.settings = {
-    monitor = ",2560x1440@144,auto,1";
+    monitor = ",2560x1440@144,auto,1,bitdepth,10";
     env = [
       "XDG_SESSION_TYPE,wayland"
       "LIBVA_DRIVER_NAME,nvidia"

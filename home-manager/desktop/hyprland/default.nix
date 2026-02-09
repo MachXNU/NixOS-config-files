@@ -17,5 +17,6 @@
     ./animations.nix
     ./misc.nix
     ./inputs.nix
+    ./screensharing.nix
   ];
 }
