@@ -11,6 +11,8 @@ _: {
       left_handed = false;
       follow_mouse = true;
       float_switch_override_focus = false;
+      
+      natural_scroll = true;
 
       touchpad = {
         disable_while_typing = true;
