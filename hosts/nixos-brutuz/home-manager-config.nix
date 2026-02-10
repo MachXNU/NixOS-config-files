@@ -14,4 +14,6 @@
       "WLR_NO_HARDWARE_CURSORS,1"
     ];
   };
+
+  programs.noctalia-shell.settings.location.name = "Rennes, France";
 }

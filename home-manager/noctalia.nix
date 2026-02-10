@@ -108,7 +108,6 @@
       };
       location = {
         monthBeforeDay = true;
-        name = "Paris, France";
       };
       sessionMenu = {
         enableCountdown = false;
