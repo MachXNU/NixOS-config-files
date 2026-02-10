@@ -5,6 +5,10 @@
   home.packages = with pkgs; [
     pavucontrol
     networkmanagerapplet
+    file
+    tree
+    htop
+    efibootmgr
   ];
 
   imports = [
@@ -35,17 +39,7 @@
     };
   };
 
-  programs.bash = {
-    enable = true;
-    shellAliases = {
-      btw = "echo i use nixos btw";
-    };
-    # profileExtra = ''
-    #   if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-    #     exec hyprland
-    #   fi
-    # '';
-  };
+  programs.bash.enable = true;
 
   programs.neovim = {
     enable = true;
