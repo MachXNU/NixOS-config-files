@@ -17,7 +17,7 @@ _: {
 
       allow_tearing = false;
 
-      layout = "master";
+      layout = "dwindle";
 
       snap.enabled = true;
     };
