@@ -48,6 +48,8 @@
     builtins.elem (lib.getName pkg) [
       "nvidia-x11"
       "nvidia-settings"
+      "steam"
+      "steam-unwrapped"
     ];
 
   services.getty.autologinUser = "jb";
@@ -73,6 +75,11 @@
   };
 
   environment.variables.EDITOR = "nvim";
+
+  programs.steam = {
+    enable = true;
+    extraCompatPackages = [ pkgs.proton-ge-bin ];
+  };
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
