@@ -128,6 +128,10 @@
             enabled = true;
             id = "pywalfox";
           }
+          {
+            enabled = true;
+            id = "telegram";
+          }
         ];
         enableUserTheming = false;
       };

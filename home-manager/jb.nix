@@ -9,6 +9,7 @@
     tree
     htop
     efibootmgr
+    telegram-desktop
   ];
 
   imports = [
