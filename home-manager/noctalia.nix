@@ -132,6 +132,10 @@
             enabled = true;
             id = "telegram";
           }
+          {
+            enabled = true;
+            id = "gtk";
+          }
         ];
         enableUserTheming = false;
       };
