@@ -16,6 +16,7 @@ _: {
     source = "~/.config/hypr/noctalia/noctalia-colors.conf";
 
     env = [
+      "XDG_SESSION_TYPE,wayland"
       "XCURSOR_THEME,Bibata-Modern-Ice"
       "XCURSOR_SIZE,24"
     ];
