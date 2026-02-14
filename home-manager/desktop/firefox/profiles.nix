@@ -10,6 +10,7 @@
       "browser.search.suggest.enabled" = false;
       "privacy.donottrackheader.enabled" = true;
       "privacy.globalprivacycontrol.enabled" = true;
+      "xpinstall.signatures.required" = false;
     };
   };
 }

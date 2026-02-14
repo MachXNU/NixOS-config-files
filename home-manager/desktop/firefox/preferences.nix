@@ -1,5 +1,7 @@
-{ config, ... }:
-
+{ config, pkgs, ... }:
+let
+  pywalfox-extension-patched = pkgs.callPackage ./pywalfox-extension-patched.nix {};
+in
 {
   DisableTelemetry = true;
   DisableFirefoxStudies = true;
@@ -76,7 +78,7 @@
       private_browsing = true;
     };
     "pywalfox@frewacom.org" = {
-      install_url = "https://addons.mozilla.org/firefox/downloads/latest/pywalfox/latest.xpi";
+      install_url = "file://${pywalfox-extension-patched}/pywalfox.xpi";
       installation_mode = "force_installed";
       private_browsing = true;
     };
