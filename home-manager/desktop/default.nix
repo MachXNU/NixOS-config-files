@@ -1,6 +1,8 @@
 { config, ...}: {
   imports = [
     ./hyprland
-    ./firefox
+    ./noctalia.nix
+    ./cursor.nix
+    ./dconf.nix
   ];
 }

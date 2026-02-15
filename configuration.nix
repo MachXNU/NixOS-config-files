@@ -44,6 +44,8 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
+  # Unfree packages cannot be whitelisted in modules
+  # thus this part must stay in configuration.nix
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
       "nvidia-x11"
@@ -120,10 +122,9 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     kitty
-    waybar
     git
-    adw-gtk3
     wireguard-tools 
+    home-manager
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

@@ -148,7 +148,7 @@
         panelsAttachedToBar = true;
       };
       wallpaper = {
-        directory = ./desktop/Wallpapers;
+        directory = ./Wallpapers;
         hideWallpaperFilenames = true;
       };
     };

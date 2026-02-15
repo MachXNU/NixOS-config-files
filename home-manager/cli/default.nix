@@ -1,10 +1,18 @@
-{ pkgs, ... }: 
+{ pkgs, ...}: 
 
 {
   imports = [
-    ./git
-    ./zsh
+    ./git.nix
+    ./zsh.nix
+    ./neovim.nix
   ];
 
-  programs.fastfetch.enable = true;
+  home.packages = with pkgs; [
+    file
+    tree
+    htop
+    efibootmgr
+    jq
+    fastfetch
+  ];
 }

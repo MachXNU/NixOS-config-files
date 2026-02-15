@@ -24,7 +24,7 @@
       };
       modules = [
         ./configuration.nix
-        ./hosts/${hostName}/default.nix
+        ./hosts/${hostName}/programs.nix
         ./hosts/${hostName}/hardware-configuration.nix
 
         home-manager.nixosModules.home-manager {
@@ -34,7 +34,7 @@
             users.jb = { ... }: {
               imports = [
                 ./home-manager/jb.nix
-                ./hosts/${hostName}/home-manager-config.nix
+                # ./hosts/${hostName}/home-manager-config.nix
               ];
             };
             backupFileExtension = "backup";

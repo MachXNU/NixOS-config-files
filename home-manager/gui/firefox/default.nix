@@ -1,6 +1,10 @@
 { pkgs, lib, config, ... }:
 
 {
+  imports = [
+    ./pywalfox-native.nix
+  ];
+
   programs.firefox = {
     enable = true;
     package = pkgs.wrapFirefox pkgs.firefox-esr-unwrapped {

@@ -1,7 +1,14 @@
-_: {
+{ pkgs, ... }: 
+{
   imports = [
-    # GUI plugins
-    ./kitty
-    # ./gtk3
+    # GUI apps
+    ./kitty.nix
+    ./firefox
+  ];
+
+  home.packages = with pkgs; [
+    pavucontrol
+    networkmanagerapplet
+    telegram-desktop
   ];
 }
