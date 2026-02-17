@@ -1,12 +1,15 @@
-{ inputs, config, pkgs, lib, ... }:
+{ inputs, config, pkgs, lib, headless, ... }:
 
 {
   home.stateVersion = "25.11";
 
-  imports = [
-    ./desktop
+  imports = lib.flatten [
     ./cli
-    ./gui
-    ./fonts
+
+    (if headless then [] else [
+      ./desktop
+      ./gui
+      ./fonts
+    ])
   ];
 }

@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, headless, ... }:
 
 {
   imports =
@@ -58,7 +58,7 @@
   services.getty.autologinUser = "jb";
   
   services.greetd = {
-    enable = true;
+    enable = if headless then false else true;
     settings = {
       default_session = {
         command = "start-hyprland";
@@ -72,8 +72,9 @@
       };
     };
   };
+
   programs.hyprland = {
-    enable = true;
+    enable = if headless then false else true;
     # xwayland.enable = true;
   };
 

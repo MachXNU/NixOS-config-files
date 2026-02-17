@@ -15,12 +15,12 @@
 
   outputs = inputs@{ nixpkgs, home-manager, ... }: 
   let
-    mkSystem = system: hostName:
+    mkSystem = system: hostName: headless:
     nixpkgs.lib.nixosSystem {
       inherit system;
 
       specialArgs = {
-        inherit inputs;
+        inherit inputs headless;
       };
       modules = [
         ./configuration.nix
@@ -32,12 +32,10 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             users.jb = { ... }: {
-              imports = [
-                ./home-manager/jb.nix
-              ];
+              imports = [ ./home-manager/jb.nix ];
             };
             backupFileExtension = "backup";
-            extraSpecialArgs = { inherit inputs; };
+            extraSpecialArgs = { inherit inputs headless; };
           };
         }
       ];
@@ -45,9 +43,9 @@
   in
   {
     nixosConfigurations = {
-      nixos-vm  = mkSystem "aarch64-linux" "nixos-vm";
-      nixos-laptop = mkSystem "x86_64-linux" "nixos-laptop";
-      nixos-brutuz = mkSystem "x86_64-linux" "nixos-brutuz";
+      nixos-vm  = mkSystem "aarch64-linux" "nixos-vm" true;
+      nixos-laptop = mkSystem "x86_64-linux" "nixos-laptop" false;
+      nixos-brutuz = mkSystem "x86_64-linux" "nixos-brutuz" false;
     };
   };
 }
