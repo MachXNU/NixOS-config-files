@@ -10,6 +10,9 @@
     settings = {
       # configure noctalia here; defaults will
       # be deep merged with these attributes.
+      appLauncher = {
+        viewMode = "grid";
+      };
       bar = {
         backgroundOpacity = 0.35;
         barType = "floating";
@@ -46,6 +49,9 @@
             }
           ];
           right = [
+            {
+              id = "SystemMonitor";
+            }
             {
               alwaysShowPercentage = false;
               deviceNativePath = "__default__";

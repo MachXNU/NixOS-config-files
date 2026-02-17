@@ -34,7 +34,6 @@
             users.jb = { ... }: {
               imports = [
                 ./home-manager/jb.nix
-                # ./hosts/${hostName}/home-manager-config.nix
               ];
             };
             backupFileExtension = "backup";

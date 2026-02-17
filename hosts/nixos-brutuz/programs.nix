@@ -6,6 +6,7 @@
   imports = [
     ./nvidia.nix
     ../../modules/kvm.nix
+    ../../modules/steam.nix
   ];
 
   home-manager.users.jb = { ... }: {
