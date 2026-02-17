@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       # not needed anymore, due to the hosts separation
       # ./hardware-configuration.nix
+      ./modules/ssh.nix
     ];
 
   boot.loader.grub = {
@@ -128,21 +129,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  services.openssh = {
-    enable = true;
-    settings = {
-      PasswordAuthentication = true;
-      KbdInteractiveAuthentication = false;
-      PermitRootLogin = "no";
-      AllowUsers = [ "jb" ];
-    };
-  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
