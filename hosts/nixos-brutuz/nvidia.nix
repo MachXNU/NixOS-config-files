@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-# NixOS config
+  # NixOS config
   services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.graphics.enable = true;
