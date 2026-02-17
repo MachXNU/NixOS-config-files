@@ -40,8 +40,6 @@
             extraSpecialArgs = { inherit inputs; };
           };
         }
-
-        ./noctalia.nix
       ];
     };
   in
