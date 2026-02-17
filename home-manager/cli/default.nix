@@ -3,8 +3,9 @@
 {
   imports = [
     ./git.nix
-    ./zsh.nix
     ./neovim.nix
+    ./ssh.nix
+    ./zsh.nix
   ];
 
   home.packages = with pkgs; [
