@@ -143,7 +143,7 @@
             id = "gtk";
           }
         ];
-        enableUserTheming = false;
+        enableUserTheming = true;
       };
       ui = {
         fontDefault = "DejaVu Sans";
@@ -158,7 +158,13 @@
         hideWallpaperFilenames = true;
       };
     };
-    # this may also be a string or a path to a JSON file,
-    # but in this case must include *all* settings.
+    user-templates = ''
+      [config]
+      # General template settings
+
+      [templates.millennium]
+      input_path = '~/.config/matugen/millennium-template.css'
+      output_path = '~/.steam/steam/steamui/skins/Material-Theme/css/main/colors/matugen.css'
+    '';
   };
 }
