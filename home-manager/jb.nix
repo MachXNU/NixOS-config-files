@@ -12,4 +12,7 @@
       ./fonts
     ])
   ];
+
+  # Force override hyprland.conf by Home-Manager on rebuild
+  # xdg.configFile."hypr/hyprland.conf".force = true;
 }

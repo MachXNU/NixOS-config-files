@@ -12,6 +12,9 @@
       url = "github:MachXNU/noctalia-shell?ref=2bc0a589bdec29f4fe0aa426577f3a1baf3745f5";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    millennium = {
+      url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
+    };
   };
 
   outputs = inputs@{ nixpkgs, home-manager, ... }: 
