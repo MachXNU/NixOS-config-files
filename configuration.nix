@@ -121,7 +121,8 @@
     git
     wireguard-tools 
     home-manager
-  ];
+  ]
+  ++ (if headless then [] else [ ddcutil ]);
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

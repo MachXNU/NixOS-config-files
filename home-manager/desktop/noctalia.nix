@@ -71,6 +71,10 @@
           ];
         };
       };
+      brightness = {
+        enableDdcSupport = true;
+        enforceMinimum = false;
+      };
       colorSchemes = {
         darkMode = false;
         generationMethod = "fruit-salad";
