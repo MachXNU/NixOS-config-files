@@ -2,7 +2,7 @@
 
 {
   programs.neovim = {
-    enable = true;
+    enable = false;
     extraConfig = ''
       filetype plugin indent on
       set expandtab

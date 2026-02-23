@@ -1,5 +1,5 @@
 {
-    description = "Hyperland on NixOS";
+  description = "Hyperland on NixOS with Noctalia";
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
@@ -15,9 +15,17 @@
     millennium = {
       url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
     };
+    obsidian-nvim = {
+      url = "github:epwalsh/obsidian.nvim";
+      flake = false;
+    };
+    nvf = {
+      url = "github:NotAShelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }: 
+  outputs = inputs@{ nixpkgs, home-manager, nvf, ... }: 
   let
     mkSystem = system: hostName: headless:
     nixpkgs.lib.nixosSystem {
@@ -36,7 +44,10 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             users.jb = { ... }: {
-              imports = [ ./home-manager/jb.nix ];
+              imports = [ 
+                nvf.homeManagerModules.default
+                ./home-manager/jb.nix
+              ];
             };
             backupFileExtension = "backup";
             extraSpecialArgs = { inherit inputs headless; };
