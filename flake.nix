@@ -15,6 +15,10 @@
     millennium = {
       url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
     };
+    material-theme = {
+      url = "github:kuska1/Material-Theme";
+      flake = false;
+    };
     obsidian-nvim = {
       url = "github:epwalsh/obsidian.nvim";
       flake = false;

@@ -1,15 +1,10 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, inputs, ... }:
 let
   materialTheme = pkgs.stdenv.mkDerivation {
     pname = "Material-Theme for Millennium";
     version = "1.2.1";
 
-    src = pkgs.fetchFromGitHub {
-      owner = "kuska1";
-      repo = "Material-Theme";
-      rev = "b1aa00ec7250327fda88d2fa555fdd23164e0187";
-      sha256 = "sha256-FJemv26E/tFcD7JIE5yVIp9W+t0K10TrMyVDz2fr06s=";
-    };
+    src = inputs.material-theme;
 
     patchPhase = ''
       runHook prePatch

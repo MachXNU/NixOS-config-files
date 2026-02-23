@@ -210,6 +210,22 @@
         "type": "github"
       }
     },
+    "material-theme": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1771502085,
+        "narHash": "sha256-MQNoXXLElDYdohp3Kr+EM5Unu9Wu1xT63gUzFDRfp5M=",
+        "owner": "kuska1",
+        "repo": "Material-Theme",
+        "rev": "d06ccc6e37c6d541a0040656427d8718142f72f6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kuska1",
+        "repo": "Material-Theme",
+        "type": "github"
+      }
+    },
     "millennium": {
       "inputs": {
         "abseil-src": "abseil-src",
@@ -464,6 +480,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "material-theme": "material-theme",
         "millennium": "millennium",
         "nixpkgs": "nixpkgs_2",
         "noctalia": "noctalia",
