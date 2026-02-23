@@ -6,6 +6,7 @@
   imports = [
     ./nvidia.nix
     ../../modules/kvm.nix
+    ../../modules/virtualbox.nix
     ../../modules/steam.nix
   ];
 

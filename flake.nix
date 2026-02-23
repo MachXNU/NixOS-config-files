@@ -9,7 +9,7 @@
     };
     noctalia = {
       # url = "github:noctalia-dev/noctalia-shell";
-      url = "github:MachXNU/noctalia-shell?ref=2bc0a589bdec29f4fe0aa426577f3a1baf3745f5";
+      url = "github:MachXNU/noctalia-shell?ref=2c24f2d3757f76433a4c4490a9e2e7122aaf4312";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     millennium = {
