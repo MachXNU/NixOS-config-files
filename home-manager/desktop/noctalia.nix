@@ -111,6 +111,7 @@
         enableLockScreenCountdown = false;
         forceBlackScreenCorners = true;
         iRadiusRatio = 0.98;
+        lockScreenTint = 0.2;
         radiusRatio = 0.75;
         screenRadiusRatio = 0.55;
         showScreenCorners = true;
