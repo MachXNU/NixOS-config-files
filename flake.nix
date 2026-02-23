@@ -25,7 +25,7 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, nvf, ... }: 
+  outputs = inputs@{ nixpkgs, home-manager, ... }: 
   let
     mkSystem = system: hostName: headless:
     nixpkgs.lib.nixosSystem {
@@ -45,7 +45,7 @@
             useUserPackages = true;
             users.jb = { ... }: {
               imports = [ 
-                nvf.homeManagerModules.default
+                inputs.nvf.homeManagerModules.default
                 ./home-manager/jb.nix
               ];
             };
