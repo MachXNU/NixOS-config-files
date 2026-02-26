@@ -1,7 +1,9 @@
-{ pkgs, inputs, ... }:
-
 {
-  imports = [ 
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [
     inputs.noctalia.homeModules.default
   ];
 
@@ -87,16 +89,16 @@
       controlCenter = {
         shortcuts = {
           left = [
-            { id = "Network"; }
-            { id = "Bluetooth"; }
-            { id = "WallpaperSelector"; }
-            { id = "DarkMode"; }
+            {id = "Network";}
+            {id = "Bluetooth";}
+            {id = "WallpaperSelector";}
+            {id = "DarkMode";}
           ];
-          right = [            
-            { id = "Notifications"; }
-            { id = "PowerProfile"; }
-            { id = "KeepAwake"; }
-            { id = "NightLight"; }
+          right = [
+            {id = "Notifications";}
+            {id = "PowerProfile";}
+            {id = "KeepAwake";}
+            {id = "NightLight";}
           ];
         };
       };
@@ -124,6 +126,40 @@
         enableCountdown = false;
         largeButtonsStyle = false;
         position = "top_left";
+        powerOptions = [
+          {
+            action = "lock";
+            enabled = true;
+            keybind = "1";
+          }
+          {
+            action = "suspend";
+            enabled = true;
+            keybind = "2";
+          }
+          {
+            action = "hibernate";
+            enabled = false;
+          }
+          {
+            action = "reboot";
+            enabled = true;
+            keybind = "3";
+          }
+          {
+            action = "logout";
+            enabled = false;
+          }
+          {
+            action = "shutdown";
+            enabled = true;
+            keybind = "4";
+          }
+          {
+            action = "rebootToUefi";
+            enabled = false;
+          }
+        ];
       };
       templates = {
         activeTemplates = [
@@ -163,6 +199,7 @@
         hideWallpaperFilenames = true;
       };
     };
+
     user-templates = ''
       [config]
       # General template settings
