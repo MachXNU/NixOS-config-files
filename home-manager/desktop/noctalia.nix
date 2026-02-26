@@ -1,7 +1,9 @@
-{ pkgs, inputs, ... }:
-
 {
-  imports = [ 
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [
     inputs.noctalia.homeModules.default
   ];
 
@@ -87,16 +89,16 @@
       controlCenter = {
         shortcuts = {
           left = [
-            { id = "Network"; }
-            { id = "Bluetooth"; }
-            { id = "WallpaperSelector"; }
-            { id = "DarkMode"; }
+            {id = "Network";}
+            {id = "Bluetooth";}
+            {id = "WallpaperSelector";}
+            {id = "DarkMode";}
           ];
-          right = [            
-            { id = "Notifications"; }
-            { id = "PowerProfile"; }
-            { id = "KeepAwake"; }
-            { id = "NightLight"; }
+          right = [
+            {id = "Notifications";}
+            {id = "PowerProfile";}
+            {id = "KeepAwake";}
+            {id = "NightLight";}
           ];
         };
       };
@@ -167,9 +169,10 @@
       [config]
       # General template settings
 
-      [templates.millennium]
-      input_path = '~/.config/matugen/millennium-template.css'
-      output_path = '~/.steam/steam/steamui/skins/Material-Theme/css/main/colors/matugen.css'
+      [templates.nvim-base16]
+      input_path = "~/.config/nvf/lua/matugen-template.lua"
+      output_path = "~/.config/nvf/lua/matugen.lua"
+      post_hook = 'pkill -SIGUSR1 nvim'
     '';
   };
 }

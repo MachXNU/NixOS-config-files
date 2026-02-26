@@ -1,4 +1,9 @@
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   programs.nvf = {
     enable = true;
     settings = {
@@ -6,7 +11,7 @@
         viAlias = true;
         vimAlias = true;
         debugMode = {
-          enable = false;
+          enable = true;
           level = 16;
           logFile = "/tmp/nvim.log";
         };
@@ -104,15 +109,51 @@
         statusline = {
           lualine = {
             enable = true;
-            theme = "catppuccin";
+            theme = "base16";
           };
         };
 
         theme = {
           enable = true;
-          name = "catppuccin";
-          style = "mocha";
-          transparent = true;
+          name = "base16";
+          base16-colors = {
+            base00 = "#000000";
+            base01 = "#000000";
+            base02 = "#000000";
+            base03 = "#000000";
+            base04 = "#ffffff";
+            base05 = "#ffffff";
+            base06 = "#ffffff";
+            base07 = "#ffffff";
+            base08 = "#ff0000";
+            base09 = "#ff0000";
+            base0A = "#ff0000";
+            base0B = "#00ff00";
+            base0C = "#00ffff";
+            base0D = "#0000ff";
+            base0E = "#ff00ff";
+            base0F = "#ff0000";
+          };
+          extraConfig = ''
+            local matugen_path = vim.fn.stdpath("config").."/lua/matugen.lua"
+            dofile(matugen_path)
+          '';
+          transparent = false;
+        };
+
+        lazy.plugins = {
+          "lualine.nvim" = {
+            package = pkgs.vimPlugins.lualine-nvim;
+            after = ''
+              local matugen_path = vim.fn.stdpath("config").."/lua/matugen.lua"
+              dofile(matugen_path)
+              require('lualine').setup({
+                options = {
+                  theme = "base16",
+                }
+              })
+            '';
+          };
         };
 
         autopairs.nvim-autopairs.enable = true;
@@ -197,13 +238,6 @@
           };
         };
 
-        notes = {
-          neorg.enable = false;
-          orgmode.enable = false;
-          mind-nvim.enable = false;
-          todo-comments.enable = true;
-        };
-
         terminal = {
           toggleterm = {
             enable = true;
@@ -234,16 +268,6 @@
           fastaction.enable = true;
         };
 
-        assistant = {
-          chatgpt.enable = false;
-          copilot = {
-            enable = false;
-            cmp.enable = false;
-          };
-          codecompanion-nvim.enable = false;
-          avante-nvim.enable = false;
-        };
-
         session = {
           nvim-session-manager.enable = false;
         };
@@ -262,4 +286,47 @@
       };
     };
   };
+
+  xdg.configFile."nvf/lua/matugen-template.lua".text = ''
+    local M = {}
+
+    function M.setup()
+      require('base16-colorscheme').setup {
+        base00 = '{{colors.surface.default.hex}}',
+        base01 = '{{colors.surface_container.default.hex}}',
+        base02 = '{{colors.surface_container_high.default.hex}}',
+        base03 = '{{colors.outline.default.hex}}',
+        base04 = '{{colors.on_surface_variant.default.hex}}',
+        base05 = '{{colors.on_surface.default.hex}}',
+        base06 = '{{colors.on_surface.default.hex}}',
+        base07 = '{{colors.on_background.default.hex}}',
+        base08 = '{{colors.error.default.hex}}',
+        base09 = '{{colors.tertiary.default.hex}}',
+        base0A = '{{colors.secondary.default.hex}}',
+        base0B = '{{colors.primary.default.hex}}',
+        base0C = '{{colors.tertiary_fixed_dim.default.hex}}',
+        base0D = '{{colors.primary_fixed_dim.default.hex}}',
+        base0E = '{{colors.secondary_fixed_dim.default.hex}}',
+        base0F = '{{colors.error_container.default.hex}}',
+      }
+    end
+
+    local signal = vim.uv.new_signal()
+    signal:start(
+      'sigusr1',
+      vim.schedule_wrap(function()
+        package.loaded['matugen'] = nil
+        require('matugen').setup()
+        require('lualine').setup({
+          options = {
+            theme = "base16",
+          }
+        })
+      end)
+    )
+
+    M.setup()
+
+    return M
+  '';
 }
