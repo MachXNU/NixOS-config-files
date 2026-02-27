@@ -1,6 +1,7 @@
 { config, pkgs, ...}: {
   imports = [
     ./hyprland
+    ./hyprlock.nix
     ./noctalia.nix
     ./cursor.nix
     ./dconf.nix
