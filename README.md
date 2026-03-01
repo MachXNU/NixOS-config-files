@@ -2,9 +2,9 @@
 
 ![Screenshot](./screenshots/screenshot-1.png)
 
-This repo presents my NixOS configuration files from 3 hosts:
+This repo presents my NixOS configuration files from 4 hosts:
 - a desktop (AMD CPU and iGPU, Nvidia eGPU)
-- a laptop (Intel CPU and iGPU, Nvidia eGPU)
+- 2 laptops (Intel CPU and iGPU, Nvidia eGPU)
 - a headless VM (emulated on macOS via UTM)
 
 I am planning to add support for configuring a Mac with `nix-darwin` soon.
@@ -37,8 +37,9 @@ Due to the strong requirement of managing several hosts in one config and the as
 - Modular config for several hosts
 - Nice desktop environment
 - Basic utilities (zsh, git, SSH, vim...)
-- GRUB 2 bootloader
+- ~~GRUB 2 bootloader~~ (reverted to `systemd-boot` in case of small ESPs)
 - Hyprland screen and window sharing (tested with OBS Studio)
+- Hyprlock lock screen
 - Firefox with privacy-oriented config
 - Telegram Desktop
 - Steam and Proton
@@ -68,14 +69,15 @@ Just change the wallpaper, or toggle dark/light mode. This will trigger a new co
 
 ## TODO
 
-- [ ] GTK theming
+- [x] GTK theming
 - [ ] Qt theming
 - [ ] Better neovim config
 - [ ] Discord (fork)
 - [ ] Screenshot utility
 - [ ] ProtonVPN (either CLI or GTK app)
-- [ ] Improve the Firefox config
+- [X] Improve the Firefox config
 - [ ] Thunderbird (with Pywalfox config)
+- [ ] Idle/Sleep management with `hypridle`
 
 ... and probably many more things
 
