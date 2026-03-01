@@ -1,17 +1,24 @@
 { config, pkgs, ...}: {
   programs.hyprlock = {
     enable = true;
-    settings = {
 
-      general = {
-      };
+    importantPrefixes = [
+      "$"
+      "source"
+    ];
+
+    settings = {
+      source = "~/.config/hypr/noctalia/noctalia-colors.conf";
+
+      general = {};
       
       label = [
         # Time Hour
         {
           monitor = "";
           text = "cmd[update:1000] echo \"<span>$(date +\"%I\")</span>\"";
-          color = "rgba(255, 255, 255, 1)";
+          # color = "rgba(255, 255, 255, 1)";
+          color = "$primary";
           font_size = 200;
           font_family = "Stretch Pro";
           # position = "-80, 190";
@@ -48,7 +55,7 @@
         {
           monitor = "";
           # text = "    $USER";
-          text = " Hi, $USER";
+          text = " Hi,  $USER";
           color = "rgba(216, 222, 233, 0.80)";
           font_size = 30;
           font_family = "SF Pro Display Bold";
