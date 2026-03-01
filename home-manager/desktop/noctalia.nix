@@ -119,6 +119,11 @@
         showScreenCorners = true;
         telemetryEnabled = false;
       };
+      hooks = {
+        enabled = true;
+        startup = "sed -i \"/^[[:space:]]*background[[:space:]]*{/,/^[[:space:]]*}/ s|^[[:space:]]*path=.*|  path=$(noctalia-shell ipc call wallpaper get DP-1)|\" ~/.config/hypr/hyprlock.conf";
+        wallpaperChange = "sed -i \"/^[[:space:]]*background[[:space:]]*{/,/^[[:space:]]*}/ s|^[[:space:]]*path=.*|  path=$1|\" ~/.config/hypr/hyprlock.conf";
+      };
       location = {
         monthBeforeDay = true;
       };
@@ -129,6 +134,7 @@
         powerOptions = [
           {
             action = "lock";
+            command = "hyprlock";
             enabled = true;
             keybind = "1";
           }

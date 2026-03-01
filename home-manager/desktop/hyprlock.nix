@@ -17,8 +17,7 @@
         {
           monitor = "";
           text = "cmd[update:1000] echo \"<span>$(date +\"%I\")</span>\"";
-          # color = "rgba(255, 255, 255, 1)";
-          color = "$tertiary_fixed";
+          color = "rgba(255, 255, 255, 0.9)";
           font_size = 200;
           font_family = "Stretch Pro";
           # position = "-80, 190";
@@ -44,7 +43,7 @@
           monitor = "";
           text = "cmd[update:1000] echo -e \"$(date +\"%d %B, %a.\")\"";
           # color = "rgba(255, 255, 255, 100)";
-          color = "$tertiary_fixed";
+          color = "$primary_fixed";
           font_size = 28;
           font_family = "Suisse Int'l Mono";
           position = "2%, 1%";
@@ -57,7 +56,7 @@
           monitor = "";
           # text = "    $USER";
           text = " Hi,  $USER";
-          color = "rgba(216, 222, 233, 0.80)";
+          color = "rgba(255, 255, 255, 0.6)";
           font_size = 30;
           font_family = "SF Pro Display Bold";
           position = "0, -35%";
@@ -66,7 +65,7 @@
         }
       ];
 
-      # Profie-Photo
+      # Profile-Photo
       image = {
           monitor = "";
           path = toString ./.face;
@@ -90,6 +89,8 @@
         inner_color = "rgba(255, 255, 255, 0.1)";
         font_color = "rgb(200, 200, 200)";
         fade_on_empty = false;
+        check_color = "$primary";
+        fail_color = "$on_error";
         font_family = "Deja Vu Sans";
         placeholder_text = "<span foreground=\"##ffffff99\">Enter password</span>";
         hide_input = false;
@@ -103,7 +104,7 @@
           path = toString ./Wallpapers/blue-abstract-5120x5120.jpg;
           blur_passes = 2;
           contrast = 0.8916;
-          brightness = 0.8172;
+          brightness = 0.5;
           vibrancy = 0.1696;
           vibrancy_darkness = 0.0;
       };
