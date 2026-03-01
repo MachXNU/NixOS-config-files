@@ -18,7 +18,7 @@
           monitor = "";
           text = "cmd[update:1000] echo \"<span>$(date +\"%I\")</span>\"";
           # color = "rgba(255, 255, 255, 1)";
-          color = "$primary";
+          color = "$tertiary_fixed";
           font_size = 200;
           font_family = "Stretch Pro";
           # position = "-80, 190";
@@ -31,7 +31,7 @@
         {
           monitor = "";
           text = "cmd[update:1000] echo \"<span>$(date +\"%M\")</span>\"";
-          color = "rgba(147, 196, 255, 1)";
+          color = "$tertiary_fixed_dim";
           font_size = 200;
           font_family = "Stretch Pro";
           position = "0, 7%";
@@ -43,7 +43,8 @@
         {
           monitor = "";
           text = "cmd[update:1000] echo -e \"$(date +\"%d %B, %a.\")\"";
-          color = "rgba(255, 255, 255, 100)";
+          # color = "rgba(255, 255, 255, 100)";
+          color = "$tertiary_fixed";
           font_size = 28;
           font_family = "Suisse Int'l Mono";
           position = "2%, 1%";
@@ -108,4 +109,5 @@
       };
     };
   };
+
 }

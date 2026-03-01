@@ -164,7 +164,7 @@
       templates = {
         activeTemplates = [
           {
-            enabled = true;
+            enabled = false;
             id = "hyprland";
           }
           {
@@ -207,6 +207,10 @@
       [templates.millennium]
       input_path = '~/.config/matugen/millennium-template.css'
       output_path = '~/.steam/steam/steamui/skins/Material-Theme/css/main/colors/matugen.css'
+      
+      [templates.hyprland]
+      input_path = '~/.config/matugen/hyprland-colors.css'
+      output_path = '~/.config/hypr/noctalia/noctalia-colors.conf'
     '';
   };
 }

@@ -21,4 +21,30 @@ _: {
       "XCURSOR_SIZE,24"
     ];
   };
+
+  xdg.configFile."matugen/hyprland-colors.css".text = ''
+    $image = {{image}}
+    <* for name, value in colors *>
+    ''${{name}} = rgba({{value.default.hex_stripped}}ff)
+    <* endfor *>
+
+    general {
+        col.active_border = $primary
+        col.inactive_border = $surface
+    }
+
+    group {
+        col.border_active = $secondary
+        col.border_inactive = $surface
+        col.border_locked_active = $error
+        col.border_locked_inactive = $surface
+
+        groupbar {
+            col.active = $secondary
+            col.inactive = $surface
+            col.locked_active = $error
+            col.locked_inactive = $surface
+        }
+    }
+  '';
 }
