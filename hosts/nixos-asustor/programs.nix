@@ -1,0 +1,6 @@
+{ ... }:
+{
+  imports = [
+    ./hdd-spindown.nix
+  ];
+}
