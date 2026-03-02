@@ -26,6 +26,10 @@
       url = "github:NotAShelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ nixpkgs, home-manager, ... }: 
@@ -41,6 +45,7 @@
         ./configuration.nix
         ./hosts/${hostName}/programs.nix
         ./hosts/${hostName}/hardware-configuration.nix
+        inputs.agenix.nixosModules.default
 
         home-manager.nixosModules.home-manager {
           home-manager = {
