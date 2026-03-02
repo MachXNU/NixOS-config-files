@@ -62,6 +62,7 @@
   {
     nixosConfigurations = {
       nixos-vm  = mkSystem "aarch64-linux" "nixos-vm" true;
+      nixos-asustor  = mkSystem "x86_64-linux" "nixos-asustor" true;
       nixos-laptop = mkSystem "x86_64-linux" "nixos-laptop" false;
       nixos-brutuz = mkSystem "x86_64-linux" "nixos-brutuz" false;
       nixos-vivobook = mkSystem "x86_64-linux" "nixos-vivobook" false;
