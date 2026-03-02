@@ -39,7 +39,7 @@
       inherit system;
 
       specialArgs = {
-        inherit inputs headless;
+        inherit inputs headless hostName;
       };
       modules = [
         ./configuration.nix
