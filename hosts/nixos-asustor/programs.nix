@@ -9,8 +9,8 @@
 
   my.tailscale = {
     enable = true;
-    authKeyFile =
-      config.age.secrets.asustor-tailscale-authkey.path;
+    # authKeyFile =
+    #   config.age.secrets.asustor-tailscale-authkey.path;
     enableSSH = true;
   };
 }

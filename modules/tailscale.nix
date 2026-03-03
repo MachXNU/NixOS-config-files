@@ -4,7 +4,8 @@
   options.my.tailscale = {
     enable = lib.mkEnableOption "Tailscale";
     authKeyFile = lib.mkOption {
-      type = lib.types.path;
+      type = lib.types.nullOr lib.types.path;
+      default = null;
       description = "Path to Tailscale auth key file.";
     };
     enableSSH = lib.mkOption {
@@ -17,7 +18,9 @@
   config = {
     services.tailscale = {
       enable = true;
-      authKeyFile = config.my.tailscale.authKeyFile;
+      authKeyFile =
+        lib.mkIf (config.my.tailscale.authKeyFile != null)
+          config.my.tailscale.authKeyFile;
       extraUpFlags =
         lib.optional config.my.tailscale.enableSSH "--ssh";
     };
