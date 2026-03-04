@@ -2,6 +2,7 @@
 
 {
   networking.hostName = "ddns-vm";
+  system.stateVersion = "25.11";
 
   microvm = {
     hypervisor = "qemu";

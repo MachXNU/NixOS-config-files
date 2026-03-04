@@ -38,7 +38,12 @@
 
   outputs = inputs@{ nixpkgs, home-manager, ... }: 
   let
-    mkSystem = system: hostName: headless: hostsMicroVMs:
+    mkSystem = {
+      system,
+      hostName,
+      headless ? false,
+      hostsMicroVMs ? false,
+    }:
     nixpkgs.lib.nixosSystem {
       inherit system;
 
@@ -71,11 +76,29 @@
   in
   {
     nixosConfigurations = {
-      nixos-vm  = mkSystem "aarch64-linux" "nixos-vm" true false;
-      nixos-asustor  = mkSystem "x86_64-linux" "nixos-asustor" true true;
-      nixos-laptop = mkSystem "x86_64-linux" "nixos-laptop" false false;
-      nixos-brutuz = mkSystem "x86_64-linux" "nixos-brutuz" false false;
-      nixos-vivobook = mkSystem "x86_64-linux" "nixos-vivobook" false false;
+      nixos-vm = mkSystem {
+        system = "aarch64-linux";
+        hostName = "nixos-vm";
+        headless = true;
+      };
+      nixos-asustor = mkSystem {
+        system = "x86_64-linux";
+        hostName = "nixos-asustor";
+        headless = true;
+        hostsMicroVMs = true;
+      };
+      nixos-laptop = mkSystem {
+        system = "x86_64-linux";
+        hostName = "nixos-laptop";
+      };
+      nixos-brutuz = mkSystem {
+        system = "x86_64-linux";
+        hostName = "nixos-brutuz";
+      };
+      nixos-vivobook = mkSystem {
+        system = "x86_64-linux";
+        hostName = "nixos-vivobook";
+      };
     };
   };
 }
