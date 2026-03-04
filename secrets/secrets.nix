@@ -7,4 +7,8 @@ in
   #   publicKeys = [ asustor ];
   #   armor = true;
   # };
+  "ddns-updater-config-json.age" = {
+    publicKeys = [ asustor ];
+    armor = true;
+  };
 }

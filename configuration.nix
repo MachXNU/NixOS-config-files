@@ -167,7 +167,7 @@
 
   microvm.vms.ddns = {
     config = {
-      imports = [ ./hosts/nixos-asustor/ddns-vm.nix ];
+      imports = [ ./hosts/nixos-asustor/VMs/ddns-vm.nix ];
     };
     autostart = true;
   };
