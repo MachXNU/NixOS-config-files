@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, inputs, headless, hostName, ... }:
+{ config, lib, pkgs, inputs, headless, hostName, hostsMicroVMs, ... }:
 
 {
   imports =
@@ -26,7 +26,7 @@
   networking.hostName = hostName;
 
   # Configure network connections interactively with nmcli or nmtui.
-  networking.networkmanager.enable = true;
+  networking.networkmanager.enable = !hostsMicroVMs;
   hardware.bluetooth.enable = true;
 
   services.power-profiles-daemon.enable = true;
@@ -64,7 +64,7 @@
   services.getty.autologinUser = "jb";
   
   services.greetd = {
-    enable = if headless then false else true;
+    enable = !headless;
     settings = {
       default_session = {
         command = "start-hyprland";
@@ -80,7 +80,7 @@
   };
 
   programs.hyprland = {
-    enable = if headless then false else true;
+    enable = !headless;
     # xwayland.enable = true;
   };
 
@@ -127,6 +127,53 @@
     home-manager
   ]
   ++ (if headless then [] else [ ddcutil ]);
+
+# Systemd configuration for the VMs - begin
+
+  networking.useNetworkd = hostsMicroVMs;
+  systemd.network.enable = hostsMicroVMs;
+
+  # Define bridge device
+  systemd.network.netdevs."br0" = {
+    netdevConfig = {
+      Kind = "bridge";
+      Name = "br0";
+    };
+  };
+
+  # Physical NIC joins bridge
+  systemd.network.networks."10-enp2s0" = {
+    matchConfig.Name = "enp2s0";
+    networkConfig.Bridge = "br0";
+  };
+
+  # Tap interface joins bridge
+  systemd.network.networks."20-microvm" = {
+    matchConfig.Name = "microvm-ddns";
+    networkConfig.Bridge = "br0";
+  };
+
+ # Bridge gets the LAN IP (DHCP example)
+  systemd.network.networks."30-br0" = {
+    matchConfig.Name = "br0";
+    networkConfig = {
+      DHCP = "ipv4";
+      IPv6AcceptRA = true;
+    };
+  };
+# Systemd configuration for the VMs - end
+
+# Launch VM - begin
+
+  microvm.vms.ddns = {
+    config = {
+      imports = [ ./hosts/nixos-asustor/ddns-vm.nix ];
+    };
+    autostart = true;
+  };
+  systemd.services."microvm@ddns".serviceConfig.TimeoutStartSec = "120";
+
+# Launch VM - end
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
