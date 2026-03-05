@@ -2,10 +2,11 @@
 
 ![Screenshot](./screenshots/screenshot-1.png)
 
-This repo presents my NixOS configuration files from 4 hosts:
+This repo presents my NixOS configuration files from 5 hosts:
 - a desktop (AMD CPU and iGPU, Nvidia eGPU)
 - 2 laptops (Intel CPU and iGPU, Nvidia eGPU)
 - a headless VM (emulated on macOS via UTM)
+- a NAS (Intel CPU)
 
 I am planning to add support for configuring a Mac with `nix-darwin` soon.
 
@@ -44,6 +45,7 @@ Due to the strong requirement of managing several hosts in one config and the as
 - Telegram Desktop
 - Steam and Proton
 - Theming and cool wallpapers
+- MicroVMs for services on the NAS
 
 ## Firefox theming
 
@@ -78,6 +80,8 @@ Just change the wallpaper, or toggle dark/light mode. This will trigger a new co
 - [X] Improve the Firefox config
 - [ ] Thunderbird (with Pywalfox config)
 - [ ] Idle/Sleep management with `hypridle`
+- [x] Setup `ddns-updater` on the NAS
+- [ ] Setup Ente Photos server on the NAS
 
 ... and probably many more things
 

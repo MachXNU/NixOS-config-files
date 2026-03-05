@@ -5,6 +5,7 @@
     ./hdd-spindown.nix
     ../../modules/tailscale.nix
     ./secrets.nix
+    ./VMs
   ];
 
   my.tailscale = {

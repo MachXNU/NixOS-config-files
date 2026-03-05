@@ -10,7 +10,10 @@
       # not needed anymore, due to the hosts separation
       # ./hardware-configuration.nix
       ./modules/ssh.nix
+      ./modules/networking.nix
     ];
+
+  my.networking.useSystemdNetwork = hostsMicroVMs;
 
   boot.loader.grub = {
     enable = false;
@@ -26,7 +29,6 @@
   networking.hostName = hostName;
 
   # Configure network connections interactively with nmcli or nmtui.
-  networking.networkmanager.enable = !hostsMicroVMs;
   hardware.bluetooth.enable = true;
 
   services.power-profiles-daemon.enable = true;
@@ -127,41 +129,6 @@
     home-manager
   ]
   ++ (if headless then [] else [ ddcutil ]);
-
-# Systemd configuration for the VMs - begin
-
-  networking.useNetworkd = hostsMicroVMs;
-  systemd.network.enable = hostsMicroVMs;
-
-  # Define bridge device
-  systemd.network.netdevs."br0" = {
-    netdevConfig = {
-      Kind = "bridge";
-      Name = "br0";
-    };
-  };
-
-  # Physical NIC joins bridge
-  systemd.network.networks."10-enp2s0" = {
-    matchConfig.Name = "enp2s0";
-    networkConfig.Bridge = "br0";
-  };
-
-  # Tap interface joins bridge
-  systemd.network.networks."20-microvm" = {
-    matchConfig.Name = "microvm-ddns";
-    networkConfig.Bridge = "br0";
-  };
-
- # Bridge gets the LAN IP (DHCP example)
-  systemd.network.networks."30-br0" = {
-    matchConfig.Name = "br0";
-    networkConfig = {
-      DHCP = "ipv4";
-      IPv6AcceptRA = true;
-    };
-  };
-# Systemd configuration for the VMs - end
 
 # Launch VM - begin
 
