@@ -1,14 +1,14 @@
 { config, pkgs, lib, ... }:
 
 {
-  networking.hostName = "microvm-ddns";
+  networking.hostName = "microvm-ente";
   system.stateVersion = "25.11";
 
   microvm = {
     hypervisor = "qemu";
-    vsock.cid = 4;
+    vsock.cid = 5;
     vcpu = 1;
-    mem = 512;
+    mem = 1024;
 
     shares = [
       {
@@ -17,19 +17,13 @@
         source = "/nix/store";
         mountPoint = "/nix/.ro-store";
       }
-      {
-        proto = "virtiofs";
-        tag = "ddns-updater-secrets";
-        source = "/run/ddns-vm";
-        mountPoint = "/etc/ddns-updater";
-      }
     ];
     writableStoreOverlay = "/nix/.rw-store";
 
     interfaces = [{
       type = "tap";
-      id = "microvm-ddns";
-      mac = "02:00:00:00:00:01";
+      id = "microvm-ente";
+      mac = "02:00:00:00:00:02";
     }];
   };
 
@@ -38,7 +32,7 @@
   systemd.network.networks."10-eth0" = {
     matchConfig.Name = "e*";
     networkConfig = {
-      Address = "192.168.1.50/24";
+      Address = "192.168.1.51/24";
       Gateway = "192.168.1.1";
       DNS = [ "192.168.1.1" ];
     };
@@ -51,12 +45,12 @@
 
   systemd.network.wait-online.enable = true;
 
-  services.ddns-updater = {
-    enable = true;
-    environment = {
-      SERVER_ENABLED="no";
-      CONFIG_FILEPATH = "/etc/ddns-updater/config.json";
-      PERIOD = "5m";
-    };
+  # Add dummy user to log in to the VM
+  users.users.ente = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+    password = "ente";
   };
+  services.openssh.enable = true;
+  networking.firewall.enable = false;
 }

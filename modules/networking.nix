@@ -31,7 +31,7 @@
 
     # Tap interface joins bridge
     systemd.network.networks."20-microvm" = {
-      matchConfig.Name = "microvm-ddns";
+      matchConfig.Name = "microvm-*";
       networkConfig.Bridge = "br0";
     };
 
