@@ -23,6 +23,12 @@
         source = "/run/ente-vm";
         mountPoint = "/run/secrets";
       }
+      {
+        proto = "virtiofs";
+        tag = "ente-data";
+        source = "/ente-data";
+        mountPoint = "/data";
+      }
     ];
     writableStoreOverlay = "/nix/.rw-store";
 
@@ -65,7 +71,20 @@
     # ente's config must match this region!
     region = "eu-central-2";
     rootCredentialsFile = "/run/secrets/minio-credentials";
+    dataDir = [ "/data/minio" ];
   };
 
   systemd.services.minio.environment.MINIO_SERVER_URL = "http://localhost:9000";
+
+  environment.systemPackages = [
+    pkgs.minio-client
+  ];
+
+  services.postgresql = {
+    enable = true;
+    # Use persistent storage
+    dataDir = "/data/postgres";
+    #  PostgreSQL version
+    package = pkgs.postgresql_15;
+  };
 }
