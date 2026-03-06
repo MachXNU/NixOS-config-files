@@ -11,4 +11,8 @@ in
     publicKeys = [ asustor ];
     armor = true;
   };
+  "minio-credentials.age" = {
+    publicKeys = [ asustor ];
+    armor = true;
+  };
 }

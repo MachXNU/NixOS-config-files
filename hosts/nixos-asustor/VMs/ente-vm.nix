@@ -17,6 +17,12 @@
         source = "/nix/store";
         mountPoint = "/nix/.ro-store";
       }
+      {
+        proto = "virtiofs";
+        tag = "ente-secrets";
+        source = "/run/ente-vm";
+        mountPoint = "/run/secrets";
+      }
     ];
     writableStoreOverlay = "/nix/.rw-store";
 
@@ -46,11 +52,20 @@
   systemd.network.wait-online.enable = true;
 
   # Add dummy user to log in to the VM
-  users.users.ente = {
+  users.users.test = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
-    password = "ente";
+    password = "test";
   };
   services.openssh.enable = true;
   networking.firewall.enable = false;
+
+  services.minio = {
+    enable = true;
+    # ente's config must match this region!
+    region = "eu-central-2";
+    rootCredentialsFile = "/run/secrets/minio-credentials";
+  };
+
+  systemd.services.minio.environment.MINIO_SERVER_URL = "http://localhost:9000";
 }
