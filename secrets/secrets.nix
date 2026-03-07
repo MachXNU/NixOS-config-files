@@ -15,4 +15,28 @@ in
     publicKeys = [ asustor ];
     armor = true;
   };
+  "ente-postgres-pguser-password.age" = {
+    publicKeys = [ asustor ];
+    armor = true;
+  };
+  "ente-api-s3-b2-eu-cen-key.age" = {
+    publicKeys = [ asustor ];
+    armor = true;
+  };
+  "ente-api-s3-b2-eu-cen-secret.age" = {
+    publicKeys = [ asustor ];
+    armor = true;
+  };
+  "ente-api-key-encryption.age" = {
+    publicKeys = [ asustor ];
+    armor = true;
+  };
+  "ente-api-key-hash.age" = {
+    publicKeys = [ asustor ];
+    armor = true;
+  };
+  "ente-api-jwt-secret.age" = {
+    publicKeys = [ asustor ];
+    armor = true;
+  };
 }

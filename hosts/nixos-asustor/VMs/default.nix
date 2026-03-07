@@ -16,4 +16,6 @@
   };
 
   systemd.services."microvm@ddns".serviceConfig.TimeoutStartSec = "120";
+
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
 }
