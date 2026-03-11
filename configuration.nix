@@ -57,6 +57,7 @@
       "nvidia-settings"
       "steam"
       "steam-unwrapped"
+      "obsidian"
     ];
 
   nixpkgs.overlays = [ inputs.millennium.overlays.default ];

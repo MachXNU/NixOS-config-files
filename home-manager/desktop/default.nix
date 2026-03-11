@@ -9,5 +9,7 @@
 
   home.packages = [
     pkgs.adw-gtk3
+    pkgs.obsidian
+    pkgs.hyprshot
   ];
 }

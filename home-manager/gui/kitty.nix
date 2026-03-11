@@ -38,4 +38,8 @@
       shell_integration = "enabled";
     };
   };
+
+  home.packages = [
+    pkgs.kitty.terminfo
+  ];
 }

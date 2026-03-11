@@ -4,9 +4,10 @@
   imports = [
     ./git.nix
     ./neovim.nix
+    ./nvf.nix
+    ./ranger.nix
     ./ssh.nix
     ./zsh.nix
-    ./nvf.nix
   ];
 
   home.packages = with pkgs; [
