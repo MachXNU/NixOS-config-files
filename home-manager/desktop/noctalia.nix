@@ -140,6 +140,7 @@
           }
           {
             action = "suspend";
+            command = "hyprlock & (loginctl lock-session && sleep 0.5 && systemctl suspend)";
             enabled = true;
             keybind = "2";
           }
