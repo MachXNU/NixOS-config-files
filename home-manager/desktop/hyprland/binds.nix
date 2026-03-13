@@ -1,4 +1,4 @@
-_: {
+{ pkgs, ... }: {
 
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
@@ -16,6 +16,8 @@ _: {
         "$mod, D, exec, $menu"
         "$mod, P, pseudo, # dwindle"
         "$mod, J, togglesplit, # dwindle"
+        "$mod, L, exec, hyprlock"
+        "$mod SHIFT, L, exec, hyprlock & (loginctl lock-session && sleep 0.5 && systemctl suspend)"
 
         # Should not be needed: as we are using Nix, we are not supposed to
         #                       manually reload the config file.

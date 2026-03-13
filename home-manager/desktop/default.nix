@@ -1,5 +1,6 @@
 { config, pkgs, ...}: {
   imports = [
+    ./hypridle.nix
     ./hyprland
     ./hyprlock.nix
     ./noctalia.nix
