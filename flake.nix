@@ -26,6 +26,14 @@
       url = "github:NotAShelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    ranger-devicons = {
+      url = "github:alexanderjeurissen/ranger_devicons";
+      flake = false;
+    };
   };
 
   outputs = inputs@{ nixpkgs, home-manager, ... }: 
@@ -35,12 +43,13 @@
       inherit system;
 
       specialArgs = {
-        inherit inputs headless;
+        inherit inputs headless hostName;
       };
       modules = [
         ./configuration.nix
         ./hosts/${hostName}/programs.nix
         ./hosts/${hostName}/hardware-configuration.nix
+        inputs.agenix.nixosModules.default
 
         home-manager.nixosModules.home-manager {
           home-manager = {
@@ -62,6 +71,7 @@
   {
     nixosConfigurations = {
       nixos-vm  = mkSystem "aarch64-linux" "nixos-vm" true;
+      nixos-asustor  = mkSystem "x86_64-linux" "nixos-asustor" true;
       nixos-laptop = mkSystem "x86_64-linux" "nixos-laptop" false;
       nixos-brutuz = mkSystem "x86_64-linux" "nixos-brutuz" false;
       nixos-vivobook = mkSystem "x86_64-linux" "nixos-vivobook" false;

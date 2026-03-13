@@ -11,5 +11,7 @@
   home.packages = with pkgs; [
     adw-gtk3
     brightnessctl
+    obsidian
+    hyprshot
   ];
 }

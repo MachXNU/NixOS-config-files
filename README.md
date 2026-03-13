@@ -91,3 +91,11 @@ While Noctalia-shell is indeed a very good project with many amazing features, s
 
 - [Tokyo, Japan by Andre Benz on Unsplash](https://unsplash.com/photos/empty-road-qi2hmCwlhcE)
 
+
+## Misc
+
+Remove all the `.backup` files that HM creates before rebuiding:
+
+```bash
+find ~/.config -type f -name "*.backup" -delete
+```
