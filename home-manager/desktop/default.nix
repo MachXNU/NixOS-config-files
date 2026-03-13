@@ -7,7 +7,8 @@
     ./dconf.nix
   ];
 
-  home.packages = [
-    pkgs.adw-gtk3
+  home.packages = with pkgs; [
+    adw-gtk3
+    brightnessctl
   ];
 }
