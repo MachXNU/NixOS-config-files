@@ -121,7 +121,7 @@
       };
       hooks = {
         enabled = true;
-        startup = "sed -i \"/^[[:space:]]*background[[:space:]]*{/,/^[[:space:]]*}/ s|^[[:space:]]*path=.*|  path=$(noctalia-shell ipc call wallpaper get DP-1)|\" ~/.config/hypr/hyprlock.conf";
+        startup = "sed -i \"/^[[:space:]]*background[[:space:]]*{/,/^[[:space:]]*}/ s|^[[:space:]]*path=.*|  path=$(noctalia-shell ipc call wallpaper get $(hyprctl monitors -j | jq -r '.[] | select(.focused == true) | .name'))|\" ~/.config/hypr/hyprlock.conf";
         wallpaperChange = "sed -i \"/^[[:space:]]*background[[:space:]]*{/,/^[[:space:]]*}/ s|^[[:space:]]*path=.*|  path=$1|\" ~/.config/hypr/hyprlock.conf";
       };
       location = {
@@ -218,6 +218,10 @@
       [templates.hyprland]
       input_path = '~/.config/matugen/hyprland-colors.css'
       output_path = '~/.config/hypr/noctalia/noctalia-colors.conf'
+
+      [templates.rofi]
+      input_path = '~/.config/matugen/rofi-colors.rasi'
+      output_path = '~/.config/rofi/colors.rasi'
     '';
   };
 }

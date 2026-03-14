@@ -17,5 +17,6 @@
     efibootmgr
     jq
     fastfetch
+    protonvpn-gui
   ];
 }
