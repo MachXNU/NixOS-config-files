@@ -34,6 +34,10 @@
       url = "github:alexanderjeurissen/ranger_devicons";
       flake = false;
     };
+    wallpapers = {
+      url = "git+ssh://git@github.com/MachXNU/wallpapers.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ nixpkgs, home-manager, ... }: 

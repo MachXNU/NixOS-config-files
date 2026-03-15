@@ -6,7 +6,7 @@
     ./noctalia.nix
     ./cursor.nix
     ./dconf.nix
-    ./rofi.nix
+    ./theming
   ];
 
   home.packages = with pkgs; [
