@@ -7,4 +7,44 @@ in
   #   publicKeys = [ asustor ];
   #   armor = true;
   # };
+  "ddns-updater-config-json.age" = {
+    publicKeys = [ asustor ];
+    armor = true;
+  };
+  "garage-rpc-secret.age" = {
+    publicKeys = [ asustor ];
+    armor = true;
+  };
+  "garage-admin-token.age" = {
+    publicKeys = [ asustor ];
+    armor = true;
+  };
+  "garage-metrics-token.age" = {
+    publicKeys = [ asustor ];
+    armor = true;
+  };
+  "ente-postgres-pguser-password.age" = {
+    publicKeys = [ asustor ];
+    armor = true;
+  };
+  "ente-garage-key.age" = {
+    publicKeys = [ asustor ];
+    armor = true;
+  };
+  "ente-garage-secret.age" = {
+    publicKeys = [ asustor ];
+    armor = true;
+  };
+  "ente-api-key-encryption.age" = {
+    publicKeys = [ asustor ];
+    armor = true;
+  };
+  "ente-api-key-hash.age" = {
+    publicKeys = [ asustor ];
+    armor = true;
+  };
+  "ente-api-jwt-secret.age" = {
+    publicKeys = [ asustor ];
+    armor = true;
+  };
 }

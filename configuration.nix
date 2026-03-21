@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, inputs, headless, hostName, ... }:
+{ config, lib, pkgs, inputs, headless, hostName, hostsMicroVMs, ... }:
 
 {
   imports =
@@ -10,7 +10,10 @@
       # not needed anymore, due to the hosts separation
       # ./hardware-configuration.nix
       ./modules/ssh.nix
+      ./modules/networking.nix
     ];
+
+  my.networking.useSystemdNetwork = hostsMicroVMs;
 
   boot.loader.grub = {
     enable = false;
@@ -26,7 +29,6 @@
   networking.hostName = hostName;
 
   # Configure network connections interactively with nmcli or nmtui.
-  networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
 
   services.power-profiles-daemon.enable = true;
@@ -65,7 +67,7 @@
   services.getty.autologinUser = "jb";
   
   services.greetd = {
-    enable = if headless then false else true;
+    enable = !headless;
     settings = {
       default_session = {
         command = "start-hyprland";
@@ -81,7 +83,7 @@
   };
 
   programs.hyprland = {
-    enable = if headless then false else true;
+    enable = !headless;
     # xwayland.enable = true;
   };
 
@@ -128,6 +130,18 @@
     home-manager
   ]
   ++ (if headless then [] else [ ddcutil ]);
+
+# Launch VM - begin
+
+  microvm.vms.ddns = {
+    config = {
+      imports = [ ./hosts/nixos-asustor/VMs/ddns-vm.nix ];
+    };
+    autostart = true;
+  };
+  systemd.services."microvm@ddns".serviceConfig.TimeoutStartSec = "120";
+
+# Launch VM - end
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
