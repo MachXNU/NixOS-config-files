@@ -66,14 +66,6 @@ in
     ];
   };
 
-  # Add dummy user to log in to the VM
-  #users.users.test = {
-  #  isNormalUser = true;
-  #  extraGroups = [ "wheel" ];
-  #  password = "test";
-  #};
-  #services.openssh.enable = true;
-
   networking.firewall.enable = false;
 
   services.garage = {
@@ -125,12 +117,6 @@ in
     User = "garage";
     Group = "garage";
   };
-
-  #environment.systemPackages = [
-  #  pkgs.ente-cli
-  #  pkgs.openssl
-  #  pkgs.awscli2
-  #];
 
   systemd.tmpfiles.rules = [
     "f /run/secrets/postgres-pguser-password 0640 root ente"
