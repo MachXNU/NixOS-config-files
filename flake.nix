@@ -30,6 +30,10 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    microvm = {
+      url = "github:astro/microvm.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     ranger-devicons = {
       url = "github:alexanderjeurissen/ranger_devicons";
       flake = false;
@@ -42,18 +46,24 @@
 
   outputs = inputs@{ nixpkgs, home-manager, ... }: 
   let
-    mkSystem = system: hostName: headless:
+    mkSystem = {
+      system,
+      hostName,
+      headless ? false,
+      hostsMicroVMs ? false,
+    }:
     nixpkgs.lib.nixosSystem {
       inherit system;
 
       specialArgs = {
-        inherit inputs headless hostName;
+        inherit inputs headless hostName hostsMicroVMs;
       };
       modules = [
         ./configuration.nix
         ./hosts/${hostName}/programs.nix
         ./hosts/${hostName}/hardware-configuration.nix
         inputs.agenix.nixosModules.default
+        inputs.microvm.nixosModules.host
 
         home-manager.nixosModules.home-manager {
           home-manager = {
@@ -74,11 +84,29 @@
   in
   {
     nixosConfigurations = {
-      nixos-vm  = mkSystem "aarch64-linux" "nixos-vm" true;
-      nixos-asustor  = mkSystem "x86_64-linux" "nixos-asustor" true;
-      nixos-laptop = mkSystem "x86_64-linux" "nixos-laptop" false;
-      nixos-brutuz = mkSystem "x86_64-linux" "nixos-brutuz" false;
-      nixos-vivobook = mkSystem "x86_64-linux" "nixos-vivobook" false;
+      nixos-vm = mkSystem {
+        system = "aarch64-linux";
+        hostName = "nixos-vm";
+        headless = true;
+      };
+      nixos-asustor = mkSystem {
+        system = "x86_64-linux";
+        hostName = "nixos-asustor";
+        headless = true;
+        hostsMicroVMs = true;
+      };
+      nixos-laptop = mkSystem {
+        system = "x86_64-linux";
+        hostName = "nixos-laptop";
+      };
+      nixos-brutuz = mkSystem {
+        system = "x86_64-linux";
+        hostName = "nixos-brutuz";
+      };
+      nixos-vivobook = mkSystem {
+        system = "x86_64-linux";
+        hostName = "nixos-vivobook";
+      };
     };
   };
 }
