@@ -178,11 +178,29 @@
         ]
       },
       "locked": {
-        "lastModified": 1774007980,
-        "narHash": "sha256-FOnZjElEI8pqqCvB6K/1JRHTE8o4rer8driivTpq2uo=",
+        "lastModified": 1773422513,
+        "narHash": "sha256-MPjR48roW7CUMU6lu0+qQGqj92Kuh3paIulMWFZy+NQ=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "9670de2921812bc4e0452f6e3efd8c859696c183",
+        "rev": "ef12a9a2b0f77c8fa3dda1e7e494fca668909056",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "home-manager_3": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1773422513,
+        "narHash": "sha256-MPjR48roW7CUMU6lu0+qQGqj92Kuh3paIulMWFZy+NQ=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "ef12a9a2b0f77c8fa3dda1e7e494fca668909056",
         "type": "github"
       },
       "original": {
@@ -279,11 +297,11 @@
     "material-theme": {
       "flake": false,
       "locked": {
-        "lastModified": 1773936632,
-        "narHash": "sha256-C4TRDKGwKRkTXgSKPhzWsAukt4h6SxQqEoALFzhkrwo=",
+        "lastModified": 1773570359,
+        "narHash": "sha256-7m4Q+RDRZ+PILxFCh6bC44Xk8ThZwC/Lp26izX6+6kk=",
         "owner": "kuska1",
         "repo": "Material-Theme",
-        "rev": "2183c48d3a644f6aefe4c92dc7d98cee6689329a",
+        "rev": "4b99f60cd3dd17a23c24800c9fb7509fa06c87dd",
         "type": "github"
       },
       "original": {
@@ -335,11 +353,11 @@
       },
       "locked": {
         "dir": "packages/nix",
-        "lastModified": 1773689190,
-        "narHash": "sha256-oHdRBO20T1IOr4ZndJIvdOiuIFnb1AJz5OiD8TY2whk=",
+        "lastModified": 1773324898,
+        "narHash": "sha256-JdUGTomR0YYtjaGCc0j3NgFZI/dgqF6EFgZEdsQQAKo=",
         "owner": "SteamClientHomebrew",
         "repo": "Millennium",
-        "rev": "e4229483674b8f92e2b3459460c614401dca93db",
+        "rev": "dd9d671a8805c2d486bb580544fe37002b1d79a3",
         "type": "github"
       },
       "original": {
@@ -472,17 +490,33 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1773821835,
-        "narHash": "sha256-TJ3lSQtW0E2JrznGVm8hOQGVpXjJyXY2guAxku2O9A4=",
+        "lastModified": 1773389992,
+        "narHash": "sha256-wvfdLLWJ2I9oEpDd9PfMA8osfIZicoQ5MT1jIwNs9Tk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "b40629efe5d6ec48dd1efba650c797ddbd39ace0",
+        "rev": "c06b4ae3d6599a672a6210b7021d699c351eebda",
         "type": "github"
       },
       "original": {
         "id": "nixpkgs",
         "ref": "nixos-unstable",
         "type": "indirect"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1772963539,
+        "narHash": "sha256-9jVDGZnvCckTGdYT53d/EfznygLskyLQXYwJLKMPsZs=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "b40629efe5d6ec48dd1efba650c797ddbd39ace0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "nixpkgs_3": {
@@ -509,11 +543,11 @@
         "noctalia-qs": "noctalia-qs"
       },
       "locked": {
-        "lastModified": 1774097158,
-        "narHash": "sha256-FSh7z+ms3CW58S0HqR3gkGe8cY3H0y8+c9rvxwHUpR8=",
+        "lastModified": 1773577186,
+        "narHash": "sha256-X42nwkzQBtKKedJEq47dfxvVp9BFDzIuPH1lNYp4x6U=",
         "owner": "noctalia-dev",
         "repo": "noctalia-shell",
-        "rev": "5eaefd8bfdcc7bfa7695002e91815405442f4323",
+        "rev": "4cb3743a4f47fc60bd27006b45ae8b4c1dbb7ed2",
         "type": "github"
       },
       "original": {
@@ -528,15 +562,14 @@
           "noctalia",
           "nixpkgs"
         ],
-        "systems": "systems_2",
-        "treefmt-nix": "treefmt-nix"
+        "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1773842483,
-        "narHash": "sha256-oRqz+5AbNKfUWWwN5c83CsSOsUWVGITh0HZg+wX5Q/8=",
+        "lastModified": 1773175685,
+        "narHash": "sha256-YOkWzVq7opym1ovJvSCvqpG6OCDGJwPo/EPeRxcGay4=",
         "owner": "noctalia-dev",
         "repo": "noctalia-qs",
-        "rev": "3962ff1e0b59ef067c57199d31271ddbf23b29cd",
+        "rev": "6b9eceefde3d47ca83c544b54bcdd358be4cbd2f",
         "type": "github"
       },
       "original": {
@@ -557,11 +590,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1773970322,
-        "narHash": "sha256-xyO9ZV+cZk+HVmjS6P5Jzwl6ioRCKgeLQSSbUFtPrZk=",
+        "lastModified": 1773579076,
+        "narHash": "sha256-GRuK5zh0Z68YXIoTpHQW2CFdpZRhGJRxpYh4vPOqjt4=",
         "owner": "NotAShelf",
         "repo": "nvf",
-        "rev": "8aad181ec9057c56b6fe5d6081a399427e1d1dec",
+        "rev": "baf207654ca613173e9d4b5255dba52f8c0c5577",
         "type": "github"
       },
       "original": {
@@ -630,7 +663,8 @@
         "noctalia": "noctalia",
         "nvf": "nvf",
         "obsidian-nvim": "obsidian-nvim",
-        "ranger-devicons": "ranger-devicons"
+        "ranger-devicons": "ranger-devicons",
+        "wallpapers": "wallpapers"
       }
     },
     "spectrum": {
@@ -694,22 +728,25 @@
         "type": "github"
       }
     },
-    "treefmt-nix": {
+    "wallpapers": {
       "inputs": {
-        "nixpkgs": "nixpkgs_3"
+        "home-manager": "home-manager_3",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
-        "lastModified": 1772660329,
-        "narHash": "sha256-IjU1FxYqm+VDe5qIOxoW+pISBlGvVApRjiw/Y/ttJzY=",
-        "owner": "numtide",
-        "repo": "treefmt-nix",
-        "rev": "3710e0e1218041bbad640352a0440114b1e10428",
-        "type": "github"
+        "lastModified": 1773579380,
+        "narHash": "sha256-URyxJe5JlBdRQTCocXQgYW9xcHIqYW42SvNfCdMQ4S8=",
+        "ref": "refs/heads/main",
+        "rev": "5a2a61376fb691dddb25521dec2721be954cc9e5",
+        "revCount": 9,
+        "type": "git",
+        "url": "ssh://git@github.com/MachXNU/wallpapers.git"
       },
       "original": {
-        "owner": "numtide",
-        "repo": "treefmt-nix",
-        "type": "github"
+        "type": "git",
+        "url": "ssh://git@github.com/MachXNU/wallpapers.git"
       }
     },
     "websocketpp-src": {

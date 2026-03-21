@@ -17,8 +17,8 @@
           }
           {
             timeout = 150;                                             # 2.5min.
-            on-timeout = "brightnessctl -sd asus:kbd_backlight set 0"; # turn off keyboard backlight.
-            on-resume = "brightnessctl -rd rgb:kbd_backlight";         # turn on keyboard backlight.
+            on-timeout = "brightnessctl -sd asus::kbd_backlight set 0"; # turn off keyboard backlight.
+            on-resume = "brightnessctl -rd rgb::kbd_backlight";         # turn on keyboard backlight.
           }
           {
             timeout = 300;                               # 5min
