@@ -11,7 +11,15 @@ in
     publicKeys = [ asustor ];
     armor = true;
   };
-  "minio-credentials.age" = {
+  "garage-rpc-secret.age" = {
+    publicKeys = [ asustor ];
+    armor = true;
+  };
+  "garage-admin-token.age" = {
+    publicKeys = [ asustor ];
+    armor = true;
+  };
+  "garage-metrics-token.age" = {
     publicKeys = [ asustor ];
     armor = true;
   };
@@ -19,11 +27,11 @@ in
     publicKeys = [ asustor ];
     armor = true;
   };
-  "ente-api-s3-b2-eu-cen-key.age" = {
+  "ente-garage-key.age" = {
     publicKeys = [ asustor ];
     armor = true;
   };
-  "ente-api-s3-b2-eu-cen-secret.age" = {
+  "ente-garage-secret.age" = {
     publicKeys = [ asustor ];
     armor = true;
   };

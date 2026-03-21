@@ -12,12 +12,28 @@
         path = "/run/ddns-vm/config.json";
         symlink = false;
       };
-      "ente/minio-credentials" = {
-        file = ../../secrets/minio-credentials.age;
+      "ente/garage-rpc-secret" = {
+        file = ../../secrets/garage-rpc-secret.age;
         mode = "400";
         owner = "microvm";
         group = "kvm";
-        path = "/run/ente-vm/minio-credentials";
+        path = "/run/ente-vm/garage-rpc-secret";
+        symlink = false;
+      };
+      "ente/garage-admin-token" = {
+        file = ../../secrets/garage-admin-token.age;
+        mode = "400";
+        owner = "microvm";
+        group = "kvm";
+        path = "/run/ente-vm/garage-admin-token";
+        symlink = false;
+      };
+      "ente/garage-metrics-token" = {
+        file = ../../secrets/garage-metrics-token.age;
+        mode = "400";
+        owner = "microvm";
+        group = "kvm";
+        path = "/run/ente-vm/garage-metrics-token";
         symlink = false;
       };
       "ente/api-key-encryption" = {
@@ -44,20 +60,20 @@
         path = "/run/ente-vm/postgres-pguser-password";
         symlink = false;
       };
-      "ente/api-s3-b2-eu-cen-key" = {
-        file = ../../secrets/ente-api-s3-b2-eu-cen-key.age;
+      "ente/ente-garage-key" = {
+        file = ../../secrets/ente-garage-key.age;
         mode = "400";
         owner = "microvm";
         group = "kvm";
-        path = "/run/ente-vm/api-s3-b2-eu-cen-key";
+        path = "/run/ente-vm/ente-garage-key";
         symlink = false;
       };
-      "ente/api-s3-b2-eu-cen-secret" = {
-        file = ../../secrets/ente-api-s3-b2-eu-cen-secret.age;
+      "ente/ente-garage-secret" = {
+        file = ../../secrets/ente-garage-secret.age;
         mode = "400";
         owner = "microvm";
         group = "kvm";
-        path = "/run/ente-vm/api-s3-b2-eu-cen-secret";
+        path = "/run/ente-vm/ente-garage-secret";
         symlink = false;
       };
       "ente/api-jwt-secret" = {
