@@ -178,11 +178,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1772218752,
-        "narHash": "sha256-G8nArvOTZXU8DRvrzAdz3Elcj6kA/vMtvY9mrGLATtA=",
+        "lastModified": 1773093840,
+        "narHash": "sha256-u/96NoAyN8BSRuM3ZimGf7vyYgXa3pLx4MYWjokuoH4=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "f3a30376bb9eb2f6f61816be7d6ed954b6d2a3b9",
+        "rev": "bb014746edb2a98d975abde4dd40fa240de4cf86",
         "type": "github"
       },
       "original": {
@@ -279,11 +279,11 @@
     "material-theme": {
       "flake": false,
       "locked": {
-        "lastModified": 1771502085,
-        "narHash": "sha256-MQNoXXLElDYdohp3Kr+EM5Unu9Wu1xT63gUzFDRfp5M=",
+        "lastModified": 1773136279,
+        "narHash": "sha256-pLiYVMxJU6W+MIz3ZHmkB034x04mTAWe+rWERRhmqV0=",
         "owner": "kuska1",
         "repo": "Material-Theme",
-        "rev": "d06ccc6e37c6d541a0040656427d8718142f72f6",
+        "rev": "896a247a3ce4d2b520374b6675fb52a6eec03058",
         "type": "github"
       },
       "original": {
@@ -335,11 +335,11 @@
       },
       "locked": {
         "dir": "packages/nix",
-        "lastModified": 1771985657,
-        "narHash": "sha256-wAnrrFZxuHrITZAfyUyuIItYW/2gjO+gm3TCupExdt4=",
+        "lastModified": 1773092463,
+        "narHash": "sha256-U1XMtoBNs00icBqWeLZ8hfP5Ra+uTcc8jHaUU/BkI9w=",
         "owner": "SteamClientHomebrew",
         "repo": "Millennium",
-        "rev": "dbbb365d32725022041caa2d2211f7934ca8ef58",
+        "rev": "293401478502ac4f224c55468f0191083a3ef59b",
         "type": "github"
       },
       "original": {
@@ -472,11 +472,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1771848320,
-        "narHash": "sha256-0MAd+0mun3K/Ns8JATeHT1sX28faLII5hVLq0L3BdZU=",
+        "lastModified": 1772963539,
+        "narHash": "sha256-9jVDGZnvCckTGdYT53d/EfznygLskyLQXYwJLKMPsZs=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "2fc6539b481e1d2569f25f8799236694180c0993",
+        "rev": "9dcb002ca1690658be4a04645215baea8b95f31d",
         "type": "github"
       },
       "original": {
@@ -493,11 +493,11 @@
         "noctalia-qs": "noctalia-qs"
       },
       "locked": {
-        "lastModified": 1772283575,
-        "narHash": "sha256-Avh/W7rFoyx9JAgwkMfpQG7J9+AtytZ6EmqFLtADPh4=",
+        "lastModified": 1773159416,
+        "narHash": "sha256-82EfFYQUtesHGDSY3Ob2gm52+7BQ6l/t8WdgCLkWdJk=",
         "owner": "noctalia-dev",
         "repo": "noctalia-shell",
-        "rev": "d886dd7861b8e6ff53dad320c53f665930396b02",
+        "rev": "e5677f9cef02c0ee9020d44d43e243036921ff8e",
         "type": "github"
       },
       "original": {
@@ -514,11 +514,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1772227064,
-        "narHash": "sha256-f821ZSoGpa/aXrWq0gPpea9qBnX8KDyavGKkptz2Mog=",
+        "lastModified": 1772673824,
+        "narHash": "sha256-TLHXPoELZA6VeuzC1Zpx+MnSsYzrJs+DSieMgfjAOJc=",
         "owner": "noctalia-dev",
         "repo": "noctalia-qs",
-        "rev": "0741d27d2f7db567270f139c5d1684614ecf9863",
+        "rev": "f8531192cd09b9ea2e78d18e9cfc9d3dba498690",
         "type": "github"
       },
       "original": {
@@ -539,11 +539,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1772219256,
-        "narHash": "sha256-8RH/xcZOEDf2fJ5h/PSXKxmTnsIMV4AXBj3F8ZdJgyw=",
+        "lastModified": 1772875143,
+        "narHash": "sha256-ENBRe7vCCp/SIG2WRKI2pyAxwnrc9CPuwZ4CtMu4KU4=",
         "owner": "NotAShelf",
         "repo": "nvf",
-        "rev": "c07410f1838ce6a44708c49b8ed6fb061babc5ac",
+        "rev": "6681e33727409d4ccfa687de981b594110a735d6",
         "type": "github"
       },
       "original": {
@@ -565,6 +565,22 @@
       "original": {
         "owner": "epwalsh",
         "repo": "obsidian.nvim",
+        "type": "github"
+      }
+    },
+    "ranger-devicons": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1749128401,
+        "narHash": "sha256-qvWqKVS4C5OO6bgETBlVDwcv4eamGlCUltjsBU3gAbA=",
+        "owner": "alexanderjeurissen",
+        "repo": "ranger_devicons",
+        "rev": "1bcaff0366a9d345313dc5af14002cfdcddabb82",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alexanderjeurissen",
+        "repo": "ranger_devicons",
         "type": "github"
       }
     },
@@ -595,7 +611,8 @@
         "nixpkgs": "nixpkgs_2",
         "noctalia": "noctalia",
         "nvf": "nvf",
-        "obsidian-nvim": "obsidian-nvim"
+        "obsidian-nvim": "obsidian-nvim",
+        "ranger-devicons": "ranger-devicons"
       }
     },
     "spectrum": {

@@ -34,6 +34,10 @@
       url = "github:astro/microvm.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ranger-devicons = {
+      url = "github:alexanderjeurissen/ranger_devicons";
+      flake = false;
+    };
   };
 
   outputs = inputs@{ nixpkgs, home-manager, ... }: 

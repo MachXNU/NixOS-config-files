@@ -8,6 +8,7 @@
     ../../modules/kvm.nix
     ../../modules/virtualbox.nix
     ../../modules/steam.nix
+    ../../modules/tailscale.nix
   ];
 
   home-manager.users.jb = { ... }: {
@@ -18,4 +19,9 @@
   hardware.i2c.enable = true;
   users.groups.i2c = {};
   users.users.jb.extraGroups = [ "i2c" ];
+
+  my.tailscale = {
+    enable = true;
+    enableSSH = true;
+  };
 }

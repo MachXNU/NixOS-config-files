@@ -1,5 +1,6 @@
 { config, pkgs, ...}: {
   imports = [
+    ./hypridle.nix
     ./hyprland
     ./hyprlock.nix
     ./noctalia.nix
@@ -7,7 +8,10 @@
     ./dconf.nix
   ];
 
-  home.packages = [
-    pkgs.adw-gtk3
+  home.packages = with pkgs; [
+    adw-gtk3
+    brightnessctl
+    obsidian
+    hyprshot
   ];
 }

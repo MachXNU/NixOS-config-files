@@ -40,7 +40,7 @@ Due to the strong requirement of managing several hosts in one config and the as
 - Basic utilities (zsh, git, SSH, vim...)
 - ~~GRUB 2 bootloader~~ (reverted to `systemd-boot` in case of small ESPs)
 - Hyprland screen and window sharing (tested with OBS Studio)
-- Hyprlock lock screen
+- Hyprlock lock screen and hypridle
 - Firefox with privacy-oriented config
 - Telegram Desktop
 - Steam and Proton
@@ -69,19 +69,26 @@ Just change the wallpaper, or toggle dark/light mode. This will trigger a new co
 
 ![Screenshot](./screenshots/screenshot-hyprland-error.png)
 
+## Noctalia
+
+While Noctalia-shell is indeed a very good project with many amazing features, some of them do not fit my needs.
+
+- The lock screen looks veyr bad to me, so I decided to reimplement a custom lock screen with hyprlock and hypridle, inspired by Style 7 of [Hyprlock-Styles](https://github.com/MrVivekRajan/Hyprlock-Styles/)
+- The power menu entries are thus overwritten with custom commands to trigger hyprlock
+- I am not using the IDLE feature, which ends up triggering Noctalia's native lock screen, so I have to use hypridle instead.
+
 ## TODO
 
-- [x] GTK theming
 - [ ] Qt theming
 - [ ] Better neovim config
 - [ ] Discord (fork)
 - [ ] Screenshot utility
 - [ ] ProtonVPN (either CLI or GTK app)
-- [X] Improve the Firefox config
 - [ ] Thunderbird (with Pywalfox config)
 - [ ] Idle/Sleep management with `hypridle`
 - [x] Setup `ddns-updater` on the NAS
-- [ ] Setup Ente Photos server on the NAS
+- [x] Setup Ente Photos server on the NAS
+- [ ] Fix Hyprlock's appearance on 16/9 screens
 
 ... and probably many more things
 
@@ -89,3 +96,11 @@ Just change the wallpaper, or toggle dark/light mode. This will trigger a new co
 
 - [Tokyo, Japan by Andre Benz on Unsplash](https://unsplash.com/photos/empty-road-qi2hmCwlhcE)
 
+
+## Misc
+
+Remove all the `.backup` files that HM creates before rebuiding:
+
+```bash
+find ~/.config -type f -name "*.backup" -delete
+```
