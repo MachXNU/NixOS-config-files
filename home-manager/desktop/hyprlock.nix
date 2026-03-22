@@ -30,7 +30,7 @@
         {
           monitor = "";
           text = "cmd[update:1000] echo \"<span>$(date +\"%M\")</span>\"";
-          color = "$tertiary_fixed_dim";
+          color = "$secondary_fixed_dim";
           font_size = 200;
           font_family = "Stretch Pro";
           position = "0, 7%";

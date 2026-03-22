@@ -29,7 +29,12 @@
         fi
         randomWallpaper=$(find $WALLPAPER_DIR -type f | shuf -n 1)
         $NOCTALIA_ABS ipc call colorScheme set $noctaliaColorScheme
+
+        # set desktop wallpaper
         swww img "$randomWallpaper"
+
+        # set Hyprlock wallpaper
+        sed -i "/background {/,/}/ s|^\(\s*path=\).*|\1$randomWallpaper|" ~/.config/hypr/hyprlock.conf
 
         rm -f $HOME/.config/theme-wallpapers
         ln -sf $WALLPAPER_DIR $HOME/.config/theme-wallpapers
