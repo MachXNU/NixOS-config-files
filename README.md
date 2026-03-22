@@ -46,6 +46,8 @@ Due to the strong requirement of managing several hosts in one config and the as
 - Steam and Proton
 - Theming and cool wallpapers
 - MicroVMs for services on the NAS
+- Theme switcher + Wallpaper switcher
+- DDNS Updater and Ente Photos on the NAS
 
 ## Firefox theming
 
@@ -86,8 +88,6 @@ While Noctalia-shell is indeed a very good project with many amazing features, s
 - [ ] ProtonVPN (either CLI or GTK app)
 - [ ] Thunderbird (with Pywalfox config)
 - [ ] Idle/Sleep management with `hypridle`
-- [x] Setup `ddns-updater` on the NAS
-- [x] Setup Ente Photos server on the NAS
 - [ ] Fix Hyprlock's appearance on 16/9 screens
 
 ... and probably many more things
