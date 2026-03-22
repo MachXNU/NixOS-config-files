@@ -38,6 +38,22 @@ _: {
       blur = true;
     };
 
+    windowrule = [
+      {
+        name = "waypaper-launcher";
+
+        "match:class" = "^(waypaper)$";
+
+        float = true;
+        size = "800 600";
+        center = true;
+        border_size = 0;
+        stay_focused = true;
+        dim_around = true;
+        focus_on_activate = true;
+      }
+    ];
+
     group = {
       "col.border_active" = "$tertiary";
 

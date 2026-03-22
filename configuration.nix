@@ -131,18 +131,6 @@
   ]
   ++ (if headless then [] else [ ddcutil ]);
 
-# Launch VM - begin
-
-  microvm.vms.ddns = {
-    config = {
-      imports = [ ./hosts/nixos-asustor/VMs/ddns-vm.nix ];
-    };
-    autostart = true;
-  };
-  systemd.services."microvm@ddns".serviceConfig.TimeoutStartSec = "120";
-
-# Launch VM - end
-
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Some programs need SUID wrappers, can be configured further or are

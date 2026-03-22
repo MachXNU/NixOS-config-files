@@ -10,6 +10,11 @@
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.noctalia-qs.follows = "noctalia-qs";
+    };
+    noctalia-qs = {
+      url = "github:noctalia-dev/noctalia-qs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     millennium = {
       url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
@@ -63,7 +68,6 @@
         ./hosts/${hostName}/programs.nix
         ./hosts/${hostName}/hardware-configuration.nix
         inputs.agenix.nixosModules.default
-        inputs.microvm.nixosModules.host
 
         home-manager.nixosModules.home-manager {
           home-manager = {
@@ -79,7 +83,8 @@
             extraSpecialArgs = { inherit inputs headless; };
           };
         }
-      ];
+      ]
+      ++ (if hostsMicroVMs then [inputs.microvm.nixosModules.host] else []);
     };
   in
   {

@@ -14,5 +14,6 @@
     brightnessctl
     obsidian
     hyprshot
+    waypaper
   ];
 }
