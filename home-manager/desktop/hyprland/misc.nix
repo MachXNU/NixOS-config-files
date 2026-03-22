@@ -11,6 +11,7 @@ _: {
       # "killall -q waybar;sleep .5 && waybar"
       "noctalia-shell"
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+      "waypaper --restore --state-file $HOME/.config/waypaper/status"
     ];
   
     source = "~/.config/hypr/noctalia/noctalia-colors.conf";

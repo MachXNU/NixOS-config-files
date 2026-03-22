@@ -89,9 +89,9 @@
       controlCenter = {
         shortcuts = {
           left = [
+            {id = "AirplaneMode";}
             {id = "Network";}
             {id = "Bluetooth";}
-            {id = "WallpaperSelector";}
             {id = "DarkMode";}
           ];
           right = [
@@ -121,8 +121,8 @@
       };
       hooks = {
         enabled = true;
-        startup = "sed -i \"/^[[:space:]]*background[[:space:]]*{/,/^[[:space:]]*}/ s|^[[:space:]]*path=.*|  path=$(noctalia-shell ipc call wallpaper get $(hyprctl monitors -j | jq -r '.[] | select(.focused == true) | .name'))|\" ~/.config/hypr/hyprlock.conf";
-        wallpaperChange = "sed -i \"/^[[:space:]]*background[[:space:]]*{/,/^[[:space:]]*}/ s|^[[:space:]]*path=.*|  path=$1|\" ~/.config/hypr/hyprlock.conf";
+        #startup = "sed -i \"/^[[:space:]]*background[[:space:]]*{/,/^[[:space:]]*}/ s|^[[:space:]]*path=.*|  path=$(noctalia-shell ipc call wallpaper get $(hyprctl monitors -j | jq -r '.[] | select(.focused == true) | .name'))|\" ~/.config/hypr/hyprlock.conf";
+        #wallpaperChange = "sed -i \"/^[[:space:]]*background[[:space:]]*{/,/^[[:space:]]*}/ s|^[[:space:]]*path=.*|  path=$1|\" ~/.config/hypr/hyprlock.conf";
       };
       location = {
         monthBeforeDay = true;
@@ -206,8 +206,7 @@
         panelsAttachedToBar = true;
       };
       wallpaper = {
-        directory = ./Wallpapers;
-        hideWallpaperFilenames = true;
+        enabled = false;
       };
     };
 

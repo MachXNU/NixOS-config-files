@@ -19,7 +19,7 @@
         "$mod, L, exec, hyprlock"
         "$mod SHIFT, L, exec, hyprlock & (loginctl lock-session && sleep 0.5 && systemctl suspend)"
         "$mod, T, exec, ~/.scripts/theme-switcher.sh" # T as Theme
-        "$mod, W, exec, waypaper" # W as wallpaper
+        "$mod, W, exec, waypaper --folder $HOME/.config/theme-wallpapers --state-file $HOME/.config/waypaper/status" # W as wallpaper
 
         # Should not be needed: as we are using Nix, we are not supposed to
         #                       manually reload the config file.

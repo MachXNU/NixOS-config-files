@@ -5,7 +5,10 @@
       #!${pkgs.bash}/bin/bash
 
       THEME_DIR="${inputs.wallpapers.path}"
-      NOCTALIA_ABS=$(ps ax -o cmd | grep noctalia-shell | grep -v grep)
+      CATPPUCCIN_DIR="${inputs.wallpapers-catppuccin}"
+
+      #NOCTALIA_ABS=$(ps ax -o cmd | grep noctalia-shell | grep -v grep)
+      NOCTALIA_ABS=/etc/profiles/per-user/$(whoami)/bin/noctalia-shell
       echo $NOCTALIA_ABS
 
       # List only non-hidden directories
@@ -19,9 +22,17 @@
 
       # Apply selected theme if not empty
       if [[ -n "$selected" ]]; then
-        randomWallpaper=$(find $THEME_DIR/$selected -type f | shuf -n 1)
+        if [ "$selected" = "catppuccin" ]; then
+          WALLPAPER_DIR=$CATPPUCCIN_DIR
+        else
+          WALLPAPER_DIR=$THEME_DIR/$selected
+        fi
+        randomWallpaper=$(find $WALLPAPER_DIR -type f | shuf -n 1)
         $NOCTALIA_ABS ipc call colorScheme set $noctaliaColorScheme
-        $NOCTALIA_ABS ipc call wallpaper set "$randomWallpaper" eDP-1
+        swww img "$randomWallpaper"
+
+        rm -f $HOME/.config/theme-wallpapers
+        ln -sf $WALLPAPER_DIR $HOME/.config/theme-wallpapers
       else
         exit 1
       fi

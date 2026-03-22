@@ -45,7 +45,7 @@ _: {
         "match:class" = "^(waypaper)$";
 
         float = true;
-        size = "800 600";
+        size = "1320 800";
         center = true;
         border_size = 0;
         stay_focused = true;
