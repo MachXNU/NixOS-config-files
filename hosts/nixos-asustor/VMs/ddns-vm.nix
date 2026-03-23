@@ -51,6 +51,23 @@
 
   systemd.network.wait-online.enable = true;
 
+  users.users.ddns = {
+    isSystemUser = true;
+    group = "ddns";
+  };
+
+  users.groups.ddns = {};
+
+  systemd.services.ddns-updater.serviceConfig = {
+    DynamicUser = lib.mkForce false;
+    User = "ddns";
+    Group = "ddns";
+  };
+
+  systemd.tmpfiles.rules = [
+    "f /etc/ddns-updater/config.json 0640 root ddns"
+  ];
+
   services.ddns-updater = {
     enable = true;
     environment = {
