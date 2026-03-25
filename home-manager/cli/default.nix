@@ -18,5 +18,8 @@
     jq
     fastfetch
     protonvpn-gui
+    jq
+    zip
+    unzip
   ];
 }

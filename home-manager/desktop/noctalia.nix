@@ -79,12 +79,10 @@
       };
       colorSchemes = {
         darkMode = false;
-        generationMethod = "fruit-salad";
         manualSunrise = "06:30";
         manualSunset = "20:00";
-        predefinedScheme = "Monochrome";
         schedulingMode = "manual";
-        useWallpaperColors = true;
+        useWallpaperColors = false;
       };
       controlCenter = {
         shortcuts = {

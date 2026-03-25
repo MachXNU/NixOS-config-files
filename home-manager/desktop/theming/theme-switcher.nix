@@ -38,6 +38,8 @@
 
         rm -f $HOME/.config/theme-wallpapers
         ln -sf $WALLPAPER_DIR $HOME/.config/theme-wallpapers
+
+        echo $selected > $HOME/.config/theme-current
       else
         exit 1
       fi
