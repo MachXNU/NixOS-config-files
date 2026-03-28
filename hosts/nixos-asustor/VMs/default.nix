@@ -1,12 +1,5 @@
 {
   microvm.vms = {
-    ddns = {
-      config = {
-        imports = [ ./ddns-vm.nix ];
-      };
-      autostart = true;
-    };
-
     ente = {
       config = {
         imports = [ ./ente-vm.nix ];
@@ -15,7 +8,6 @@
     };
   };
 
-  systemd.services."microvm@ddns".serviceConfig.TimeoutStartSec = "120";
   systemd.services."microvm@ente".serviceConfig.TimeoutStartSec = "240";
 
   networking.firewall.allowedTCPPorts = [ 80 443 ];

@@ -4,6 +4,7 @@
   imports = [
     ./hdd-spindown.nix
     ../../modules/tailscale.nix
+    ../../modules/ddns-updater.nix
     ./secrets.nix
     ./VMs
   ];
