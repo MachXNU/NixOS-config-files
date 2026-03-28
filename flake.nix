@@ -43,10 +43,10 @@
       url = "github:alexanderjeurissen/ranger_devicons";
       flake = false;
     };
-    wallpapers = {
-      url = "git+ssh://git@github.com/MachXNU/wallpapers.git";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #wallpapers = {
+    #  url = "git+ssh://git@github.com/MachXNU/wallpapers.git";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
     wallpapers-catppuccin = {
       url = "github:zhichaoh/catppuccin-wallpapers";
       flake = false;
