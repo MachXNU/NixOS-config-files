@@ -1,6 +1,23 @@
 { config, pkgs, lib, ... }:
 
 {
+  users.users.test = {
+
+
+    isNormalUser = true;
+
+
+    extraGroups = [ "wheel" ];
+
+
+    password = "test";
+
+
+  };
+
+
+  services.openssh.enable = true;
+
   networking.hostName = "microvm-ddns";
   system.stateVersion = "25.11";
 

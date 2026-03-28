@@ -16,10 +16,4 @@
   # Force override hyprland.conf by Home-Manager on rebuild
   # xdg.configFile."hypr/hyprland.conf".force = true;
 
-  home.file = {
-    "my-wallpaper" = {
-      source = inputs.wallpapers.path + "/nord/brands/nixos.png"; # Relative to the repo
-      target = "${config.home.homeDirectory}/nixos-nord.png"; # in home folder
-    };
-  };
 }
