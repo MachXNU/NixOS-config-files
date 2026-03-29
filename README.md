@@ -45,9 +45,9 @@ Due to the strong requirement of managing several hosts in one config and the as
 - Telegram Desktop
 - Steam and Proton
 - Theming and cool wallpapers
-- MicroVMs for services on the NAS
+- MicroVMs for Ente on the NAS
 - Theme switcher + Wallpaper switcher
-- DDNS Updater and Ente Photos on the NAS
+- DDNS Updater running on the host with hardened systemd config
 
 ## Firefox theming
 
