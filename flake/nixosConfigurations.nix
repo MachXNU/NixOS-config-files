@@ -1,8 +1,8 @@
-{ inputs, ... }:
+{ inputs, self, ... }:
 
 let
   mkSystem = import ../lib/mkSystem.nix {
-    inherit inputs;
+    inherit inputs self;
     nixpkgs = inputs.nixpkgs;
   };
 in {

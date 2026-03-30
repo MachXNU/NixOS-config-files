@@ -1,4 +1,4 @@
-{ pkgs, downloadDirectory, ... }:
+{ pkgs, downloadDir, ... }:
 let
   locked_false = {
     Value = false;
@@ -51,7 +51,7 @@ in
   };
   PromptForDownloadLocation = false;
   StartDownloadsInTempDirectory = true;
-  DefaultDownloadDirectory = downloadDirectory;
+  DefaultDownloadDirectory = downloadDir;
   NetworkPrediction = false;
   FirefoxHome = {
     Search = true;

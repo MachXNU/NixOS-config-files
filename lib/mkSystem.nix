@@ -1,4 +1,4 @@
-{ inputs, nixpkgs }:
+{ inputs, nixpkgs, self }:
 
 { system, hostName, headless ? false, hostsMicroVMs ? false }:
 
@@ -28,7 +28,10 @@ nixpkgs.lib.nixosSystem {
         };
 
         backupFileExtension = "backup";
-        extraSpecialArgs = { inherit inputs headless; };
+        extraSpecialArgs = { 
+          inherit inputs headless;
+          myPackages = self.packages.${system};
+        };
       };
     }
   ]
