@@ -10,11 +10,6 @@
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.noctalia-qs.follows = "noctalia-qs";
-    };
-    noctalia-qs = {
-      url = "github:noctalia-dev/noctalia-qs";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     millennium = {
       url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
@@ -43,10 +38,10 @@
       url = "github:alexanderjeurissen/ranger_devicons";
       flake = false;
     };
-    #wallpapers = {
-    #  url = "git+ssh://git@github.com/MachXNU/wallpapers.git";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
+    wallpapers = {
+      url = "git+ssh://git@github.com/MachXNU/wallpapers.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     wallpapers-catppuccin = {
       url = "github:zhichaoh/catppuccin-wallpapers";
       flake = false;
