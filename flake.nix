@@ -7,6 +7,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    flake-parts.url = "github:hercules-ci/flake-parts";
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       #url = "github:MachXNU/noctalia-shell";
@@ -49,69 +50,13 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }: 
-  let
-    mkSystem = {
-      system,
-      hostName,
-      headless ? false,
-      hostsMicroVMs ? false,
-    }:
-    nixpkgs.lib.nixosSystem {
-      inherit system;
+  outputs = inputs@{ nixpkgs, home-manager, flake-parts, ... }: 
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
 
-      specialArgs = {
-        inherit inputs headless hostName hostsMicroVMs;
-      };
-      modules = [
-        ./configuration.nix
-        ./hosts/${hostName}/programs.nix
-        ./hosts/${hostName}/hardware-configuration.nix
-        inputs.agenix.nixosModules.default
-
-        home-manager.nixosModules.home-manager {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.jb = { ... }: {
-              imports = [ 
-                inputs.nvf.homeManagerModules.default
-                ./home-manager/jb.nix
-              ];
-            };
-            backupFileExtension = "backup";
-            extraSpecialArgs = { inherit inputs headless; };
-          };
-        }
-      ]
-      ++ (if hostsMicroVMs then [inputs.microvm.nixosModules.host] else []);
+      imports = [
+        ./flake/nixosConfigurations.nix
+        ./flake/packages.nix
+      ];
     };
-  in
-  {
-    nixosConfigurations = {
-      nixos-vm = mkSystem {
-        system = "aarch64-linux";
-        hostName = "nixos-vm";
-        headless = true;
-      };
-      nixos-asustor = mkSystem {
-        system = "x86_64-linux";
-        hostName = "nixos-asustor";
-        headless = true;
-        hostsMicroVMs = true;
-      };
-      nixos-laptop = mkSystem {
-        system = "x86_64-linux";
-        hostName = "nixos-laptop";
-      };
-      nixos-brutuz = mkSystem {
-        system = "x86_64-linux";
-        hostName = "nixos-brutuz";
-      };
-      nixos-vivobook = mkSystem {
-        system = "x86_64-linux";
-        hostName = "nixos-vivobook";
-      };
-    };
-  };
 }

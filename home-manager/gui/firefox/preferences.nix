@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, downloadDir, ... }:
 let
   locked_false = {
     Value = false;
@@ -51,7 +51,7 @@ in
   };
   PromptForDownloadLocation = false;
   StartDownloadsInTempDirectory = true;
-  DefaultDownloadDirectory = "${config.home.homeDirectory}/Downloads";
+  DefaultDownloadDirectory = downloadDir;
   NetworkPrediction = false;
   FirefoxHome = {
     Search = true;
