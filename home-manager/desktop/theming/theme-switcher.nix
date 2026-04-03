@@ -31,7 +31,7 @@
         $NOCTALIA_ABS ipc call colorScheme set $noctaliaColorScheme
 
         # set desktop wallpaper
-        swww img "$randomWallpaper"
+        awww img "$randomWallpaper"
 
         # set Hyprlock wallpaper
         sed -i "/background {/,/}/ s|^\(\s*path=\).*|\1$randomWallpaper|" ~/.config/hypr/hyprlock.conf

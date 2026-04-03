@@ -8,8 +8,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     noctalia = {
-      #url = "github:noctalia-dev/noctalia-shell";
-      url = "github:MachXNU/noctalia-shell";
+      url = "github:noctalia-dev/noctalia-shell";
+      #url = "github:MachXNU/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     millennium = {

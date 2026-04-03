@@ -2,7 +2,7 @@
 
 {
   home.packages = with pkgs; [
-    swww
+   awww 
   ];
 
   wayland.windowManager.hyprland = {
