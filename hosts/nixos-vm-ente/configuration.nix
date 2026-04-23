@@ -5,6 +5,17 @@
 
   networking.firewall.enable = false;
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+    # Add dummy user to log in to the VM
+
+  users.users.admin = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+  };
+  
+  services.openssh.enable = false;
+
   services.garage = {
     enable = true;
     package = pkgs.garage_2;
