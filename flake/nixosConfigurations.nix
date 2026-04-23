@@ -42,6 +42,6 @@ in {
     nixos-vm-ente = mkSimpleSystem {
       system = "x86_64-linux";
       hostName = "nixos-vm-ente";
-    }
+    };
   };
 }
