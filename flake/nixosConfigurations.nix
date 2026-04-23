@@ -39,9 +39,9 @@ in {
       hostName = "nixos-vivobook";
     };
 
-    nixos-vm-ente = mkSimpleSystem {
+    nixos-vm-garage = mkSimpleSystem {
       system = "x86_64-linux";
-      hostName = "nixos-vm-ente";
+      hostName = "nixos-vm-garage";
     };
   };
 }
