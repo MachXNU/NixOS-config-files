@@ -23,6 +23,11 @@
   
   services.openssh.enable = false;
 
+  environment.systemPackages = with pkgs; [
+    vim
+    git
+  ];
+
   services.garage = {
     enable = true;
     package = pkgs.garage_2;
