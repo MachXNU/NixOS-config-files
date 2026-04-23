@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 {
-  networking.hostName = "microvm-ente";
+  networking.hostName = "nixos-garage";
   system.stateVersion = "25.11";
 
   boot.loader.systemd-boot = {
@@ -13,8 +13,7 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-    # Add dummy user to log in to the VM
-
+  # Add dummy user to log in to the VM
   users.users.admin = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
@@ -86,85 +85,4 @@
     "d /var/lib/garage/meta 0750 garage garage -"
     "d /var/lib/garage/data 0750 garage garage -"
   ];
-
-  services.postgresql = {
-    enable = true;
-    dataDir = "/data/postgres";
-    package = pkgs.postgresql_15;
-    authentication = pkgs.lib.mkOverride 10 ''
-      local all postgres         peer map=postgres
-      local all all              md5
-      host  all all 127.0.0.1/32 md5
-      host  all all ::1/128      md5
-    '';
-  };
-
-  services.ente = {
-    api = {
-      enable = true;
-
-      domain = "api.ente.prestuz.freeddns.org";
-
-      settings = {
-        db = {
-          host = "127.0.0.1";
-          port = 5432;
-          name = "ente_db";
-          user = "pguser";
-          password._secret = "/run/secrets/postgres-pguser-password";
-          sslmode = "disable";
-        };
-
-        web = {
-          enable = false;
-          domains = {
-            accounts = "accounts.ente.prestuz.freeddns.org";
-            albums = "albums.ente.prestuz.freeddns.org";
-            cast = "cast.ente.prestuz.freeddns.org";
-            photos = "photos.ente.prestuz.freeddns.org";
-          };
-        };
-
-        s3 = {
-          use_path_style_urls = true;
-          are_local_buckets = true;
-          hot_storage = {
-            primary = "b2-eu-cen";
-          };
-          b2-eu-cen = {
-            endpoint = "https://s3.ente.prestuz.freeddns.org";
-            region = "garage";
-            bucket = "ente-bucket";
-            key._secret = "/run/secrets/ente-garage-key";
-            secret._secret = "/run/secrets/ente-garage-secret";
-            are_local_buckets = true;
-            use_path_style_urls = true;
-          };
-        };
-
-        key = {
-          encryption._secret = "/run/secrets/api-key-encryption";
-          hash._secret = "/run/secrets/api-key-hash";
-        };
-
-        jwt.secret._secret = "/run/secrets/api-jwt-secret";
-      };
-    };
-
-    # We must keep this part enabled, even though we don't use it
-    # otherwise it doesn't build, or does not generate a config
-    web = {
-      enable = true;
-
-      domains = {
-        accounts = "accounts.ente.prestuz.freeddns.org";
-        albums = "albums.ente.prestuz.freeddns.org";
-        api = "api.ente.prestuz.freeddns.org";
-        cast = "cast.ente.prestuz.freeddns.org";
-        photos = "photos.ente.prestuz.freeddns.org";
-      };
-    };
-  };
-
-  services.nginx.enable = lib.mkForce false;
 }
