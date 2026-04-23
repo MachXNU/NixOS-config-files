@@ -13,6 +13,8 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  users.users.root.hashedPassword = "!";
+
   # Add dummy user to log in to the VM
   users.users.admin = {
     isNormalUser = true;
