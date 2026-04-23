@@ -3,6 +3,12 @@
   networking.hostName = "microvm-ente";
   system.stateVersion = "25.11";
 
+  boot.loader.systemd-boot = {
+    enable = true;
+    configurationLimit = 5;
+  };
+  boot.loader.efi.canTouchEfiVariables = true;
+
   networking.firewall.enable = false;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
