@@ -8,7 +8,7 @@ in
   #   armor = true;
   # };
   "ddns-updater-config-json.age" = {
-    publicKeys = [ asustor ];
+    publicKeys = [ vm-garage-1 ];
     armor = true;
   };
   "garage-rpc-secret.age" = {
@@ -24,27 +24,27 @@ in
     armor = true;
   };
   "ente-postgres-pguser-password.age" = {
-    publicKeys = [ asustor ];
+    publicKeys = [ vm-garage-1 ];
     armor = true;
   };
   "ente-garage-key.age" = {
-    publicKeys = [ asustor ];
+    publicKeys = [ vm-garage-1 ];
     armor = true;
   };
   "ente-garage-secret.age" = {
-    publicKeys = [ asustor ];
+    publicKeys = [ vm-garage-1 ];
     armor = true;
   };
   "ente-api-key-encryption.age" = {
-    publicKeys = [ asustor ];
+    publicKeys = [ vm-garage-1 ];
     armor = true;
   };
   "ente-api-key-hash.age" = {
-    publicKeys = [ asustor ];
+    publicKeys = [ vm-garage-1 ];
     armor = true;
   };
   "ente-api-jwt-secret.age" = {
-    publicKeys = [ asustor ];
+    publicKeys = [ vm-garage-1 ];
     armor = true;
   };
 }
