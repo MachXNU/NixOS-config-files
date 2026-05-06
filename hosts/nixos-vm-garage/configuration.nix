@@ -3,6 +3,7 @@
   networking.hostName = "nixos-garage";
   system.stateVersion = "25.11";
 
+  boot.loader.systemd-boot.enable = false;
   boot.loader.grub = {
     enable = true;
     device = "nodev";
