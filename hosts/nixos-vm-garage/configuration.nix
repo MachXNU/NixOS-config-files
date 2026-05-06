@@ -8,7 +8,7 @@
     device = "nodev";
   };
 
-  boot.loader.efi.canTouchEfiVariables = false;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   networking.firewall.enable = false;
 
