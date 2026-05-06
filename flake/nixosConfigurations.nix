@@ -1,4 +1,4 @@
-{ inputs, self, ... }:
+{ inputs, self, nixpkgs, ... }:
 
 let
   mkSystem = import ../lib/mkSystem.nix {
@@ -6,6 +6,10 @@ let
     nixpkgs = inputs.nixpkgs;
   };
   mkSimpleSystem = import ../lib/mkSimpleSystem.nix {
+    inherit inputs self;
+    nixpkgs = inputs.nixpkgs;
+  };
+  mkVMSystem = import ../lib/mkVMSystem.nix {
     inherit inputs self;
     nixpkgs = inputs.nixpkgs;
   };
@@ -39,7 +43,7 @@ in {
       hostName = "nixos-vivobook";
     };
 
-    nixos-vm-garage = mkSimpleSystem {
+    nixos-vm-garage = mkVMSystem {
       system = "x86_64-linux";
       hostName = "nixos-vm-garage";
     };

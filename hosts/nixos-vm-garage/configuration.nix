@@ -3,11 +3,12 @@
   networking.hostName = "nixos-garage";
   system.stateVersion = "25.11";
 
-  boot.loader.systemd-boot = {
+  boot.loader.grub = {
     enable = true;
-    configurationLimit = 5;
+    device = "nodev";
   };
-  boot.loader.efi.canTouchEfiVariables = true;
+
+  boot.loader.efi.canTouchEfiVariables = false;
 
   networking.firewall.enable = false;
 

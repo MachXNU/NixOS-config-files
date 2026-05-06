@@ -1,10 +1,12 @@
 { inputs, ... }:
 
 {
-  perSystem = { pkgs, ... }: {
-    packages.firefox =
-      import ../home-manager/gui/firefox/package.nix {
-        inherit pkgs;
-      };
+  perSystem = { pkgs, system, inputs', ... }: {
+    packages = {
+      firefox =
+        import ../home-manager/gui/firefox/package.nix {
+          inherit pkgs;
+        };
+    };
   };
 }
