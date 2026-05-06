@@ -5,6 +5,10 @@ let
     inherit inputs self;
     nixpkgs = inputs.nixpkgs;
   };
+  mkSimpleSystem = import ../lib/mkSimpleSystem.nix {
+    inherit inputs self;
+    nixpkgs = inputs.nixpkgs;
+  };
 in {
   flake.nixosConfigurations = {
     nixos-vm = mkSystem {
@@ -33,6 +37,11 @@ in {
     nixos-vivobook = mkSystem {
       system = "x86_64-linux";
       hostName = "nixos-vivobook";
+    };
+
+    nixos-vm-garage = mkSimpleSystem {
+      system = "x86_64-linux";
+      hostName = "nixos-vm-garage";
     };
   };
 }
