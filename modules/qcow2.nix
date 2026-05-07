@@ -6,7 +6,7 @@
     fsType = "ext4";
   };
 
-  boot.kernelParams = ["console=ttyS0"];
+  # boot.kernelParams = ["console=ttyS0"];
 
   system.build.qcow2 = import "${pkgs.path}/nixos/lib/make-disk-image.nix" {
     inherit lib config pkgs;
