@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }: {
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-label/nixos";
-    autoResize = true;
-    fsType = "ext4";
-  };
+  # fileSystems."/" = {
+  #   device = "/dev/disk/by-label/nixos";
+  #   autoResize = true;
+  #   fsType = "ext4";
+  # };
 
   # boot.kernelParams = ["console=ttyS0"];
 

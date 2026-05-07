@@ -10,6 +10,12 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  fileSystems."/" = {
+    device = "/dev/disk/by-label/nixos";
+    autoResize = true;
+    fsType = "ext4";
+  };
+
   users.users.root.hashedPassword = "!";
 
   # Add dummy user to log in to the VM
