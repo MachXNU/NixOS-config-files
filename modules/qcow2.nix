@@ -12,6 +12,6 @@
     inherit lib config pkgs;
     diskSize = 10240;
     format = "qcow2";
-    partitionTableType = "hybrid";
+    partitionTableType = "efi";
   };
 }

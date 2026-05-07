@@ -6,15 +6,23 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.firewall.enable = false;
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  boot.initrd.availableKernelModules = [
+    "virtio_pci"
+    "virtio_blk"
+    "virtio_scsi"
+    "ahci"
+    "sd_mod"
+  ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-label/nixos";
-    autoResize = true;
     fsType = "ext4";
+    autoResize = true;
   };
+
+  networking.firewall.enable = false;
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   users.users.root.hashedPassword = "!";
 
