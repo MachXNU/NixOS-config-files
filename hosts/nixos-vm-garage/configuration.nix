@@ -21,6 +21,7 @@
   users.users.admin = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
+    hashedPassword = "$y$j9T$UzlPGZ3jVGdkmiSRBS8S/1$lK8BL7HxJLpeo0T.Pp5vCf6wvoR5qeTuMq.PV0UUCv4";
   };
   
   services.openssh.enable = true;
