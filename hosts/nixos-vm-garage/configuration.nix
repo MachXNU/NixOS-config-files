@@ -25,6 +25,11 @@
 
   imports = [ ./secrets.nix ];
 
+  fileSystems."/run/secrets" = {
+    device = "Asustor-Garage-Secrets";
+    fsType = "virtiofs";
+  };
+
   services.garage = {
     enable = true;
     package = pkgs.garage_2;
