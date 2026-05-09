@@ -123,4 +123,14 @@
     "z /run/secrets/garage-admin-token 0600 garage garage - -"
     "z /run/secrets/garage-metrics-token 0600 garage garage - -"
   ];
+
+  imports = [
+    ../../modules/tailscale.nix
+  ];
+
+  my.tailscale = {
+    enable = true;
+    enableFunnel = true;
+    funnelPort = 3900;
+  };
 }
