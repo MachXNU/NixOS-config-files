@@ -12,6 +12,5 @@ nixpkgs.lib.nixosSystem {
   modules = [
     ../hosts/${hostName}/configuration.nix
     ../modules/qcow2.nix
-    inputs.agenix.nixosModules.default
   ];
 }
