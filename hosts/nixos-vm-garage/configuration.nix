@@ -3,12 +3,6 @@
   networking.hostName = "nixos-garage";
   system.stateVersion = "25.11";
 
-  boot.loader.systemd-boot = {
-    enable = true;
-    configurationLimit = 5;
-  };
-  boot.loader.efi.canTouchEfiVariables = true;
-
   networking.firewall.enable = false;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -19,6 +13,7 @@
   users.users.admin = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
+    hashedPassword = "$6$EujOqFseDSt9/klh$nq7mr.rVhYGeVNwyfMoWmAH0dnVtN6e6zFoyTydFegrtw.5/QavGItK5TLmApdk90oJj13WINikyYrEUdlZil0";
   };
   
   services.openssh.enable = true;
@@ -28,7 +23,15 @@
     git
   ];
 
-  imports = [ ./secrets.nix ];
+  fileSystems."/run/secrets" = {
+    device = "Asustor-Garage-Secrets";
+    fsType = "virtiofs";
+  };
+
+  fileSystems."/var/lib/garage/data" = {
+    device = "/dev/disk/by-uuid/b8c0ccb1-b1eb-48e3-9556-f1a4b8d042c4";
+    fsType = "ext4";
+  };
 
   services.garage = {
     enable = true;
@@ -42,7 +45,7 @@
 
       rpc_bind_addr = "[::]:3901";
       rpc_public_addr = "127.0.0.1:3901";
-      rpc_secret_file = "/run/secrets/garage-rpc-secret";
+      rpc_secret_file = "/var/lib/garage/secrets/rpc-secret";
 
       s3_api = {
         s3_region = "garage";
@@ -61,8 +64,8 @@
 
       admin = {
         api_bind_addr = "[::]:3903";
-        admin_token_file = "/run/secrets/garage-admin-token";
-        metrics_token_file = "/run/secrets/garage-metrics-token";
+        admin_token_file = "/var/lib/garage/secrets/admin-token";
+        metrics_token_file = "/var/lib/garage/secrets/metrics-token";
       };
     };
   };
@@ -74,24 +77,50 @@
 
   users.groups.garage = {};
 
-  systemd.services.garage.serviceConfig = {
-    DynamicUser = lib.mkForce false;
-    User = "garage";
-    Group = "garage";
+  systemd.services.garage-copy-secrets = {
+    description = "Copy Garage secrets locally";
+
+    before = [ "garage.service" ];
+    wantedBy = [ "garage.service" ];
+    after = [ "run-secrets.mount" ];
+    requires = [ "run-secrets.mount" ];
+
+    serviceConfig.Type = "oneshot";
+
+    script = ''
+      install -d -m 0700 -o garage -g garage /var/lib/garage/secrets
+
+      install -m 0600 -o garage -g garage \
+        /run/secrets/garage-rpc-secret \
+        /var/lib/garage/secrets/rpc-secret
+
+      install -m 0600 -o garage -g garage \
+        /run/secrets/garage-admin-token \
+        /var/lib/garage/secrets/admin-token
+
+      install -m 0600 -o garage -g garage \
+        /run/secrets/garage-metrics-token \
+        /var/lib/garage/secrets/metrics-token
+    '';
+  };
+
+  systemd.services.garage = {
+    serviceConfig = {
+      DynamicUser = lib.mkForce false;
+      User = "garage";
+      Group = "garage";
+    };
+    after = [ "run-secrets.mount" ];
+    requires = [ "run-secrets.mount" ];
   };
 
   systemd.tmpfiles.rules = [
-    "f /run/secrets/postgres-pguser-password 0640 root ente"
-    "f /run/secrets/ente-garage-key 0640 root ente"
-    "f /run/secrets/ente-garage-secret 0640 root ente"
-    "f /run/secrets/api-key-encryption 0640 root ente"
-    "f /run/secrets/api-key-hash 0640 root ente"
-    "f /run/secrets/api-jwt-secret 0640 root ente"
-    "f /run/secrets/garage-rpc-secret 0600 garage garage"
-    "f /run/secrets/garage-admin-token 0600 garage garage"
-    "f /run/secrets/garage-metrics-token 0600 garage garage"
     "d /var/lib/garage 0750 garage garage -"
-    "d /var/lib/garage/meta 0750 garage garage -"
-    "d /var/lib/garage/data 0750 garage garage -"
+    "d /var/lib/garage/meta 0700 garage garage -"
+    "d /var/lib/garage/data 0700 garage garage -"
+
+    "z /run/secrets/garage-rpc-secret 0600 garage garage - -"
+    "z /run/secrets/garage-admin-token 0600 garage garage - -"
+    "z /run/secrets/garage-metrics-token 0600 garage garage - -"
   ];
 }
