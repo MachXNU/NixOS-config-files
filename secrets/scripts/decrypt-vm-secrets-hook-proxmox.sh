@@ -5,7 +5,7 @@ VMID="$1"
 
 case "$PHASE" in
   pre-start)
-    /usr/local/bin/decrypt-vm-secrets "$VMID"
+    /root/NixOS-config-files/secrets/scripts/decrypt-vm-secrets.sh "$VMID"
     ;;
   post-stop)
     rm -rf "/run/vm-secrets/$VMID"
