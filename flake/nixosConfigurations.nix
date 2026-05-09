@@ -47,5 +47,10 @@ in {
       system = "x86_64-linux";
       hostName = "nixos-vm-garage";
     };
+
+    nixos-vm-ente = mkVMSystem {
+      system = "x86_64-linux";
+      hostName = "nixos-vm-ente";
+    };
   };
 }
