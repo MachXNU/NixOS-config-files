@@ -96,6 +96,23 @@ While Noctalia-shell is indeed a very good project with many amazing features, s
 
 - [Tokyo, Japan by Andre Benz on Unsplash](https://unsplash.com/photos/empty-road-qi2hmCwlhcE)
 
+## VM config
+
+The flake exposes a few VMs that are intended to run on Proxmox in my Homelab.\
+They can be built like this:
+
+```bash
+nix build .#nixosConfigurations.nixos-vm-xxx.config.system.build.qcow2
+```
+
+When secrets are needed, they are decrypted at VM boot by the host via a hookscript (`secrets/scripts/decrypt-vm-secrets-hook-proxmox.sh`, which calls `secrets/scripts/decrypt-vm-secrets.sh`), then passed to the VM via a VirtIOFS mount.
+
+### `nixos-vm-garage`
+
+This VM runs on the Asustor NAS (for now), and it is meant at hosting a s3 bucket for Ente.\
+Due to confusing permission issues to access the secrets on the virtio, these secrets are copied at runtime outside of it, so that Garage can access them.
+
+This VM stores the Garage data on an external disk (currently residing in an external HDD). The filesystem on this drive has to be an ext4 filesystem with the correct UUID indicated in the `configuration.nix`.
 
 ## Misc
 
