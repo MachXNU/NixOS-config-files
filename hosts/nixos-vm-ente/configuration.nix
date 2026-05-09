@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 {
-  networking.hostName = "nixos-vm-garage";
+  networking.hostName = "nixos-vm-ente";
   system.stateVersion = "25.11";
 
   networking.firewall.enable = false;
@@ -28,21 +28,8 @@
     fsType = "virtiofs";
   };
 
-  fileSystems."/var/lib/garage/data" = {
-    device = "/dev/disk/by-uuid/b8c0ccb1-b1eb-48e3-9556-f1a4b8d042c4";
-    fsType = "ext4";
-  };
-
-  users.users.garage = {
-    isSystemUser = true;
-    group = "garage";
-  };
-
-  users.groups.garage = {};
-
   imports = [
     ../../modules/tailscale.nix
-    ../../modules/garage.nix
   ];
 
   my.tailscale = {
@@ -50,9 +37,16 @@
     enableFunnel = true;
     funnelPort = 3900;
   };
-  
-  my.garage = {
+
+  services.postgresql = {
     enable = true;
-    region = "garage-paris";
+    dataDir = "/data/postgres";
+    package = pkgs.postgresql_15;
+    authentication = pkgs.lib.mkOverride 10 ''
+      local all postgres         peer map=postgres
+      local all all              md5
+      host  all all 127.0.0.1/32 md5
+      host  all all ::1/128      md5
+    '';
   };
 }
