@@ -44,7 +44,12 @@
     # Enable Funnel after tailscaled is up
     systemd.services.tailscale-funnel = lib.mkIf config.my.tailscale.enableFunnel {
       description = "Enable Tailscale Funnel";
-      after = [ "network-online.target" "tailscaled.service" ];
+
+      after = [
+        "network-online.target"
+        "tailscaled.service"
+      ];
+
       wants = [ "network-online.target" ];
       requires = [ "tailscaled.service" ];
       wantedBy = [ "multi-user.target" ];
@@ -55,7 +60,22 @@
       };
 
       script = ''
-        ${pkgs.tailscale}/bin/tailscale funnel \
+        set -euo pipefail
+
+        # Wait until tailscale is fully online
+        for i in $(seq 1 30); do
+          STATE="$(${pkgs.tailscale}/bin/tailscale status --json \
+            | ${pkgs.jq}/bin/jq -r .BackendState)"
+
+          if [ "$STATE" = "Running" ]; then
+            break
+          fi
+
+          echo "Waiting for Tailscale... current state: $STATE"
+          sleep 2
+        done
+
+        ${pkgs.tailscale}/bin/tailscale funnel --bg \
           ${toString config.my.tailscale.funnelPort}
       '';
     };
@@ -67,5 +87,9 @@
       [ 22 ]
       ++ lib.optional config.my.tailscale.enableFunnel
         config.my.tailscale.funnelPort;
+    
+    environment.systemPackages = [
+      pkgs.jq
+    ];
   };
 }
