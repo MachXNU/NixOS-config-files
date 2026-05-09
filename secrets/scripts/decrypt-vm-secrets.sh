@@ -2,7 +2,7 @@
 set -euo pipefail
 
 VMID="$1"
-SECRETS_DIR="/var/lib/vm-secret-definitions/$VMID"
+SECRETS_DIR="/root/NixOS-config-files/secrets/VM-symlinks/$VMID"
 OUT_DIR="/run/vm-secrets/$VMID"
 
 mkdir -p "$OUT_DIR"
