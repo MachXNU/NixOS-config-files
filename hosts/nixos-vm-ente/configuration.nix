@@ -49,4 +49,8 @@
       host  all all ::1/128      md5
     '';
   };
+
+  systemd.tmpfiles.rules = [
+    "d /data/postgres 0700 postgres postgres -"
+  ];
 }
