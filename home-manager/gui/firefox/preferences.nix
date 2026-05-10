@@ -45,6 +45,7 @@ in
   Cookies = {
     Allow = [
       "https://github.com"
+      "https://appleid.apple.com"
     ];
     Locked = true;
   };
@@ -171,7 +172,8 @@ in
     };
 
     # Disable WebGL (reduces fingerprinting, but may break 3D)
-    "webgl.disabled" = locked_true;
+    # Disabled because it brakes arcraidershub.com
+    "webgl.disabled" = locked_false;
 
     # Disable DRM (no Netflix, e.g.)
     "media.eme.enabled" = locked_false;
