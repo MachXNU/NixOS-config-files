@@ -24,7 +24,7 @@
   ];
 
   fileSystems."/run/secrets" = {
-    device = "Asustor-Garage-Secrets";
+    device = "HPOmen-Ente-Secrets";
     fsType = "virtiofs";
   };
 
