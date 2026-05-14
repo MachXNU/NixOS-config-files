@@ -105,11 +105,10 @@
         enforceMinimum = false;
       };
       colorSchemes = {
-        darkMode = false;
+        predefinedScheme = "Nord";
         manualSunrise = "06:30";
         manualSunset = "20:00";
         schedulingMode = "manual";
-        useWallpaperColors = false;
       };
       controlCenter = {
         shortcuts = {
