@@ -15,5 +15,6 @@ in
     enable = true;
     package = myFirefox;
     profiles = import ./profiles.nix { inherit pkgs lib; };
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
   };
 }

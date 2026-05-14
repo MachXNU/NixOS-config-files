@@ -107,6 +107,11 @@ in
       installation_mode = "force_installed";
       private_browsing = true;
     };
+    "{f4c9e1d6-6630-4600-ad50-d223eab7f3e7}" = {
+      install_url = "https://addons.mozilla.org/firefox/downloads/latest/nord-firefox/latest.xpi";
+      installation_mode = "force_installed";
+      private_browsing = true;
+    };
   };
   SkipTermsOfUse = true;
   Preferences = {
