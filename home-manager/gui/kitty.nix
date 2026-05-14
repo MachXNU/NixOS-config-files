@@ -27,7 +27,7 @@
 
       window_padding_width = "10 15";
       hide_window_decorations = "yes";
-      background_opacity = 0.9;
+      background_opacity = 0.95;
       dynamic_background_opacity = "yes";
 
       # cursor = "#8fee96";
