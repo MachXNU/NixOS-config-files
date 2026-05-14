@@ -24,6 +24,7 @@
       mpvpaper_sound = false;
       mpvpaper_options = "";
       use_xdg_state = true;
+      folder = ../../../wallpapers;
       #stylesheet = "/home/jb/.config/waypaper/style.css";
       #keybindings = "$HOME/.config/waypaper/keybindings.ini";
     };
