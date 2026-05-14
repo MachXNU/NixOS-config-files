@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, headless, ... }:
+{ inputs, config, pkgs, lib, headless, hostName, ... }:
 
 {
   home.stateVersion = "25.11";

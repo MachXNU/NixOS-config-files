@@ -1,4 +1,8 @@
-{ config, pkgs, ...}: {
+{ config, pkgs, hostName, ...}: 
+let
+  layout = import ../../hosts/${hostName}/hyprlock-layout.nix;
+in
+{
   programs.hyprlock = {
     enable = true;
 
@@ -14,76 +18,66 @@
       
       label = [
         # Time Hour
-        {
-          monitor = "";
-          text = "cmd[update:1000] echo \"<span>$(date +\"%I\")</span>\"";
-          color = "rgba(255, 255, 255, 0.9)";
-          font_size = 200;
-          font_family = "Stretch Pro";
-          # position = "-80, 190";
-          position = "-8%, 18%";
-          halign = "center";
-          valign = "center";
-        }
+        (
+          {
+            monitor = "";
+            text = "cmd[update:1000] echo \"<span>$(date +\"%I\")</span>\"";
+            color = "rgb(236, 239, 244)";
+            font_size = 200;
+            font_family = "Stretch Pro";
+            # position = "-80, 190";
+          } // layout.hour
+        )
 
         # Time Minute
-        {
-          monitor = "";
-          text = "cmd[update:1000] echo \"<span>$(date +\"%M\")</span>\"";
-          color = "$secondary_fixed_dim";
-          font_size = 200;
-          font_family = "Stretch Pro";
-          position = "0, 7%";
-          halign = "center";
-          valign = "center";
-        }
+        (
+          {
+            monitor = "";
+            text = "cmd[update:1000] echo \"<span>$(date +\"%M\")</span>\"";
+            color = "rgba(113, 130, 155, 0.9)";
+            font_size = 200;
+            font_family = "Stretch Pro";
+          } // layout.minute
+        )
 
         # Day-Month-Date
-        {
-          monitor = "";
-          text = "cmd[update:1000] echo -e \"$(date +\"%d %B, %a.\")\"";
-          # color = "rgba(255, 255, 255, 100)";
-          color = "$primary_fixed";
-          font_size = 28;
-          font_family = "Suisse Int'l Mono";
-          position = "2%, 1%";
-          halign = "center";
-          valign = "center";
-        }
+        (
+          {
+            monitor = "";
+            text = "cmd[update:1000] echo -e \"$(date +\"%d %B, %a.\")\"";
+            # color = "rgba(255, 255, 255, 100)";
+            color = "rgba(59, 66, 82, 0.95)";
+            font_size = 28;
+            font_family = "DejaVu Sans";
+          } // layout.date
+        )
 
         # User
-        {
-          monitor = "";
-          # text = "    $USER";
-          text = " Hi,  $USER";
-          color = "rgba(255, 255, 255, 0.6)";
-          font_size = 30;
-          font_family = "SF Pro Display Bold";
-          position = "0, -35%";
-          halign = "center";
-          valign = "center";
-        }
+        (
+          {
+            monitor = "";
+            # text = "    $USER";
+            text = " Hi,  $USER";
+            color = "rgba(236, 239, 244, 0.8)";
+            font_family = "SF Pro Display Bold";
+          } // layout.user
+        )
       ];
 
       # Profile-Photo
-      image = {
+      image = ({
           monitor = "";
           path = toString ./.face;
           border_size = 2;
           border_color = "rgba(216, 222, 233, 0.80)";
-          size = 150;
           rounding = -1;
           rotate = 0;
           reload_time = -1;
           reload_cmd = "";
-          position = "0, -28%";
-          halign = "center";
-          valign = "center";
-      };
+      } // layout.image);
 
-      input-field = {
+      input-field = ({
         monitor ="";
-        size = "380, 75";
         outline_thickness = 2;
         outer_color = "rgba(0, 0, 0, 0)";
         inner_color = "rgba(255, 255, 255, 0.1)";
@@ -94,15 +88,12 @@
         font_family = "Deja Vu Sans";
         placeholder_text = "<span foreground=\"##ffffff99\">Enter password</span>";
         hide_input = false;
-        position = "0, -40%";
-        halign = "center";
-        valign = "center";
-      };
+      } // layout.input);
 
       background = {
           monitor = "";
-          path = toString ./Wallpapers/blue-abstract-5120x5120.jpg;
-          blur_passes = 2;
+          path = toString ../../wallpapers/Hollow-Knight/Hornet-corner-black.png;
+          blur_passes = 3;
           contrast = 0.8916;
           brightness = 0.5;
           vibrancy = 0.1696;
