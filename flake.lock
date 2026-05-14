@@ -192,24 +192,6 @@
         "type": "github"
       }
     },
-    "home-manager_3": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_3"
-      },
-      "locked": {
-        "lastModified": 1778444552,
-        "narHash": "sha256-f18pIiR9q/p1vHY93gmAum7aHhQOG49oGvAB9+lptRo=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "dcebe66f958673729896eec2de4abfd86ef22d21",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "type": "github"
-      }
-    },
     "json-src": {
       "flake": false,
       "locked": {
@@ -428,22 +410,6 @@
         "type": "indirect"
       }
     },
-    "nixpkgs_3": {
-      "locked": {
-        "lastModified": 1777268161,
-        "narHash": "sha256-bxrdOn8SCOv8tN4JbTF/TXq7kjo9ag4M+C8yzzIRYbE=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "1c3fe55ad329cbcb28471bb30f05c9827f724c76",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "noctalia": {
       "inputs": {
         "nixpkgs": [
@@ -574,9 +540,7 @@
         "noctalia": "noctalia",
         "nvf": "nvf",
         "obsidian-nvim": "obsidian-nvim",
-        "ranger-devicons": "ranger-devicons",
-        "wallpapers": "wallpapers",
-        "wallpapers-catppuccin": "wallpapers-catppuccin"
+        "ranger-devicons": "ranger-devicons"
       }
     },
     "spectrum": {
@@ -659,43 +623,6 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "type": "github"
-      }
-    },
-    "wallpapers": {
-      "inputs": {
-        "home-manager": "home-manager_3",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1773579380,
-        "narHash": "sha256-URyxJe5JlBdRQTCocXQgYW9xcHIqYW42SvNfCdMQ4S8=",
-        "ref": "refs/heads/main",
-        "rev": "5a2a61376fb691dddb25521dec2721be954cc9e5",
-        "revCount": 9,
-        "type": "git",
-        "url": "ssh://git@github.com/MachXNU/wallpapers.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/MachXNU/wallpapers.git"
-      }
-    },
-    "wallpapers-catppuccin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1661293434,
-        "narHash": "sha256-h+cFlTXvUVJPRMpk32jYVDDhHu1daWSezFcvhJqDpmU=",
-        "owner": "zhichaoh",
-        "repo": "catppuccin-wallpapers",
-        "rev": "1023077979591cdeca76aae94e0359da1707a60e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "zhichaoh",
-        "repo": "catppuccin-wallpapers",
         "type": "github"
       }
     },

@@ -13,7 +13,7 @@
       all_subfolders = true;
       show_hidden = false;
       show_gifs_only = false;
-      zen_mode = true;
+      zen_mode = false; #true;
       post_command = "sed -i \"/background {/,/}/ s|^\\([[:space:]]*path=\\).*|\\1$(awww query | grep -oP 'image:\\s*\\K.*')|\" ~/.config/hypr/hyprlock.conf && kill -9 $(pgrep waypaper)";
       number_of_columns = 5;
       swww_transition_type = "any";
@@ -24,7 +24,7 @@
       mpvpaper_sound = false;
       mpvpaper_options = "";
       use_xdg_state = true;
-      folder = ../../../wallpapers;
+      folder = toString ../../../wallpapers;
       #stylesheet = "/home/jb/.config/waypaper/style.css";
       #keybindings = "$HOME/.config/waypaper/keybindings.ini";
     };
