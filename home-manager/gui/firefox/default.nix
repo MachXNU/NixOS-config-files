@@ -11,10 +11,6 @@ let
   });
 in
 {
-  imports = [
-    ./pywalfox-native.nix
-  ];
-
   programs.firefox = {
     enable = true;
     package = myFirefox;
