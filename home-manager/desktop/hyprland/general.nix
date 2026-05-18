@@ -1,25 +1,28 @@
 _: {
+  wayland.windowManager.hyprland = {
+    #configType = "lua"; # crashes for now
 
-  wayland.windowManager.hyprland.settings = {
-    general = {
-      gaps_in = 4;
-      gaps_out = 8;
+    settings = {
+      general = {
+        gaps_in = 4;
+        gaps_out = 8;
 
-      border_size = 2;
+        border_size = 2;
 
-      "col.active_border" = "$primary"; 
+        "col.active_border" = "$primary";
         # was "rga(33ccffee) rgba(00ff99ee) 45deg";
-      
-      "col.inactive_border" = "$surface";
-      # was "rgba(595959aa)";
 
-      resize_on_border = false;
+        "col.inactive_border" = "$surface";
+        # was "rgba(595959aa)";
 
-      allow_tearing = false;
+        resize_on_border = false;
 
-      layout = "dwindle";
+        allow_tearing = false;
 
-      snap.enabled = true;
+        layout = "dwindle";
+
+        snap.enabled = true;
+      };
     };
   };
 }

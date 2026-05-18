@@ -47,29 +47,33 @@
           lspSignature.enable = false; # conflicts with blink in maximal
           otter-nvim.enable = false; # LSP support for files with multiple programming languages
           nvim-docs-view.enable = false;
-          harper-ls = {
-            enable = false; # English auto-correct running locally
-            settings = {
-              codeActions = {
-                ForceStable = false; # false = experimental fixes, true = stable, tested suggestions
+          presets = {
+            harper.enable = true;
+          };
+          servers = {
+            harper = {
+              settings = {
+                codeActions = {
+                  ForceStable = false; # false = experimental fixes, true = stable, tested suggestions
+                };
+                diagnosticSeverity = "hint"; # strict if "warning" or "error", passive if "info" or "hint"
+                dialect = "American"; # or British, etc. English only
+                fileDictPath = "";
+                #ignoredLintsPath = {}; # disable annoying rules, see later
+                isolateEnglish = true; # only check English blocks, tries to lint everything if true
+                linters = {
+                  BoringWords = true; # flags overused words like very, really, stuff, etc.
+                  PossessiveNoun = true; # Alices friend -> Alice's friend
+                  SentenceCapitalization = false;
+                  SpellCheck = true;
+                };
+                markdown = {
+                  IgnoreLinkTitle = true; # [link text](url "Title here")
+                };
+                maxFileLength = 120000; # lower if slow
+                userDictPath = "";
+                workspaceDictPath = "";
               };
-              diagnosticSeverity = "hint"; # strict if "warning" or "error", passive if "info" or "hint"
-              dialect = "American"; # or British, etc. English only
-              fileDictPath = "";
-              #ignoredLintsPath = {}; # disable annoying rules, see later
-              isolateEnglish = true; # only check English blocks, tries to lint everything if true
-              linters = {
-                BoringWords = true; # flags overused words like very, really, stuff, etc.
-                PossessiveNoun = true; # Alices friend -> Alice's friend
-                SentenceCapitalization = false;
-                SpellCheck = true;
-              };
-              markdown = {
-                IgnoreLinkTitle = true; # [link text](url "Title here")
-              };
-              maxFileLength = 120000; # lower if slow
-              userDictPath = "";
-              workspaceDictPath = "";
             };
           };
         };
