@@ -454,6 +454,22 @@
         "type": "github"
       }
     },
+    "nord-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1703048036,
+        "narHash": "sha256-8uPbkaJBXsOGeYCyXSO/aMzf87PE5McwZeww4eoYZy8=",
+        "owner": "shaunsingh",
+        "repo": "nord.nvim",
+        "rev": "80c1e5321505aeb22b7a9f23eb82f1e193c12470",
+        "type": "github"
+      },
+      "original": {
+        "owner": "shaunsingh",
+        "repo": "nord.nvim",
+        "type": "github"
+      }
+    },
     "nvf": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -538,6 +554,7 @@
         "millennium": "millennium",
         "nixpkgs": "nixpkgs_2",
         "noctalia": "noctalia",
+        "nord-nvim": "nord-nvim",
         "nvf": "nvf",
         "obsidian-nvim": "obsidian-nvim",
         "ranger-devicons": "ranger-devicons"

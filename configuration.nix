@@ -1,17 +1,23 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, lib, pkgs, inputs, headless, hostName, hostsMicroVMs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      # not needed anymore, due to the hosts separation
-      # ./hardware-configuration.nix
-      ./modules/ssh.nix
-      ./modules/networking.nix
-    ];
+  config,
+  lib,
+  pkgs,
+  inputs,
+  headless,
+  hostName,
+  hostsMicroVMs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    # not needed anymore, due to the hosts separation
+    # ./hardware-configuration.nix
+    ./modules/ssh.nix
+    ./modules/networking.nix
+  ];
 
   my.networking.useSystemdNetwork = hostsMicroVMs;
 
@@ -63,10 +69,23 @@
       "obsidian"
     ];
 
-  nixpkgs.overlays = [ inputs.millennium.overlays.default ];
+  nixpkgs = {
+    overlays = [
+      (final: prev: {
+        vimPlugins =
+          prev.vimPlugins
+          // {
+            nord-nvim = prev.vimUtils.buildVimPlugin {
+              name = "nord-nvim";
+              src = inputs.nord-nvim;
+            };
+          };
+      })
+    ];
+  };
 
   services.getty.autologinUser = "jb";
-  
+
   services.greetd = {
     enable = !headless;
     settings = {
@@ -114,25 +133,30 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jb = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "power" ];
+    extraGroups = ["wheel" "power"];
     shell = pkgs.zsh;
   };
-  
+
   programs.zsh.enable = true;
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
-  environment.systemPackages = with pkgs; [
-    # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    kitty
-    git
-    wireguard-tools 
-    home-manager
-  ]
-  ++ (if headless then [] else [ ddcutil ]);
+  environment.systemPackages = with pkgs;
+    [
+      # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+      wget
+      kitty
+      git
+      wireguard-tools
+      home-manager
+    ]
+    ++ (
+      if headless
+      then []
+      else [ddcutil]
+    );
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -171,6 +195,4 @@
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "25.11"; # Did you read the comment?
-
 }
-
