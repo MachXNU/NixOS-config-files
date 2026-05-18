@@ -214,6 +214,21 @@
             '';
             desc = "Prev diagnostic + popup";
           }
+          {
+            key = "gl";
+            mode = "n";
+            lua = true;
+            action = ''
+              function()
+                vim.diagnostic.open_float(nil, {
+                  focus = false,
+                  border = "rounded",
+                  source = "always",
+                })
+              end
+            '';
+            desc = "Show line diagnostic";
+          }
         ];
 
         utility = {
