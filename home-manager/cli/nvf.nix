@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.nvf = {
     enable = true;
     settings = {
@@ -184,6 +179,43 @@
           project-nvim.enable = false;
         };
 
+        keymaps = [
+          {
+            key = "]d";
+            mode = "n";
+            lua = true;
+            action = ''
+              function()
+                vim.diagnostic.jump({ count = 1 })
+                vim.defer_fn(function()
+                  vim.diagnostic.open_float(nil, {
+                    focus = false,
+                    border = "rounded",
+                  })
+                end, 50)
+              end
+            '';
+            desc = "Next diagnostic + popup";
+          }
+          {
+            key = "[d";
+            mode = "n";
+            lua = true;
+            action = ''
+              function()
+                vim.diagnostic.jump({ count = -1 })
+                vim.defer_fn(function()
+                  vim.diagnostic.open_float(nil, {
+                    focus = false,
+                    border = "rounded",
+                  })
+                end, 50)
+              end
+            '';
+            desc = "Prev diagnostic + popup";
+          }
+        ];
+
         utility = {
           ccc.enable = false;
           vim-wakatime.enable = false;
@@ -320,8 +352,6 @@
 
             require("onenord").setup()
             vim.cmd("colorscheme onenord")
-
-            apply_common_overrides()
 
             if is_dark then
               apply_dark_overrides()
