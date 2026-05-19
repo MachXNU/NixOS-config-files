@@ -8,7 +8,6 @@ let
     Value = true;
     Locked = true;
   };
-  pywalfox-extension-patched = pkgs.callPackage ./pywalfox-extension-patched.nix {};
 in
 {
   DisableTelemetry = true;
@@ -103,13 +102,13 @@ in
       installation_mode = "force_installed";
       private_browsing = true;
     };
-    "pywalfox@frewacom.org" = {
-      install_url = "file://${pywalfox-extension-patched}/pywalfox.xpi";
+    "{154cddeb-4c8b-4627-a478-c7e5b427ffdf}" = {
+      install_url = "https://addons.mozilla.org/firefox/downloads/latest/popupoff/latest.xpi";
       installation_mode = "force_installed";
       private_browsing = true;
     };
-    "{154cddeb-4c8b-4627-a478-c7e5b427ffdf}" = {
-      install_url = "https://addons.mozilla.org/firefox/downloads/latest/popupoff/latest.xpi";
+    "{f4c9e1d6-6630-4600-ad50-d223eab7f3e7}" = {
+      install_url = "https://addons.mozilla.org/firefox/downloads/latest/nord-firefox/latest.xpi";
       installation_mode = "force_installed";
       private_browsing = true;
     };

@@ -12,7 +12,7 @@
   ];
 
   home-manager.users.jb = { ... }: {
-    programs.noctalia-shell.settings.location.name = "Rennes, France";
+    programs.noctalia-shell.settings.location.name = "Rotterdam, NL";
   };
   
   # For external monitor brightness control

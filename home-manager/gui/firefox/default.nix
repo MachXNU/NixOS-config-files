@@ -11,13 +11,10 @@ let
   });
 in
 {
-  imports = [
-    ./pywalfox-native.nix
-  ];
-
   programs.firefox = {
     enable = true;
     package = myFirefox;
     profiles = import ./profiles.nix { inherit pkgs lib; };
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
   };
 }

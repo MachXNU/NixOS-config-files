@@ -29,7 +29,7 @@ nixpkgs.lib.nixosSystem {
 
         backupFileExtension = "backup";
         extraSpecialArgs = { 
-          inherit inputs headless;
+          inherit inputs headless hostName;
           myPackages = self.packages.${system};
         };
       };

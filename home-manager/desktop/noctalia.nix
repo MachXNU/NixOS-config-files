@@ -105,11 +105,10 @@
         enforceMinimum = false;
       };
       colorSchemes = {
-        darkMode = false;
+        predefinedScheme = "Nord";
         manualSunrise = "06:30";
         manualSunset = "20:00";
         schedulingMode = "manual";
-        useWallpaperColors = false;
       };
       controlCenter = {
         shortcuts = {
@@ -205,10 +204,6 @@
           }
           {
             enabled = true;
-            id = "pywalfox";
-          }
-          {
-            enabled = true;
             id = "telegram";
           }
           {
@@ -242,10 +237,6 @@
       [templates.hyprland]
       input_path = '~/.config/matugen/hyprland-colors.css'
       output_path = '~/.config/hypr/noctalia/noctalia-colors.conf'
-
-      [templates.rofi]
-      input_path = '~/.config/matugen/rofi-colors.rasi'
-      output_path = '~/.config/rofi/colors.rasi'
     '';
   };
 }

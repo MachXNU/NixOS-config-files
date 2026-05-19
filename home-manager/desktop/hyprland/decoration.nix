@@ -1,11 +1,10 @@
 _: {
-
   wayland.windowManager.hyprland.settings = {
     decoration = {
-      rounding       = 12;
+      rounding = 12;
       rounding_power = 2;
 
-      active_opacity   = 1.0;
+      active_opacity = 1.0;
       inactive_opacity = 0.85;
 
       # https://wiki.hypr.land/Configuring/Variables/#blur
@@ -18,7 +17,6 @@ _: {
 
       shadow = {
         enabled = true;
-        ignore_window = true;
         range = 30;
         offset = "0 2";
         render_power = 4;
