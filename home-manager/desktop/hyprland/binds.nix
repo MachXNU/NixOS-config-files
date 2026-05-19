@@ -1,5 +1,4 @@
-{ pkgs, ... }: {
-
+{pkgs, ...}: {
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
     "$menu" = "noctalia-shell ipc call launcher toggle";
@@ -14,8 +13,6 @@
         "$mod, E, exec, $fileManager"
         "$mod, V, togglefloating"
         "$mod, D, exec, $menu"
-        "$mod, P, pseudo, # dwindle"
-        "$mod, J, togglesplit, # dwindle"
         "$mod, L, exec, hyprlock"
         "$mod SHIFT, L, exec, hyprlock & (loginctl lock-session && sleep 0.5 && systemctl suspend)"
         "$mod, W, exec, waypaper --config-file $HOME/.config/waypaper/config.ini" #--state-file $HOME/.config/waypaper/status" # W as wallpaper
@@ -51,15 +48,16 @@
       ++ (
         # workspaces
         # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
-        builtins.concatLists (builtins.genList (i:
-          let ws = i + 1;
-          in [
-            "$mod, code:1${toString i}, workspace, ${toString ws}"
-            "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-          ]
-        )
-      9)
-    );
+        builtins.concatLists (builtins.genList (
+            i: let
+              ws = i + 1;
+            in [
+              "$mod, code:1${toString i}, workspace, ${toString ws}"
+              "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+            ]
+          )
+          9)
+      );
 
     bindm = [
       # Move/resize windows with mod + LMB/RMB and dragging
