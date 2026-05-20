@@ -8,7 +8,7 @@
   username,
   homeDirectory,
   isWork ? false,
-  isLinux ? false,
+  isLinux ? true,
   hyprlockLayout ? null,
 }: let
   pkgs = import nixpkgs {
