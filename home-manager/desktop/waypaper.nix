@@ -1,6 +1,4 @@
-{ config, pkgs, lib, ... }:
-
-{
+{lib, ...}: {
   home.file.".config/waypaper/config.ini".text = lib.generators.toINI {} {
     Settings = {
       backend = "awww";
@@ -25,7 +23,7 @@
       mpvpaper_options = "";
       use_xdg_state = true;
       folder = toString ../../wallpapers;
-      #stylesheet = "/home/jb/.config/waypaper/style.css";
+      #stylesheet = "$HOME/.config/waypaper/style.css";
       #keybindings = "$HOME/.config/waypaper/keybindings.ini";
     };
   };
