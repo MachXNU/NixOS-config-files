@@ -27,7 +27,8 @@ nixpkgs.lib.nixosSystem {
       {
         home-manager = {
           useGlobalPkgs = true;
-          useUserPackages = true;
+          #useUserPackages = true;
+          useUserPackages = false;
 
           users.${username} = {
             imports = [
