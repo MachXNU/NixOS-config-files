@@ -11,10 +11,7 @@
   isLinux ? false,
   hyprlockLayout ? null,
 }: let
-  pkgs = import nixpkgs {
-    inherit system;
-    config.allowUnfree = true;
-  };
+  pkgs = nixpkgs.legacyPackages.${system};
 in
   inputs.home-manager.lib.homeManagerConfiguration {
     inherit pkgs;
