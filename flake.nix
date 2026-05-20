@@ -58,6 +58,7 @@
       imports = [
         ./flake/nixosConfigurations.nix
         ./flake/packages.nix
+        ./flake/homeConfigurations.nix
       ];
     };
 }

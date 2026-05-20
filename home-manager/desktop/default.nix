@@ -1,4 +1,8 @@
-{ config, pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hypridle.nix
     ./hyprland
@@ -12,7 +16,6 @@
   home.packages = with pkgs; [
     adw-gtk3
     brightnessctl
-    obsidian
     hyprshot
     waypaper
   ];

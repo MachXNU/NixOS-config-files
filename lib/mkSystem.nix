@@ -29,7 +29,7 @@ nixpkgs.lib.nixosSystem {
           useGlobalPkgs = true;
           useUserPackages = true;
 
-          users.${username} = {...}: {
+          users.${username} = {
             imports = [
               inputs.nvf.homeManagerModules.default
               ../home-manager/home.nix
@@ -38,8 +38,11 @@ nixpkgs.lib.nixosSystem {
 
           backupFileExtension = "backup";
           extraSpecialArgs = {
-            inherit inputs headless hostName;
-            myPackages = self.packages.${system};
+            inherit inputs headless hostName username;
+            homeDirectory = "/home/${username}";
+            isLinux = true;
+            isWork = false;
+            hyprlockLayout = import ../hosts/${hostName}/hyprlock-layout.nix;
           };
         };
       }
