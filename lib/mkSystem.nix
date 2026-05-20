@@ -1,7 +1,13 @@
-{ inputs, nixpkgs, self }:
-
-{ system, hostName, headless ? false, hostsMicroVMs ? false }:
-
+{
+  inputs,
+  nixpkgs,
+  self,
+}: {
+  system,
+  hostName,
+  headless ? false,
+  hostsMicroVMs ? false,
+}:
 nixpkgs.lib.nixosSystem {
   inherit system;
 
@@ -9,31 +15,37 @@ nixpkgs.lib.nixosSystem {
     inherit inputs headless hostName hostsMicroVMs;
   };
 
-  modules = [
-    ../configuration.nix
-    ../hosts/${hostName}/programs.nix
-    ../hosts/${hostName}/hardware-configuration.nix
-    inputs.agenix.nixosModules.default
+  modules =
+    [
+      ../configuration.nix
+      ../hosts/${hostName}/programs.nix
+      ../hosts/${hostName}/hardware-configuration.nix
+      inputs.agenix.nixosModules.default
 
-    inputs.home-manager.nixosModules.home-manager {
-      home-manager = {
-        useGlobalPkgs = true;
-        useUserPackages = true;
+      inputs.home-manager.nixosModules.home-manager
+      {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
 
-        users.jb = { ... }: {
-          imports = [
-            inputs.nvf.homeManagerModules.default
-            ../home-manager/jb.nix
-          ];
+          users.jb = {...}: {
+            imports = [
+              inputs.nvf.homeManagerModules.default
+              ../home-manager/home.nix
+            ];
+          };
+
+          backupFileExtension = "backup";
+          extraSpecialArgs = {
+            inherit inputs headless hostName;
+            myPackages = self.packages.${system};
+          };
         };
-
-        backupFileExtension = "backup";
-        extraSpecialArgs = { 
-          inherit inputs headless hostName;
-          myPackages = self.packages.${system};
-        };
-      };
-    }
-  ]
-  ++ (if hostsMicroVMs then [ inputs.microvm.nixosModules.host ] else []);
+      }
+    ]
+    ++ (
+      if hostsMicroVMs
+      then [inputs.microvm.nixosModules.host]
+      else []
+    );
 }
