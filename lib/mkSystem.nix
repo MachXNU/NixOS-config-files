@@ -5,6 +5,7 @@
 }: {
   system,
   hostName,
+  username ? "jb",
   headless ? false,
   hostsMicroVMs ? false,
 }:
@@ -12,7 +13,7 @@ nixpkgs.lib.nixosSystem {
   inherit system;
 
   specialArgs = {
-    inherit inputs headless hostName hostsMicroVMs;
+    inherit inputs headless hostName hostsMicroVMs username;
   };
 
   modules =
@@ -28,7 +29,7 @@ nixpkgs.lib.nixosSystem {
           useGlobalPkgs = true;
           useUserPackages = true;
 
-          users.jb = {...}: {
+          users.${username} = {...}: {
             imports = [
               inputs.nvf.homeManagerModules.default
               ../home-manager/home.nix

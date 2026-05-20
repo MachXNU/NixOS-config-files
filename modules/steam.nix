@@ -1,5 +1,9 @@
-{ pkgs, lib, config, inputs, ... }:
-let
+{
+  pkgs,
+  inputs,
+  username,
+  ...
+}: let
   materialTheme = pkgs.stdenv.mkDerivation {
     pname = "Material-Theme for Millennium";
     version = "1.2.1";
@@ -19,15 +23,19 @@ let
       cp -r . $out/
     '';
   };
-in
-{
+in {
   programs.steam = {
     enable = true;
     #package = pkgs.millennium-steam;
-    extraCompatPackages = [ pkgs.proton-ge-bin ];
+    extraCompatPackages = [pkgs.proton-ge-bin];
   };
 
-  home-manager.users.jb = { pkgs, lib, config, ... }: {
+  home-manager.users.${username} = {
+    pkgs,
+    lib,
+    config,
+    ...
+  }: {
     xdg.configFile."matugen/millennium-template.css".text = ''
       :root {
         --theme-color: "Matugen";
@@ -39,16 +47,15 @@ in
     '';
 
     # copy the theme folder outside the Nix store, to be writable
-    home.activation.installMaterialTheme =
-      lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        target="$HOME/.steam/steam/steamui/skins/Material-Theme"
+    home.activation.installMaterialTheme = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      target="$HOME/.steam/steam/steamui/skins/Material-Theme"
 
-        if [ ! -d "$target" ]; then
-          mkdir -p "$(dirname "$target")"
-          cp -r ${materialTheme} "$target"
-          chmod -R u+w "$target"
-        fi
-      '';
+      if [ ! -d "$target" ]; then
+        mkdir -p "$(dirname "$target")"
+        cp -r ${materialTheme} "$target"
+        chmod -R u+w "$target"
+      fi
+    '';
 
     xdg.configFile."millennium/config.json".text = builtins.toJSON {
       general = {

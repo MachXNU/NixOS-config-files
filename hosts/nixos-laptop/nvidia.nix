@@ -1,7 +1,6 @@
-_:
-{
+{username, ...}: {
   # NixOS config
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
 
   hardware.graphics.enable = true;
 
@@ -11,7 +10,7 @@ _:
     powerManagement.enable = true;
     powerManagement.finegrained = true;
 
-    open = false; # aka proprietary drivers 
+    open = false; # aka proprietary drivers
 
     nvidiaSettings = true;
 
@@ -24,10 +23,10 @@ _:
     };
   };
 
-  boot.initrd.kernelModules = [ "i915" ];
+  boot.initrd.kernelModules = ["i915"];
 
   # Home-manager config (Wayland)
-  home-manager.users.jb = { ... }: {
+  home-manager.users.${username} = {...}: {
     wayland.windowManager.hyprland.settings = {
       monitor = ",1920x1080@60,auto,1";
 

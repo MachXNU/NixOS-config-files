@@ -2,11 +2,11 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
-  config,
   lib,
   pkgs,
   inputs,
   headless,
+  username,
   hostName,
   hostsMicroVMs,
   ...
@@ -84,20 +84,20 @@
     ];
   };
 
-  services.getty.autologinUser = "jb";
+  services.getty.autologinUser = username;
 
   services.greetd = {
     enable = !headless;
     settings = {
       default_session = {
         command = "start-hyprland";
-        user = "jb";
+        user = username;
       };
 
       # optional: skip the greeter entirely
       initial_session = {
         command = "start-hyprland";
-        user = "jb";
+        user = username;
       };
     };
   };
@@ -131,7 +131,7 @@
   # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.jb = {
+  users.users.${username} = {
     isNormalUser = true;
     extraGroups = ["wheel" "power"];
     shell = pkgs.zsh;

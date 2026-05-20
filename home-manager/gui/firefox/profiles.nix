@@ -1,7 +1,5 @@
-{ pkgs, lib, ...}:
-
-{
-  jb = {
+{...}: {
+  user = {
     id = 0;
     isDefault = true;
     settings = {

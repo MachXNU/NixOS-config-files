@@ -1,6 +1,4 @@
-{ pkgs, lib, config, ... }:
-
-{
+{username, ...}: {
   # NixOS settings
 
   # Remember to enable kernel modules and params with (for example):
@@ -17,10 +15,10 @@
 
   virtualisation.spiceUSBRedirection.enable = true;
 
-  users.users.jb.extraGroups = [ "libvirtd" ];
+  users.users.${username}.extraGroups = ["libvirtd"];
 
   # Home-Manager settings
-  home-manager.users.jb = { pkgs, ... }: {
+  home-manager.users.${username} = {pkgs, ...}: {
     home.packages = with pkgs; [
       qemu
       qemu_kvm
