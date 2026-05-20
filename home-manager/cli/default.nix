@@ -1,14 +1,24 @@
-{ pkgs, ...}: 
-
 {
-  imports = [
-    ./git.nix
-    ./neovim.nix
-    ./nvf.nix
-    ./ranger.nix
-    ./ssh.nix
-    ./zsh.nix
-  ];
+  pkgs,
+  isWork,
+  ...
+}: {
+  imports =
+    [
+      ./home-manager.nix
+      ./git.nix
+      ./neovim.nix
+      ./nvf.nix
+      ./ranger.nix
+      ./zsh.nix
+    ]
+    ++ (
+      if !isWork
+      then [
+        ./ssh.nix
+      ]
+      else []
+    );
 
   home.packages = with pkgs; [
     file
@@ -17,7 +27,6 @@
     efibootmgr
     jq
     fastfetch
-    protonvpn-gui
     jq
     zip
     unzip

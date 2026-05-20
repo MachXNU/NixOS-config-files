@@ -1,14 +1,22 @@
-{ pkgs, ... }: 
 {
+  pkgs,
+  isWork,
+  ...
+}: {
   imports = [
-    # GUI apps
     ./kitty.nix
     ./firefox
   ];
 
-  home.packages = with pkgs; [
-    pavucontrol
-    networkmanagerapplet
-    telegram-desktop
-  ];
+  home.packages = with pkgs;
+    [
+      pavucontrol
+      networkmanagerapplet
+      obsidian
+    ]
+    ++ (
+      if !isWork
+      then [telegram-desktop]
+      else []
+    );
 }

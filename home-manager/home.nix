@@ -1,8 +1,14 @@
 {
   lib,
   headless,
+  username,
+  homeDirectory,
+  isLinux,
   ...
 }: {
+  home.username = username;
+  home.homeDirectory = homeDirectory;
+
   home.stateVersion = "25.11";
 
   imports = lib.flatten [
@@ -12,7 +18,11 @@
       if headless
       then []
       else [
-        ./desktop
+        (
+          if isLinux
+          then [./desktop]
+          else []
+        )
         ./gui
         ./fonts
       ]
