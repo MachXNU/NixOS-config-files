@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   isWork,
   ...
 }: {
@@ -31,4 +32,8 @@
     zip
     unzip
   ];
+
+  home.shellAliases = {
+    svim = "sudo -E ${pkgs.vim}/bin/vim";
+  };
 }
