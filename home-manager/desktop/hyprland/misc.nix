@@ -5,7 +5,7 @@
       disable_hyprland_logo = true;
     };
 
-    monitors = hyprlandConfig.monitors or "";
+    monitor = hyprlandConfig.monitor or "";
 
     exec-once = [
       # "killall -q swww;  sleep .5 && swww-daemon"
