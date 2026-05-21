@@ -1,5 +1,5 @@
 {
-  monitors = ",1920x1080@60,auto,1,bitdepth,10";
+  monitor = ",1920x1080@60,auto,1,bitdepth,10";
 
   env = [
     "LIBVA_DRIVER_NAME,nvidia"
