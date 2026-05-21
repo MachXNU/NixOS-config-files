@@ -14,6 +14,7 @@ in {
       isWork = true;
       username = "jb";
       homeDirectory = "/home/jb";
+      hyprlandConfig = import ../hosts/debian-work/hyprland.nix;
       hyprlockLayout = import ../hosts/debian-work/hyprlock-layout.nix;
     };
 
