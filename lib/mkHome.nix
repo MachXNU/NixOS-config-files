@@ -9,6 +9,7 @@
   homeDirectory,
   isWork ? false,
   isLinux ? true,
+  hyprlandConfig ? {},
   hyprlockLayout ? null,
 }: let
   pkgs = import nixpkgs {
@@ -27,6 +28,7 @@ in
         homeDirectory
         isWork
         isLinux
+        hyprlandConfig
         hyprlockLayout
         ;
     };

@@ -1,10 +1,11 @@
-_: {
-
+{hyprlandConfig ? {}, ...}: {
   wayland.windowManager.hyprland.settings = {
     misc = {
       force_default_wallpaper = 0;
-      disable_hyprland_logo   = true;
+      disable_hyprland_logo = true;
     };
+
+    monitors = hyprlandConfig.monitors or "";
 
     exec-once = [
       # "killall -q swww;  sleep .5 && swww-daemon"
@@ -13,14 +14,16 @@ _: {
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       "waypaper --restore --state-file $HOME/.config/waypaper/status"
     ];
-  
+
     source = "~/.config/hypr/noctalia/noctalia-colors.conf";
 
-    env = [
-      "XDG_SESSION_TYPE,wayland"
-      "XCURSOR_THEME,Bibata-Modern-Ice"
-      "XCURSOR_SIZE,24"
-    ];
+    env =
+      (hyprlandConfig.env or [])
+      ++ [
+        "XDG_SESSION_TYPE,wayland"
+        "XCURSOR_THEME,Bibata-Modern-Ice"
+        "XCURSOR_SIZE,24"
+      ];
   };
 
   xdg.configFile."matugen/hyprland-colors.css".text = ''
