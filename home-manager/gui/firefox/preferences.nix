@@ -1,5 +1,8 @@
-{ pkgs, downloadDir, ... }:
-let
+{
+  pkgs,
+  downloadDir,
+  ...
+}: let
   locked_false = {
     Value = false;
     Locked = true;
@@ -8,8 +11,7 @@ let
     Value = true;
     Locked = true;
   };
-in
-{
+in {
   DisableTelemetry = true;
   DisableFirefoxStudies = true;
   EnableTrackingProtection = {
@@ -94,7 +96,7 @@ in
       private_browsing = true;
     };
     "addon@darkreader.org" = {
-      install_url = "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi";      
+      install_url = "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi";
       installation_mode = "force_installed";
       private_browsing = true;
     };
@@ -117,10 +119,19 @@ in
   SkipTermsOfUse = true;
   Preferences = {
     "places.history.enabled" = locked_false; # don't save history to disk
-    "browser.sessionstore.max_tabs_undo" = { Value = 0; Lockd = true; }; # disable recently closed tabs
-    "browser.sessionstore.max_windows_undo" = { Value = 0; Locked = true; }; # disable session restore
+    "browser.sessionstore.max_tabs_undo" = {
+      Value = 0;
+      Locked = true;
+    }; # disable recently closed tabs
+    "browser.sessionstore.max_windows_undo" = {
+      Value = 0;
+      Locked = true;
+    }; # disable session restore
     "browser.sessionstore.resume_from_crash" = locked_false;
-    "browser.sessionstore.privacy_level" = { Value = 2; Locked = true; };
+    "browser.sessionstore.privacy_level" = {
+      Value = 2;
+      Locked = true;
+    };
 
     "extensions.pocket.enabled" = locked_false;
     "extensions.screenshots.disabled" = locked_true;
