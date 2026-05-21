@@ -43,6 +43,7 @@ nixpkgs.lib.nixosSystem {
             homeDirectory = "/home/${username}";
             isLinux = true;
             isWork = false;
+            hyprlandConfig = import ../hosts/${hostName}/hyprland.nix;
             hyprlockLayout = import ../hosts/${hostName}/hyprlock-layout.nix;
           };
         };
