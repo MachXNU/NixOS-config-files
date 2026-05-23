@@ -11,6 +11,7 @@
   isLinux ? true,
   hyprlandConfig ? {},
   hyprlockLayout ? null,
+  runsVMs ? false,
 }: let
   pkgs = import nixpkgs {
     inherit system;
@@ -33,8 +34,14 @@ in
         ;
     };
 
-    modules = [
-      inputs.nvf.homeManagerModules.default
-      ../home-manager/home.nix
-    ];
+    modules =
+      [
+        inputs.nvf.homeManagerModules.default
+        ../home-manager/home.nix
+      ]
+      ++ (
+        if runsVMs
+        then [../modules/home-manager/kvm.nix]
+        else []
+      );
   }
