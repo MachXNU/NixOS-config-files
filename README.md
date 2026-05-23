@@ -315,6 +315,33 @@ echo i2c-dev | sudo tee /etc/modules-load.d/i2c-dev.conf
 sudo apt install bluez
 ```
 
+- Install the required system packages to run VMs:
+
+```bash
+sudo apt update
+
+sudo apt install \
+  qemu-system-x86 \
+  qemu-utils \
+  libvirt-daemon-system \
+  libvirt-clients \
+  bridge-utils \
+  ovmf \
+  swtpm \
+  dnsmasq-base
+```
+
+- Then:
+
+```bash
+sudo systemctl enable --now libvirtd
+sudo systemctl enable --now virtlogd
+
+sudo usermod -aG libvirt,kvm $USER
+```
+
+- Logout, and re-login
+
 ## Misc
 
 Remove all the `.backup` files that HM creates before rebuiding:
