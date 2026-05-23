@@ -277,6 +277,43 @@ chsh -s $(which zsh) $(whoami)
 
 - Logout (kill Hyprland with Super+M), login again and check the shell is now
   zsh
+- Install some dependencies for Noctalia shell to work better:
+
+```bash
+sudo apt install power-profiles-daemon network-manager
+```
+
+- For controlling external monitors' brightness via `ddcutil`, we must first
+  install it:
+
+```bash
+sudo apt install ddcutil
+```
+
+- Then add our user to the `i2c` group:
+
+```bash
+sudo usermod -aG i2c $USER
+```
+
+- Then log out and log back in.
+- Also load the i2c kernel module
+
+```bash
+sudo modprobe i2c-dev
+```
+
+- Make it permanent
+
+```bash
+echo i2c-dev | sudo tee /etc/modules-load.d/i2c-dev.conf
+```
+
+- Install `bluez` for Bluetooth support
+
+```bash
+sudo apt install bluez
+```
 
 ## Misc
 
