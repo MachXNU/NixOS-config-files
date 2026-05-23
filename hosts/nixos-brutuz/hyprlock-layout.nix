@@ -40,4 +40,5 @@
     halign = "center";
     valign = "center";
   };
+  auth = {};
 }
