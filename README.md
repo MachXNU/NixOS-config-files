@@ -155,31 +155,13 @@ much as possible.\
 Fortunately, most of the interesting config is managed by Home Manager, so we
 can port that over to a non-NixOS system.
 
-I chose Debian as my Linux distribution for this system.\
-The instructions below show how to run my Home Manager config on such a Debian
-13 host.
+I chose Ubuntu as my Linux distribution for this system.\
+The instructions below show how to run my Home Manager config on such an Ubuntu
+26.04 Server host.
 
-- Perform a clean install of Debian 13
-- Login as root and install `sudo`
-
-```bash
-apt install sudo
-```
-
-- Add the non-priviledged user to the sudo group
-
-```
-usermod -aG sudo <username>
-```
-
-- Logout from root, and login as the user
-- Install `git` and `curl`
-
-```
-sudo apt update
-sudo apt install git curl
-```
-
+- Perform a clean install of Ubuntu Server (so we don't get a desktop
+  environment).
+- Login as your user, now referred to as `<username>`.
 - Install Nix, for example via the
   [Determinate Systems](https://determinate.systems/nix-installer/) installer.
 - Create an SSH key, add it to your system and to GitHub, then clone this repo
