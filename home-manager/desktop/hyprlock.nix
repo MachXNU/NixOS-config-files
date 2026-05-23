@@ -28,9 +28,8 @@ in {
             monitor = "";
             text = "cmd[update:1000] echo \"<span>$(date +\"%I\")</span>\"";
             color = "rgb(236, 239, 244)";
-            font_size = 200;
+            #font_size = 200;
             font_family = "Stretch Pro";
-            # position = "-80, 190";
           }
           // layout.hour
         )
@@ -41,7 +40,7 @@ in {
             monitor = "";
             text = "cmd[update:1000] echo \"<span>$(date +\"%M\")</span>\"";
             color = "rgba(113, 130, 155, 0.9)";
-            font_size = 200;
+            #font_size = 200;
             font_family = "Stretch Pro";
           }
           // layout.minute
@@ -51,10 +50,9 @@ in {
         (
           {
             monitor = "";
-            text = "cmd[update:1000] echo -e \"$(date +\"%d %B, %a.\")\"";
-            # color = "rgba(255, 255, 255, 100)";
+            text = "cmd[update:1000] echo \"<span>$(date +\"%d %B, %a.\")</span>\"";
             color = "rgba(59, 66, 82, 0.95)";
-            font_size = 28;
+            #font_size = 28;
             font_family = "DejaVu Sans";
           }
           // layout.date
@@ -64,7 +62,6 @@ in {
         (
           {
             monitor = "";
-            # text = "    $USER";
             text = " Hi,  $USER";
             color = "rgba(236, 239, 244, 0.8)";
             font_family = "SF Pro Display Bold";

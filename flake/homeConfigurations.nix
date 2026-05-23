@@ -9,13 +9,13 @@
   };
 in {
   flake.homeConfigurations = {
-    "debian" = mkHome {
+    "ubuntu" = mkHome {
       system = "x86_64-linux";
       isWork = true;
       username = "jb";
       homeDirectory = "/home/jb";
-      hyprlandConfig = import ../hosts/debian-work/hyprland.nix;
-      hyprlockLayout = import ../hosts/debian-work/hyprlock-layout.nix;
+      hyprlandConfig = import ../hosts/ubuntu-work/hyprland.nix;
+      hyprlockLayout = import ../hosts/ubuntu-work/hyprlock-layout.nix;
     };
 
     "macbookpro" = mkHome {

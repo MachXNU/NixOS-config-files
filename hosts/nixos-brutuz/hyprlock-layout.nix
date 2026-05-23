@@ -3,18 +3,21 @@
     position = "-8%, 23%";
     halign = "center";
     valign = "center";
+    font_size = 200;
   };
 
   minute = {
     position = "0, 9%";
     halign = "center";
     valign = "center";
+    font_size = 200;
   };
 
   date = {
     position = "2%, 1%";
     halign = "center";
     valign = "center";
+    font_size = 25;
   };
 
   user = {
