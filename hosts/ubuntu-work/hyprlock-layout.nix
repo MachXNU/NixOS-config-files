@@ -39,5 +39,13 @@
     position = "0, -43%";
     halign = "center";
     valign = "center";
+    fade_on_empty = true;
+    fade_timeout = 0;
+  };
+  auth = {
+    fingerprint = {
+      enabled = true;
+      retry_delay = 250;
+    };
   };
 }

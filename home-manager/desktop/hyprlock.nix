@@ -109,6 +109,11 @@ in {
         vibrancy = 0.1696;
         vibrancy_darkness = 0.0;
       };
+      auth =
+        {
+          pam.enabled = true;
+        }
+        // layout.auth;
     };
   };
 }
