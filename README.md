@@ -341,6 +341,37 @@ sudo usermod -aG libvirt,kvm $USER
 ```
 
 - Logout, and re-login
+- To fix the fingerprint reader not working after sleep, create
+  `/lib/systemd/system-sleep/fprintd-reset` with `sudo` and put:
+
+```bash#!/bin/sh
+case $1 in
+    post)
+        systemctl restart fprintd
+        ;;
+esac
+```
+
+- Then make it executable:
+
+```bash
+sudo chmod +x /lib/systemd/system-sleep/fprintd-reset
+```
+
+- Install audio stack:
+
+```bash
+sudo apt update
+sudo apt install pipewire pipewire-pulse wireplumber pulseaudio-utils alsa-utils libspa-0.2-bluetooth
+```
+
+- Then enable the services:
+
+```bash
+systemctl --user --now enable pipewire pipewire-pulse wireplumber
+```
+
+- Log out and log back in.
 
 ## Misc
 
