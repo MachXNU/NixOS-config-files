@@ -1,9 +1,12 @@
-{
+let
+  hyprlockMonitor = "eDP-1";
+in {
   hour = {
     position = "-8%, 26%";
     halign = "center";
     valign = "center";
     font_size = 180;
+    monitor = hyprlockMonitor;
   };
 
   minute = {
@@ -11,6 +14,7 @@
     halign = "center";
     valign = "center";
     font_size = 180;
+    monitor = hyprlockMonitor;
   };
 
   date = {
@@ -18,6 +22,7 @@
     halign = "center";
     valign = "center";
     font_size = 20;
+    monitor = hyprlockMonitor;
   };
 
   user = {
@@ -25,6 +30,7 @@
     position = "0, -38%";
     halign = "center";
     valign = "center";
+    monitor = hyprlockMonitor;
   };
 
   image = {
@@ -32,6 +38,7 @@
     position = "0, -30%";
     halign = "center";
     valign = "center";
+    monitor = hyprlockMonitor;
   };
 
   input = {
@@ -41,6 +48,7 @@
     valign = "center";
     fade_on_empty = true;
     fade_timeout = 0;
+    monitor = hyprlockMonitor;
   };
   auth = {
     fingerprint = {
