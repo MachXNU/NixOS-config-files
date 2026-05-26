@@ -55,7 +55,7 @@
               useDistroLogo = false;
             }
             {
-              id = "WiFi";
+              id = "Network";
             }
             {
               id = "Bluetooth";
@@ -233,7 +233,7 @@
     user-templates = ''
       [config]
       # General template settings
-      
+
       [templates.hyprland]
       input_path = '~/.config/matugen/hyprland-colors.css'
       output_path = '~/.config/hypr/noctalia/noctalia-colors.conf'
