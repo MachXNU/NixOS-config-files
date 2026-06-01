@@ -372,6 +372,14 @@ systemctl --user --now enable pipewire pipewire-pulse wireplumber
 ```
 
 - Log out and log back in.
+- To resolve the issue of the system waiting for online network at boot, disable
+  `systemd` network, as NetworkManager is already managing it:
+
+```bash
+sudo systemctl disable systemd-networkd-wait-online.service
+sudo systemctl disable NetworkManager-wait-online.service
+sudo systemctl mask systemd-networkd-wait-online.service
+```
 
 ## Misc
 
