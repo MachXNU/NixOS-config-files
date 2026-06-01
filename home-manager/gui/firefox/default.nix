@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  isWork,
   ...
 }: {
   programs.firefox = {
@@ -17,7 +18,7 @@
     };
 
     policies = import ./preferences.nix {
-      inherit pkgs;
+      inherit pkgs isWork;
       downloadDir = "${config.home.homeDirectory}/Downloads";
     };
   };
