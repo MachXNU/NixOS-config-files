@@ -15,8 +15,11 @@
       obsidian
     ]
     ++ (
-      if !isWork
-      then [telegram-desktop]
-      else []
+      if isWork
+      then [
+        thunderbird
+        picoscope
+      ]
+      else [telegram-desktop]
     );
 }

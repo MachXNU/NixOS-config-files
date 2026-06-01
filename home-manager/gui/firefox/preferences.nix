@@ -1,6 +1,7 @@
 {
   pkgs,
   downloadDir,
+  isWork,
   ...
 }: let
   locked_false = {
@@ -45,10 +46,16 @@ in {
     Locked = true;
   };
   Cookies = {
-    Allow = [
-      "https://github.com"
-      "https://appleid.apple.com"
-    ];
+    Allow =
+      [
+        "https://github.com"
+        "https://appleid.apple.com"
+      ]
+      ++ (
+        if isWork
+        then ["https://login.microsoftonline.com"]
+        else []
+      );
     Locked = true;
   };
   PromptForDownloadLocation = false;
