@@ -1,4 +1,8 @@
-{hyprlandConfig ? {}, ...}: {
+{
+  hyprlandConfig ? { },
+  ...
+}:
+{
   wayland.windowManager.hyprland.settings = {
     misc = {
       force_default_wallpaper = 0;
@@ -17,13 +21,11 @@
 
     source = "~/.config/hypr/noctalia/noctalia-colors.conf";
 
-    env =
-      (hyprlandConfig.env or [])
-      ++ [
-        "XDG_SESSION_TYPE,wayland"
-        "XCURSOR_THEME,Bibata-Modern-Ice"
-        "XCURSOR_SIZE,24"
-      ];
+    env = (hyprlandConfig.env or [ ]) ++ [
+      "XDG_SESSION_TYPE,wayland"
+      "XCURSOR_THEME,Bibata-Modern-Ice"
+      "XCURSOR_SIZE,24"
+    ];
   };
 
   xdg.configFile."matugen/hyprland-colors.css".text = ''

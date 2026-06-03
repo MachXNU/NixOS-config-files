@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.nvf = {
     enable = true;
     settings = {
@@ -22,8 +23,8 @@
         autocmds = [
           # Override indent to 2 spaces for .nix files
           {
-            event = ["FileType"];
-            pattern = ["nix"];
+            event = [ "FileType" ];
+            pattern = [ "nix" ];
             command = "setlocal tabstop=2 shiftwidth=2 softtabstop=2";
           }
         ];
@@ -99,11 +100,11 @@
             enable = true;
             format = {
               enable = true;
-              type = ["nixfmt"];
+              type = [ "nixfmt" ];
             };
             lsp = {
               enable = true;
-              servers = ["nixd"];
+              servers = [ "nixd" ];
             };
           };
           python.enable = false;
@@ -291,10 +292,13 @@
               nix = "110";
               ruby = "120";
               java = "130";
-              go = ["90" "130"];
+              go = [
+                "90"
+                "130"
+              ];
             };
           };
-          fastaction.enable = false; #broken
+          fastaction.enable = false; # broken
         };
 
         session = {

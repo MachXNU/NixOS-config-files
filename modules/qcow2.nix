@@ -1,4 +1,11 @@
-{ config, lib, pkgs, modulesPath, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  ...
+}:
+{
   imports = [
     "${toString modulesPath}/profiles/qemu-guest.nix"
   ];
@@ -9,7 +16,7 @@
     fsType = "ext4";
   };
 
-  boot.kernelParams = ["console=ttyS0"];
+  boot.kernelParams = [ "console=ttyS0" ];
   boot.loader.grub.device = lib.mkDefault "/dev/vda";
 
   system.build.qcow2 = import "${modulesPath}/../lib/make-disk-image.nix" {
@@ -20,4 +27,3 @@
     partitionTableType = "hybrid";
   };
 }
-

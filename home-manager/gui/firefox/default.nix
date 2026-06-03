@@ -4,7 +4,8 @@
   config,
   isWork,
   ...
-}: {
+}:
+{
   programs.firefox = {
     enable = true;
 

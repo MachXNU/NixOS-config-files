@@ -3,7 +3,8 @@
   downloadDir,
   isWork,
   ...
-}: let
+}:
+let
   locked_false = {
     Value = false;
     Locked = true;
@@ -12,7 +13,8 @@
     Value = true;
     Locked = true;
   };
-in {
+in
+{
   DisableTelemetry = true;
   DisableFirefoxStudies = true;
   EnableTrackingProtection = {
@@ -46,16 +48,11 @@ in {
     Locked = true;
   };
   Cookies = {
-    Allow =
-      [
-        "https://github.com"
-        "https://appleid.apple.com"
-      ]
-      ++ (
-        if isWork
-        then ["https://login.microsoftonline.com"]
-        else []
-      );
+    Allow = [
+      "https://github.com"
+      "https://appleid.apple.com"
+    ]
+    ++ (if isWork then [ "https://login.microsoftonline.com" ] else [ ]);
     Locked = true;
   };
   PromptForDownloadLocation = false;

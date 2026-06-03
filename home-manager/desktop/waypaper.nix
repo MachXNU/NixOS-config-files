@@ -1,5 +1,6 @@
-{lib, ...}: {
-  home.file.".config/waypaper/config.ini".text = lib.generators.toINI {} {
+{ lib, ... }:
+{
+  home.file.".config/waypaper/config.ini".text = lib.generators.toINI { } {
     Settings = {
       backend = "awww";
       language = "en";

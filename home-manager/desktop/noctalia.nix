@@ -2,7 +2,8 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   imports = [
     inputs.noctalia.homeModules.default
   ];
@@ -113,16 +114,16 @@
       controlCenter = {
         shortcuts = {
           left = [
-            {id = "AirplaneMode";}
-            {id = "Network";}
-            {id = "Bluetooth";}
-            {id = "DarkMode";}
+            { id = "AirplaneMode"; }
+            { id = "Network"; }
+            { id = "Bluetooth"; }
+            { id = "DarkMode"; }
           ];
           right = [
-            {id = "Notifications";}
-            {id = "PowerProfile";}
-            {id = "KeepAwake";}
-            {id = "NightLight";}
+            { id = "Notifications"; }
+            { id = "PowerProfile"; }
+            { id = "KeepAwake"; }
+            { id = "NightLight"; }
           ];
         };
       };

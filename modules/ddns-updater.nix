@@ -6,7 +6,7 @@
     group = "ddns";
   };
 
-  users.groups.ddns = {};
+  users.groups.ddns = { };
 
   systemd.services.ddns-updater.serviceConfig = {
     DynamicUser = lib.mkForce false;
@@ -55,7 +55,7 @@
   services.ddns-updater = {
     enable = true;
     environment = {
-      SERVER_ENABLED="no";
+      SERVER_ENABLED = "no";
       CONFIG_FILEPATH = config.age.secrets.ddns-updater-config-json.path;
       PERIOD = "5m";
       LOG_LEVEL = "info";

@@ -5,7 +5,8 @@
   homeDirectory,
   isLinux,
   ...
-}: {
+}:
+{
   home.username = username;
   home.homeDirectory = homeDirectory;
 
@@ -15,17 +16,14 @@
     ./cli
 
     (
-      if headless
-      then []
-      else [
-        (
-          if isLinux
-          then [./desktop]
-          else []
-        )
-        ./gui
-        ./fonts
-      ]
+      if headless then
+        [ ]
+      else
+        [
+          (if isLinux then [ ./desktop ] else [ ])
+          ./gui
+          ./fonts
+        ]
     )
   ];
 

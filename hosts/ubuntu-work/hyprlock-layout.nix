@@ -1,6 +1,7 @@
 let
   hyprlockMonitor = "eDP-1";
-in {
+in
+{
   hour = {
     position = "-8%, 26%";
     halign = "center";

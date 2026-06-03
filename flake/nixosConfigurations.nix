@@ -13,7 +13,8 @@ let
     inherit inputs self;
     nixpkgs = inputs.nixpkgs;
   };
-in {
+in
+{
   flake.nixosConfigurations = {
     nixos-vm = mkSystem {
       system = "aarch64-linux";
