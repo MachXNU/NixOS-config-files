@@ -2,7 +2,8 @@
   inputs,
   nixpkgs,
   self,
-}: {
+}:
+{
   system,
   hostName,
   username ? "jb",
@@ -13,45 +14,51 @@ nixpkgs.lib.nixosSystem {
   inherit system;
 
   specialArgs = {
-    inherit inputs headless hostName hostsMicroVMs username;
+    inherit
+      inputs
+      headless
+      hostName
+      hostsMicroVMs
+      username
+      ;
   };
 
-  modules =
-    [
-      ../configuration.nix
-      ../hosts/${hostName}/programs.nix
-      ../hosts/${hostName}/hardware-configuration.nix
-      inputs.agenix.nixosModules.default
+  modules = [
+    ../configuration.nix
+    ../hosts/${hostName}/programs.nix
+    ../hosts/${hostName}/hardware-configuration.nix
+    inputs.agenix.nixosModules.default
 
-      inputs.home-manager.nixosModules.home-manager
-      {
-        home-manager = {
-          useGlobalPkgs = true;
-          #useUserPackages = true;
-          useUserPackages = false;
+    inputs.home-manager.nixosModules.home-manager
+    {
+      home-manager = {
+        useGlobalPkgs = true;
+        #useUserPackages = true;
+        useUserPackages = false;
 
-          users.${username} = {
-            imports = [
-              inputs.nvf.homeManagerModules.default
-              ../home-manager/home.nix
-            ];
-          };
-
-          backupFileExtension = "backup";
-          extraSpecialArgs = {
-            inherit inputs headless hostName username;
-            homeDirectory = "/home/${username}";
-            isLinux = true;
-            isWork = false;
-            hyprlandConfig = import ../hosts/${hostName}/hyprland.nix;
-            hyprlockLayout = import ../hosts/${hostName}/hyprlock-layout.nix;
-          };
+        users.${username} = {
+          imports = [
+            inputs.nvf.homeManagerModules.default
+            ../home-manager/home.nix
+          ];
         };
-      }
-    ]
-    ++ (
-      if hostsMicroVMs
-      then [inputs.microvm.nixosModules.host]
-      else []
-    );
+
+        backupFileExtension = "backup";
+        extraSpecialArgs = {
+          inherit
+            inputs
+            headless
+            hostName
+            username
+            ;
+          homeDirectory = "/home/${username}";
+          isLinux = true;
+          isWork = false;
+          hyprlandConfig = import ../hosts/${hostName}/hyprland.nix;
+          hyprlockLayout = import ../hosts/${hostName}/hyprlock-layout.nix;
+        };
+      };
+    }
+  ]
+  ++ (if hostsMicroVMs then [ inputs.microvm.nixosModules.host ] else [ ]);
 }

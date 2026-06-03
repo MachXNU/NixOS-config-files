@@ -2,12 +2,14 @@
   inputs,
   self,
   ...
-}: let
+}:
+let
   mkHome = import ../lib/mkHome.nix {
     inherit inputs self;
     nixpkgs = inputs.nixpkgs;
   };
-in {
+in
+{
   flake.homeConfigurations = {
     "ubuntu" = mkHome {
       system = "x86_64-linux";

@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   options.my.tailscale = {
@@ -18,11 +23,8 @@
   config = {
     services.tailscale = {
       enable = true;
-      authKeyFile =
-        lib.mkIf (config.my.tailscale.authKeyFile != null)
-          config.my.tailscale.authKeyFile;
-      extraUpFlags =
-        lib.optional config.my.tailscale.enableSSH "--ssh";
+      authKeyFile = lib.mkIf (config.my.tailscale.authKeyFile != null) config.my.tailscale.authKeyFile;
+      extraUpFlags = lib.optional config.my.tailscale.enableSSH "--ssh";
     };
 
     # Firewall

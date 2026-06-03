@@ -2,12 +2,12 @@
   hostName,
   hyprlockLayout ? null,
   ...
-}: let
+}:
+let
   layout =
-    if hyprlockLayout != null
-    then hyprlockLayout
-    else import ./desktop/hyprlock-default-layout.nix;
-in {
+    if hyprlockLayout != null then hyprlockLayout else import ./desktop/hyprlock-default-layout.nix;
+in
+{
   programs.hyprlock = {
     enable = true;
 
@@ -19,7 +19,7 @@ in {
     settings = {
       source = "~/.config/hypr/noctalia/noctalia-colors.conf";
 
-      general = {};
+      general = { };
 
       label = [
         # Time Hour
@@ -71,34 +71,32 @@ in {
       ];
 
       # Profile-Photo
-      image =
-        {
-          monitor = "";
-          path = toString ./.face;
-          border_size = 2;
-          border_color = "rgba(216, 222, 233, 0.80)";
-          rounding = -1;
-          rotate = 0;
-          reload_time = -1;
-          reload_cmd = "";
-        }
-        // layout.image;
+      image = {
+        monitor = "";
+        path = toString ./.face;
+        border_size = 2;
+        border_color = "rgba(216, 222, 233, 0.80)";
+        rounding = -1;
+        rotate = 0;
+        reload_time = -1;
+        reload_cmd = "";
+      }
+      // layout.image;
 
-      input-field =
-        {
-          monitor = "";
-          outline_thickness = 2;
-          outer_color = "rgba(0, 0, 0, 0)";
-          inner_color = "rgba(255, 255, 255, 0.1)";
-          font_color = "rgb(200, 200, 200)";
-          fade_on_empty = false;
-          check_color = "$primary";
-          fail_color = "$on_error";
-          font_family = "Deja Vu Sans";
-          placeholder_text = "<span foreground=\"##ffffff99\">Enter password</span>";
-          hide_input = false;
-        }
-        // layout.input;
+      input-field = {
+        monitor = "";
+        outline_thickness = 2;
+        outer_color = "rgba(0, 0, 0, 0)";
+        inner_color = "rgba(255, 255, 255, 0.1)";
+        font_color = "rgb(200, 200, 200)";
+        fade_on_empty = false;
+        check_color = "$primary";
+        fail_color = "$on_error";
+        font_family = "Deja Vu Sans";
+        placeholder_text = "<span foreground=\"##ffffff99\">Enter password</span>";
+        hide_input = false;
+      }
+      // layout.input;
 
       background = {
         monitor = "";
@@ -109,11 +107,10 @@ in {
         vibrancy = 0.1696;
         vibrancy_darkness = 0.0;
       };
-      auth =
-        {
-          pam.enabled = true;
-        }
-        // layout.auth;
+      auth = {
+        pam.enabled = true;
+      }
+      // layout.auth;
     };
   };
 }

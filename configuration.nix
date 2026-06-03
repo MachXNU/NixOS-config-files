@@ -10,7 +10,8 @@
   hostName,
   hostsMicroVMs,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     # not needed anymore, due to the hosts separation
@@ -59,7 +60,8 @@
 
   # Unfree packages cannot be whitelisted in modules
   # thus this part must stay in configuration.nix
-  nixpkgs.config.allowUnfreePredicate = pkg:
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
     builtins.elem (lib.getName pkg) [
       "nvidia-x11"
       "nvidia-settings"
@@ -72,14 +74,12 @@
   nixpkgs = {
     overlays = [
       (final: prev: {
-        vimPlugins =
-          prev.vimPlugins
-          // {
-            nord-nvim = prev.vimUtils.buildVimPlugin {
-              name = "nord-nvim";
-              src = inputs.nord-nvim;
-            };
+        vimPlugins = prev.vimPlugins // {
+          nord-nvim = prev.vimUtils.buildVimPlugin {
+            name = "nord-nvim";
+            src = inputs.nord-nvim;
           };
+        };
       })
     ];
   };
@@ -133,7 +133,10 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${username} = {
     isNormalUser = true;
-    extraGroups = ["wheel" "power"];
+    extraGroups = [
+      "wheel"
+      "power"
+    ];
     shell = pkgs.zsh;
   };
 
@@ -141,7 +144,8 @@
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
-  environment.systemPackages = with pkgs;
+  environment.systemPackages =
+    with pkgs;
     [
       # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       wget
@@ -150,13 +154,12 @@
       wireguard-tools
       home-manager
     ]
-    ++ (
-      if headless
-      then []
-      else [ddcutil]
-    );
+    ++ (if headless then [ ] else [ ddcutil ]);
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

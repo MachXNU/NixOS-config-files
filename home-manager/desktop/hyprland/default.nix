@@ -2,13 +2,13 @@
 
 {
   home.packages = with pkgs; [
-   awww 
+    awww
   ];
 
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
-  };  
+  };
 
   imports = [
     ./binds.nix

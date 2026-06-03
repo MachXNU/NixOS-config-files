@@ -1,6 +1,7 @@
-{username, ...}: {
+{ username, ... }:
+{
   # NixOS config
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.graphics.enable = true;
 
@@ -23,5 +24,5 @@
     };
   };
 
-  boot.initrd.kernelModules = ["amdgpu"];
+  boot.initrd.kernelModules = [ "amdgpu" ];
 }

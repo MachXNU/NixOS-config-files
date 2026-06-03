@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   domain = "ente.prestuz.freeddns.org";
 in
@@ -41,11 +46,13 @@ in
 
     writableStoreOverlay = "/nix/.rw-store";
 
-    interfaces = [{
-      type = "user";
-      id = "microvm-ente";
-      mac = "02:00:00:00:00:02";
-    }];
+    interfaces = [
+      {
+        type = "user";
+        id = "microvm-ente";
+        mac = "02:00:00:00:00:02";
+      }
+    ];
 
     forwardPorts = [
       {
@@ -110,7 +117,7 @@ in
     group = "garage";
   };
 
-  users.groups.garage = {};
+  users.groups.garage = { };
 
   systemd.services.garage.serviceConfig = {
     DynamicUser = lib.mkForce false;

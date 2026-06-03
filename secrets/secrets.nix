@@ -9,43 +9,73 @@ in
   #   armor = true;
   # };
   "ddns-updater-config-json.age" = {
-    publicKeys = [ vm-garage-1 asustor-proxmox ];
+    publicKeys = [
+      vm-garage-1
+      asustor-proxmox
+    ];
     armor = true;
   };
   "garage-rpc-secret.age" = {
-    publicKeys = [ vm-garage-1 asustor-proxmox ];
+    publicKeys = [
+      vm-garage-1
+      asustor-proxmox
+    ];
     armor = true;
   };
   "garage-admin-token.age" = {
-    publicKeys = [ vm-garage-1 asustor-proxmox ];
+    publicKeys = [
+      vm-garage-1
+      asustor-proxmox
+    ];
     armor = true;
   };
   "garage-metrics-token.age" = {
-    publicKeys = [ vm-garage-1 asustor-proxmox ];
+    publicKeys = [
+      vm-garage-1
+      asustor-proxmox
+    ];
     armor = true;
   };
   "ente-postgres-pguser-password.age" = {
-    publicKeys = [ vm-garage-1 asustor-proxmox ];
+    publicKeys = [
+      vm-garage-1
+      asustor-proxmox
+    ];
     armor = true;
   };
   "ente-garage-key.age" = {
-    publicKeys = [ vm-garage-1 asustor-proxmox ];
+    publicKeys = [
+      vm-garage-1
+      asustor-proxmox
+    ];
     armor = true;
   };
   "ente-garage-secret.age" = {
-    publicKeys = [ vm-garage-1 asustor-proxmox ];
+    publicKeys = [
+      vm-garage-1
+      asustor-proxmox
+    ];
     armor = true;
   };
   "ente-api-key-encryption.age" = {
-    publicKeys = [ vm-garage-1 asustor-proxmox ];
+    publicKeys = [
+      vm-garage-1
+      asustor-proxmox
+    ];
     armor = true;
   };
   "ente-api-key-hash.age" = {
-    publicKeys = [ vm-garage-1 asustor-proxmox ];
+    publicKeys = [
+      vm-garage-1
+      asustor-proxmox
+    ];
     armor = true;
   };
   "ente-api-jwt-secret.age" = {
-    publicKeys = [ vm-garage-1 asustor-proxmox ];
+    publicKeys = [
+      vm-garage-1
+      asustor-proxmox
+    ];
     armor = true;
   };
 }

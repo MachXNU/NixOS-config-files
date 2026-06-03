@@ -1,4 +1,5 @@
-{username, ...}: {
+{ username, ... }:
+{
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
@@ -10,7 +11,7 @@
       MaxAuthTries = 3;
       X11Forwarding = false;
       AllowTcpForwarding = false;
-      AllowUsers = [username];
+      AllowUsers = [ username ];
     };
     extraConfig = "LoginGracetime 30s";
   };
