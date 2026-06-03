@@ -95,7 +95,17 @@
           bash.enable = false;
           clang.enable = false;
           markdown.enable = true;
-          nix.enable = true;
+          nix = {
+            enable = true;
+            format = {
+              enable = true;
+              type = ["nixfmt"];
+            };
+            lsp = {
+              enable = true;
+              servers = ["nixd"];
+            };
+          };
           python.enable = false;
         };
 
@@ -393,4 +403,9 @@
       };
     };
   };
+
+  home.packages = with pkgs; [
+    nixfmt
+    nixd
+  ];
 }
