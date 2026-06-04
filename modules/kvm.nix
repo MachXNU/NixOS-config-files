@@ -1,5 +1,4 @@
-{ username, ... }:
-{
+{username, ...}: {
   # NixOS settings
 
   # Remember to enable kernel modules and params with (for example):
@@ -17,9 +16,5 @@
 
   virtualisation.spiceUSBRedirection.enable = true;
 
-  users.users.${username}.extraGroups = [ "libvirtd" ];
-
-  imports = [
-    ./home-manager/kvm.nix
-  ];
+  users.users.${username}.extraGroups = ["libvirtd"];
 }
