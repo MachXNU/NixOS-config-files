@@ -4,7 +4,7 @@ _: {
     enable = true;
 
     # Disable soon-to-be-removed implicit defaults
-    enableDefaultConfig = false;
+    # enableDefaultConfig = false;
 
     matchBlocks = {
       "*" = {
@@ -13,11 +13,6 @@ _: {
       "github.com" = {
         user = "git";
         identityFile = "~/.ssh/id_ed25519_github";
-        identitiesOnly = true;
-      };
-      "gitlab-student.centralesupelec.fr" = {
-        user = "git";
-        identityFile = "~/.ssh/id_ed25519_gitlabcs";
         identitiesOnly = true;
       };
     };

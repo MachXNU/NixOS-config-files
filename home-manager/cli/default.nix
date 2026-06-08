@@ -10,16 +10,9 @@
     ./neovim.nix
     ./nvf.nix
     ./ranger.nix
+    ./ssh.nix
     ./zsh.nix
-  ]
-  ++ (
-    if !isWork then
-      [
-        ./ssh.nix
-      ]
-    else
-      [ ]
-  );
+  ];
 
   home.packages =
     with pkgs;
