@@ -13,7 +13,7 @@
       show_hidden = false;
       show_gifs_only = false;
       zen_mode = true;
-      post_command = "sed -i \"/background {/,/}/ s|^\\([[:space:]]*path=\\).*|\\1$(awww query | grep -oP 'image:\\s*\\K.*')|\" ~/.config/hypr/hyprlock.conf && kill -9 $(pgrep waypaper)";
+      post_command = "sed -i \"/background {/,/}/ s|^\\([[:space:]]*path=\\).*|\\1$(awww query | grep -oP 'image:\\s*\\K.*'|head -n1)|\" ~/.config/hypr/hyprlock.conf && kill -9 $(pgrep waypaper)";
       number_of_columns = 5;
       swww_transition_type = "any";
       swww_transition_step = 63;
