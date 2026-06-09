@@ -48,8 +48,6 @@
 
   outputs =
     inputs@{
-      nixpkgs,
-      home-manager,
       flake-parts,
       ...
     }:
