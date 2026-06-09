@@ -7,7 +7,8 @@
   imports = [
     ./kitty.nix
     ./firefox
-  ];
+  ]
+  ++ (if isWork then [ ./picoscope.nix ] else [ ]);
 
   home.packages =
     with pkgs;
@@ -20,7 +21,6 @@
       if isWork then
         [
           thunderbird
-          picoscope
         ]
       else
         [ telegram-desktop ]
