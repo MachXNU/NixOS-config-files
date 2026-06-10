@@ -16,6 +16,7 @@
       "$mod, L, exec, hyprlock"
       "$mod SHIFT, L, exec, hyprlock & (loginctl lock-session && sleep 0.5 && systemctl suspend)"
       "$mod, W, exec, waypaper --config-file $HOME/.config/waypaper/config.ini" # --state-file $HOME/.config/waypaper/status" # W as wallpaper
+      "$mod, R, exec, pkill -USR1 gpu-screen-rec"
 
       # Should not be needed: as we are using Nix, we are not supposed to
       #                       manually reload the config file.
