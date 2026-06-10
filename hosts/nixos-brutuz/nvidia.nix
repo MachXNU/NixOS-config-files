@@ -9,19 +9,19 @@
     modesetting.enable = true;
 
     powerManagement.enable = true;
-    powerManagement.finegrained = true;
+    powerManagement.finegrained = false;
 
     open = false; # aka proprietary drivers
 
     nvidiaSettings = true;
 
-    prime = {
-      offload.enable = true;
-      offload.enableOffloadCmd = true;
-
-      amdgpuBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
-    };
+    #prime = {
+    #  offload.enable = true;
+    #  offload.enableOffloadCmd = true;
+    #
+    #  amdgpuBusId = "PCI:0:2:0";
+    #  nvidiaBusId = "PCI:1:0:0";
+    #};
   };
 
   boot.initrd.kernelModules = [ "amdgpu" ];
