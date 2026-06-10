@@ -69,6 +69,7 @@
       "steam"
       "steam-unwrapped"
       "obsidian"
+      "davinci-resolve"
     ];
 
   nixpkgs = {
