@@ -44,6 +44,7 @@
       url = "github:shaunsingh/nord.nvim";
       flake = false;
     };
+    nixcord.url = "github:FlameFlag/nixcord";
   };
 
   outputs =

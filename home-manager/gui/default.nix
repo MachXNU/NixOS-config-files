@@ -1,14 +1,25 @@
 {
+  inputs,
   pkgs,
   isWork,
   ...
 }:
 {
   imports = [
+    inputs.nixcord.homeModules.nixcord
     ./kitty.nix
     ./firefox
   ]
-  ++ (if isWork then [ ./picoscope.nix ] else [ ]);
+  ++ (
+    if isWork then
+      [
+        ./picoscope.nix
+      ]
+    else
+      [
+        ./discord.nix
+      ]
+  );
 
   home.packages =
     with pkgs;
@@ -23,6 +34,11 @@
           thunderbird
         ]
       else
-        [ telegram-desktop ]
+        [
+          telegram-desktop
+          haruna
+          ffmpeg
+          davinci-resolve
+        ]
     );
 }
