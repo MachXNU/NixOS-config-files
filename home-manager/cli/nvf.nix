@@ -107,7 +107,20 @@
               servers = [ "nixd" ];
             };
           };
-          python.enable = false;
+          python = {
+            enable = true;
+            format = {
+              enable = true;
+              type = [ "ruff" ];
+            };
+            lsp = {
+              enable = true;
+              servers = [
+                "basedpyright"
+                "ruff"
+              ];
+            };
+          };
         };
 
         visuals = {
