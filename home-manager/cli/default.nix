@@ -5,6 +5,7 @@
 }:
 {
   imports = [
+    ./fastfetch.nix
     ./home-manager.nix
     ./git.nix
     ./neovim.nix
@@ -22,7 +23,6 @@
       htop
       efibootmgr
       jq
-      fastfetch
       jq
       zip
       unzip
