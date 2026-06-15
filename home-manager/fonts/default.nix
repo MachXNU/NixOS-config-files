@@ -7,6 +7,7 @@ let
 in
 {
   home.packages = [
+    pkgs.maple-mono.NF-unhinted
     pkgs.nerd-fonts.fira-code
     pkgs.nerd-fonts.jetbrains-mono
     pkgs.fira
