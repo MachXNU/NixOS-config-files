@@ -4,7 +4,8 @@
   programs.kitty = {
     enable = true;
     font = {
-      name = "FiraCode Nerd Font Mono";
+      #name = "FiraCode Nerd Font Mono";
+      name = "Maple Mono NF";
       size = 11;
     };
     settings = {
