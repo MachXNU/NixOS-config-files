@@ -4,14 +4,15 @@ let
   suisseintlmono = pkgs.callPackage ./SuisseIntlMono.nix { inherit pkgs; };
   sfproregular = pkgs.callPackage ./SFProRegular.nix { inherit pkgs; };
   sfprobold = pkgs.callPackage ./SFProBold.nix { inherit pkgs; };
+  maplemono = pkgs.callPackage ./MapleMono.nix { inherit pkgs; };
 in
 {
   home.packages = [
-    pkgs.maple-mono.NF-unhinted
     pkgs.nerd-fonts.fira-code
     pkgs.nerd-fonts.jetbrains-mono
     pkgs.fira
     pkgs.fira-sans
+    maplemono
     stretchpro
     suisseintlmono
     sfproregular
