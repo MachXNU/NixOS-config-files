@@ -23,13 +23,13 @@ in
         };
         constants = [
           "───────────────────────────────────────────────────────────────────────────"
-          "│${esc}[72C│${esc}[72D"
+          "│${esc}[75C│${esc}[75D"
         ];
       };
 
       modules = [
         {
-          format = "{#1}{#keys}╭{$1}╮${esc}[72D {user-name-colored}{at-symbol-colored}{host-name-colored}  ";
+          format = "{#1}{#keys}╭{$1}╮${esc}[76D {user-name-colored}{at-symbol-colored}{host-name-colored}  ";
           type = "title";
         }
         {
