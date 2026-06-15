@@ -5,7 +5,7 @@
     enable = true;
     font = {
       #name = "FiraCode Nerd Font Mono";
-      name = "Maple Mono NF";
+      name = "Maple Mono";
       size = 11;
     };
     settings = {
