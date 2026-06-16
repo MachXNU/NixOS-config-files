@@ -9,6 +9,7 @@
   username ? "jb",
   headless ? false,
   hostsMicroVMs ? false,
+  runsVMs ? false,
 }:
 nixpkgs.lib.nixosSystem {
   inherit system;
@@ -33,24 +34,23 @@ nixpkgs.lib.nixosSystem {
     {
       home-manager = {
         useGlobalPkgs = true;
-        #useUserPackages = true;
         useUserPackages = false;
 
-        users.${username} = {
-          imports = [
-            inputs.nvf.homeManagerModules.default
-            ../home-manager/home.nix
-          ];
-        };
+        users.${username}.imports = [
+          inputs.nvf.homeManagerModules.default
+          ../home-manager/home.nix
+        ]
+        ++ (if runsVMs then [ ../modules/home-manager/kvm.nix ] else [ ]);
 
-        backupFileExtension = "backup";
         extraSpecialArgs = {
           inherit
             inputs
             headless
             hostName
             username
+            runsVMs
             ;
+
           homeDirectory = "/home/${username}";
           isLinux = true;
           isWork = false;
