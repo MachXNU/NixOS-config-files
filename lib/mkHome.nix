@@ -14,6 +14,7 @@
   hyprlockLayout ? null,
   runsVMs ? false,
 }:
+
 let
   pkgs = import nixpkgs {
     inherit system;
@@ -22,6 +23,12 @@ let
 in
 inputs.home-manager.lib.homeManagerConfiguration {
   inherit pkgs;
+
+  modules = [
+    inputs.nvf.homeManagerModules.default
+    ../home-manager/home.nix
+  ]
+  ++ (if runsVMs then [ ../modules/home-manager/kvm.nix ] else [ ]);
 
   extraSpecialArgs = {
     inherit
@@ -33,12 +40,7 @@ inputs.home-manager.lib.homeManagerConfiguration {
       isLinux
       hyprlandConfig
       hyprlockLayout
+      runsVMs
       ;
   };
-
-  modules = [
-    inputs.nvf.homeManagerModules.default
-    ../home-manager/home.nix
-  ]
-  ++ (if runsVMs then [ ../modules/home-manager/kvm.nix ] else [ ]);
 }
