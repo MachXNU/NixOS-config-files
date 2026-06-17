@@ -219,6 +219,7 @@
         enableUserTheming = true;
       };
       ui = {
+        boxBorderEnabled = true;
         fontDefault = "DejaVu Sans";
         fontDefaultScale = 1;
         fontFixed = "Fira Mono";
