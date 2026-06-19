@@ -29,4 +29,10 @@
     enable = true;
     enableSSH = true;
   };
+
+  services.usbmuxd.enable = true;
+
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", ATTR{idVendor}=="05ac", MODE="0666", TAG+="uaccess"
+  '';
 }
