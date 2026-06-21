@@ -26,6 +26,7 @@
       jq
       zip
       unzip
+      usbutils
     ]
     ++ (if isWork then [ samba ] else [ ]);
 
