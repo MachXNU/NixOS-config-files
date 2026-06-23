@@ -18,6 +18,15 @@
           shiftwidth = 4;
           softtabstop = 4;
           expandtab = true;
+
+          # case-(in)sensitive search
+          smartcase = true;
+          ignorecase = true;
+
+          wrap = true;
+          textwidth = 85;
+          colorcolumn = "+1";
+          formatoptions = "qrn1c";
         };
 
         autocmds = [
@@ -256,6 +265,65 @@
               end
             '';
             desc = "Show line diagnostic";
+          }
+          {
+            key = "/";
+            mode = "n";
+            action = "/\\v";
+            desc = "Fix vim's regex handling";
+          }
+          {
+            key = "/";
+            mode = "v";
+            action = "/\\v";
+            desc = "Fix vim's regex handling";
+          }
+          # Disable arrow keys in normal mode
+          {
+            key = "<up>";
+            mode = "n";
+            action = "<nop>";
+          }
+          {
+            key = "<down>";
+            mode = "n";
+            action = "<nop>";
+          }
+          {
+            key = "<left>";
+            mode = "n";
+            action = "<nop>";
+          }
+          {
+            key = "<right>";
+            mode = "n";
+            action = "<nop>";
+          }
+          # Disable arrow keys in insert mode
+          {
+            key = "<up>";
+            mode = "i";
+            action = "<nop>";
+          }
+          {
+            key = "<down>";
+            mode = "i";
+            action = "<nop>";
+          }
+          {
+            key = "<left>";
+            mode = "i";
+            action = "<nop>";
+          }
+          {
+            key = "j";
+            mode = "n";
+            action = "gj";
+          }
+          {
+            key = "k";
+            mode = "n";
+            action = "gk";
           }
         ];
 
