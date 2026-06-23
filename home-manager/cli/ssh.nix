@@ -4,11 +4,11 @@ _: {
     enable = true;
 
     # Disable soon-to-be-removed implicit defaults
-    # enableDefaultConfig = false;
+    enableDefaultConfig = false;
 
-    matchBlocks = {
+    settings = {
       "*" = {
-        addKeysToAgent = "yes";
+        AddKeysToAgent = "yes";
       };
       "github.com" = {
         user = "git";
