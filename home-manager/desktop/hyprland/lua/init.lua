@@ -114,14 +114,25 @@ end)
 hl.bind("SUPER + E", function()
     hl.exec_cmd("$fileManager")
 end)
-hl.bind("SUPER + V", hl.dsp.togglefloating())
+-- hl.bind("SUPER + V", hl.dsp.togglefloating())
+hl.bind("SUPER + V", function ()
+  local workspace = hl.get_active_workspace()
+  if workspace == nil then
+    return
+  end
+
+  local windows = hl.get_workspace_windows(workspace)
+  for _, window in ipairs(windows) do
+    hl.dispatch(hl.dsp.window.float({ window = window, action = "toggle" }))
+  end
+end)
 hl.bind("SUPER + D", function()
     hl.exec_cmd("noctalia-shell ipc call launcher toggle")
 end)
 hl.bind("SUPER + L", function()
     hl.exec_cmd("hyprlock")
 end)
-hl.bind("SUPER SHIFT + L", function()
+hl.bind("SUPER + SHIFT + L", function()
     hl.exec_cmd("hyprlock & (loginctl lock-session && sleep 0.5 && systemctl suspend)")
 end)
 hl.bind("SUPER + W", function()
@@ -130,11 +141,11 @@ end)
 hl.bind("SUPER + R", function()
     hl.exec_cmd("pkill -USR1 gpu-screen-rec")
 end)
-hl.bind("SUPER + left", hl.dsp.movefocus({ l }))
-hl.bind("SUPER + right", hl.dsp.movefocus({ r }))
-hl.bind("SUPER + up", hl.dsp.movefocus({ u }))
-hl.bind("SUPER + down", hl.dsp.movefocus({ d }))
-hl.bind("CTRL ALT + Delete", function()
+hl.bind("SUPER + left", hl.dsp.focus({ direction = "left" }))
+hl.bind("SUPER + right", hl.dsp.focus({ direction = "right" }))
+hl.bind("SUPER + up", hl.dsp.focus({ direction = "up" }))
+hl.bind("SUPER + down", hl.dsp.focus({ direction = "down" }))
+hl.bind("CTRL + ALT + Delete", function()
     hl.exec_cmd("hyprctl dispatch exit 0")
 end)
 hl.bind(" + XF86MonBrightnessDown", function()
@@ -165,25 +176,25 @@ hl.bind(" + XF86AudioPrev", function()
     hl.exec_cmd("noctalia-shell ipc call media previous")
 end)
 hl.bind("SUPER + code:10", hl.dsp.focus({ workspace = "1" }))
-hl.bind("SUPER SHIFT + code:10", hl.dsp.focus({ workspace = "1" }))
+hl.bind("SUPER + SHIFT + code:10", hl.dsp.focus({ workspace = "1" }))
 hl.bind("SUPER + code:11", hl.dsp.focus({ workspace = "2" }))
-hl.bind("SUPER SHIFT + code:11", hl.dsp.focus({ workspace = "2" }))
+hl.bind("SUPER + SHIFT + code:11", hl.dsp.focus({ workspace = "2" }))
 hl.bind("SUPER + code:12", hl.dsp.focus({ workspace = "3" }))
-hl.bind("SUPER SHIFT + code:12", hl.dsp.focus({ workspace = "3" }))
+hl.bind("SUPER + SHIFT + code:12", hl.dsp.focus({ workspace = "3" }))
 hl.bind("SUPER + code:13", hl.dsp.focus({ workspace = "4" }))
-hl.bind("SUPER SHIFT + code:13", hl.dsp.focus({ workspace = "4" }))
+hl.bind("SUPER + SHIFT + code:13", hl.dsp.focus({ workspace = "4" }))
 hl.bind("SUPER + code:14", hl.dsp.focus({ workspace = "5" }))
-hl.bind("SUPER SHIFT + code:14", hl.dsp.focus({ workspace = "5" }))
+hl.bind("SUPER + SHIFT + code:14", hl.dsp.focus({ workspace = "5" }))
 hl.bind("SUPER + code:15", hl.dsp.focus({ workspace = "6" }))
-hl.bind("SUPER SHIFT + code:15", hl.dsp.focus({ workspace = "6" }))
+hl.bind("SUPER + SHIFT + code:15", hl.dsp.focus({ workspace = "6" }))
 hl.bind("SUPER + code:16", hl.dsp.focus({ workspace = "7" }))
-hl.bind("SUPER SHIFT + code:16", hl.dsp.focus({ workspace = "7" }))
+hl.bind("SUPER + SHIFT + code:16", hl.dsp.focus({ workspace = "7" }))
 hl.bind("SUPER + code:17", hl.dsp.focus({ workspace = "8" }))
-hl.bind("SUPER SHIFT + code:17", hl.dsp.focus({ workspace = "8" }))
+hl.bind("SUPER + SHIFT + code:17", hl.dsp.focus({ workspace = "8" }))
 hl.bind("SUPER + code:18", hl.dsp.focus({ workspace = "9" }))
-hl.bind("SUPER SHIFT + code:18", hl.dsp.focus({ workspace = "9" }))
-hl.bind("SUPER + mouse:272", hl.dsp.movewindow(), { mouse = true })
-hl.bind("SUPER + mouse:273", hl.dsp.resizewindow(), { mouse = true })
+hl.bind("SUPER + SHIFT + code:18", hl.dsp.focus({ workspace = "9" }))
+hl.bind("SUPER + mouse:272", hl.dsp.window.drag())
+hl.bind("SUPER + mouse:273", hl.dsp.window.resize())
 
 hl.on("hyprland.start", function()
     hl.exec_cmd("@dbusCmd@ --systemd DISPLAY HYPRLAND_INSTANCE_SIGNATURE WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE && systemctl --user stop hyprland-session.target && systemctl --user start hyprland-session.target")
@@ -216,108 +227,108 @@ hl.animation({
     leaf = "global",
     enabled = true,
     speed = 10.0,
-    curve = "default",
+    bezier = "default",
 })
 hl.animation({
     leaf = "border",
     enabled = true,
     speed = 5.39,
-    curve = "easeOutQuint",
+    bezier = "easeOutQuint",
 })
 hl.animation({
     leaf = "windows",
     enabled = true,
     speed = 4.79,
-    curve = "easeOutQuint",
+    bezier = "easeOutQuint",
 })
 hl.animation({
     leaf = "windowsIn",
     enabled = true,
     speed = 4.1,
-    curve = "easeOutQuint",
+    bezier = "easeOutQuint",
     style = "popin 87%",
 })
 hl.animation({
     leaf = "windowsOut",
     enabled = true,
     speed = 1.49,
-    curve = "linear",
+    bezier = "linear",
     style = "popin 87%",
 })
 hl.animation({
     leaf = "fadeIn",
     enabled = true,
     speed = 1.73,
-    curve = "almostLinear",
+    bezier = "almostLinear",
 })
 hl.animation({
     leaf = "fadeOut",
     enabled = true,
     speed = 1.46,
-    curve = "almostLinear",
+    bezier = "almostLinear",
 })
 hl.animation({
     leaf = "fade",
     enabled = true,
     speed = 3.03,
-    curve = "quick",
+    bezier = "quick",
 })
 hl.animation({
     leaf = "layers",
     enabled = true,
     speed = 3.81,
-    curve = "easeOutQuint",
+    bezier = "easeOutQuint",
 })
 hl.animation({
     leaf = "layersIn",
     enabled = true,
     speed = 4.0,
-    curve = "easeOutQuint",
+    bezier = "easeOutQuint",
     style = "fade",
 })
 hl.animation({
     leaf = "layersOut",
     enabled = true,
     speed = 1.5,
-    curve = "linear",
+    bezier = "linear",
     style = "fade",
 })
 hl.animation({
     leaf = "fadeLayersIn",
     enabled = true,
     speed = 1.79,
-    curve = "almostLinear",
+    bezier = "almostLinear",
 })
 hl.animation({
     leaf = "fadeLayersOut",
     enabled = true,
     speed = 1.39,
-    curve = "almostLinear",
+    bezier = "almostLinear",
 })
 hl.animation({
     leaf = "workspaces",
     enabled = true,
     speed = 1.94,
-    curve = "almostLinear",
+    bezier = "almostLinear",
     style = "fade",
 })
 hl.animation({
     leaf = "workspacesIn",
     enabled = true,
     speed = 1.21,
-    curve = "almostLinear",
+    bezier = "almostLinear",
     style = "fade",
 })
 hl.animation({
     leaf = "workspacesOut",
     enabled = true,
     speed = 1.94,
-    curve = "almostLinear",
+    bezier = "almostLinear",
     style = "fade",
 })
 hl.animation({
     leaf = "zoomFactor",
     enabled = true,
     speed = 7.0,
-    curve = "quick",
+    bezier = "quick",
 })
