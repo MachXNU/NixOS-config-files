@@ -106,7 +106,7 @@ hl.monitor({ output = "desc:LG Electronics BK550Y 301MAPNG9616", mode = "1920x10
 hl.bind("SUPER + Q", function()
     hl.exec_cmd("kitty")
 end)
-hl.bind("SUPER + C", hl.dsp.killactive())
+hl.bind("SUPER + C", killactive())
 hl.bind("SUPER + M", function()
     hl.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit")
 end)
