@@ -190,8 +190,8 @@ hl.bind("SUPER + code:17", hl.dsp.focus({ workspace = "8" }))
 hl.bind("SUPER SHIFT + code:17", hl.dsp.focus({ workspace = "8" }))
 hl.bind("SUPER + code:18", hl.dsp.focus({ workspace = "9" }))
 hl.bind("SUPER SHIFT + code:18", hl.dsp.focus({ workspace = "9" }))
-hl.bind("SUPER + mouse:272", hl.dsp.movewindow()), { mouse = true }
-hl.bind("SUPER + mouse:273", hl.dsp.resizewindow()), { mouse = true }
+hl.bind("SUPER + mouse:272", hl.dsp.movewindow(), { mouse = true })
+hl.bind("SUPER + mouse:273", hl.dsp.resizewindow(), { mouse = true })
 
 hl.on("hyprland.start", function()
     hl.exec_cmd("@dbusCmd@ --systemd DISPLAY HYPRLAND_INSTANCE_SIGNATURE WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE && systemctl --user stop hyprland-session.target && systemctl --user start hyprland-session.target")
