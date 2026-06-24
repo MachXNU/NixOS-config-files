@@ -216,7 +216,7 @@
             id = "steam";
           }
         ];
-        enableUserTheming = true;
+        enableUserTheming = false;
       };
       ui = {
         boxBorderEnabled = true;
@@ -235,10 +235,6 @@
     user-templates = ''
       [config]
       # General template settings
-
-      [templates.hyprland]
-      input_path = '~/.config/matugen/hyprland-colors.css'
-      output_path = '~/.config/hypr/noctalia/noctalia-colors.conf'
     '';
   };
 }
