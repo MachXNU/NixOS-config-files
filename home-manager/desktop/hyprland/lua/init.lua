@@ -13,17 +13,19 @@ require("~/.config/hypr/noctalia/noctalia-colors")
 
 hl.config({
     general = {
-      allow_tearing = false,
-      border_size = 2,
-      col.active_border = "$primary",
-      col.inactive_border = "$surface",
-      gaps_in = 4,
-      gaps_out = 8,
-      layout = "dwindle",
-      resize_on_border = false,
-      snap = {
-        enabled = true,
-      },
+        allow_tearing = false,
+        border_size = 2,
+        col = {
+          active_border = "$primary",
+          inactive_border = "$surface",
+        },
+        gaps_in = 4,
+        gaps_out = 8,
+        layout = "dwindle",
+        resize_on_border = false,
+        snap = {
+          enabled = true,
+        },
     },
     decoration = {
         active_opacity = 1.000000,
@@ -63,7 +65,7 @@ hl.config({
             drag_lock = true,
             middle_button_emulation = true,
             natural_scroll = true,
-            tap-to-click = false,
+            tap_to_click = false,
         },
     },
     misc = {
@@ -71,28 +73,32 @@ hl.config({
         force_default_wallpaper = 0,
     },
     group = {
-        col.border_active = "$tertiary",
+        col = {
+            border_active = "$tertiary",
+        },
         groupbar = {
-            col.active = "$surface",
+            col = {
+                active = "$surface",
+            },
         },
     },
     animations = {
         enabled = "yes, please :)",
     },
-    layerrule = {
+    layer_rule = {
         blur = true,
         blur_popups = true,
         ignore_alpha = 0.300000,
-        match:namespace = "noctalia-background-.*",
+        match = { namespace = "noctalia-background-.*" },
         name = "noctalia",
     },
-    windowrule = {
+    window_rule = {
         border_size = 0,
         center = true,
         dim_around = true,
         float = true,
         focus_on_activate = true,
-        match:class = "^(waypaper)$",
+        match = { class = "^(waypaper)$" },
         name = "waypaper-launcher",
         size = "1320 800",
         stay_focused = true,
