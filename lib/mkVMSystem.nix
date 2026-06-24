@@ -1,4 +1,8 @@
-{ inputs, nixpkgs, self }:
+{
+  inputs,
+  nixpkgs,
+  self,
+}:
 
 { system, hostName }:
 

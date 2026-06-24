@@ -1,5 +1,4 @@
-_:
-{
+_: {
   services.ssh-agent.enable = true;
   programs.ssh = {
     enable = true;
@@ -7,18 +6,13 @@ _:
     # Disable soon-to-be-removed implicit defaults
     enableDefaultConfig = false;
 
-    matchBlocks = {
+    settings = {
       "*" = {
-        addKeysToAgent = "yes";
+        AddKeysToAgent = "yes";
       };
       "github.com" = {
         user = "git";
         identityFile = "~/.ssh/id_ed25519_github";
-        identitiesOnly = true;
-      };
-      "gitlab-student.centralesupelec.fr" = {
-        user = "git";
-        identityFile = "~/.ssh/id_ed25519_gitlabcs";
         identitiesOnly = true;
       };
     };

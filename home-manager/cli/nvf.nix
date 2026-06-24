@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.nvf = {
     enable = true;
     settings = {
@@ -17,13 +18,22 @@
           shiftwidth = 4;
           softtabstop = 4;
           expandtab = true;
+
+          # case-(in)sensitive search
+          smartcase = true;
+          ignorecase = true;
+
+          wrap = true;
+          textwidth = 85;
+          colorcolumn = "+1";
+          formatoptions = "qrn1c";
         };
 
         autocmds = [
           # Override indent to 2 spaces for .nix files
           {
-            event = ["FileType"];
-            pattern = ["nix"];
+            event = [ "FileType" ];
+            pattern = [ "nix" ];
             command = "setlocal tabstop=2 shiftwidth=2 softtabstop=2";
           }
         ];
@@ -95,8 +105,31 @@
           bash.enable = false;
           clang.enable = false;
           markdown.enable = true;
-          nix.enable = true;
-          python.enable = false;
+          nix = {
+            enable = true;
+            format = {
+              enable = true;
+              type = [ "nixfmt" ];
+            };
+            lsp = {
+              enable = true;
+              servers = [ "nixd" ];
+            };
+          };
+          python = {
+            enable = true;
+            format = {
+              enable = true;
+              type = [ "ruff" ];
+            };
+            lsp = {
+              enable = true;
+              servers = [
+                "basedpyright"
+                "ruff"
+              ];
+            };
+          };
         };
 
         visuals = {
@@ -233,6 +266,65 @@
             '';
             desc = "Show line diagnostic";
           }
+          {
+            key = "/";
+            mode = "n";
+            action = "/\\v";
+            desc = "Fix vim's regex handling";
+          }
+          {
+            key = "/";
+            mode = "v";
+            action = "/\\v";
+            desc = "Fix vim's regex handling";
+          }
+          # Disable arrow keys in normal mode
+          {
+            key = "<up>";
+            mode = "n";
+            action = "<nop>";
+          }
+          {
+            key = "<down>";
+            mode = "n";
+            action = "<nop>";
+          }
+          {
+            key = "<left>";
+            mode = "n";
+            action = "<nop>";
+          }
+          {
+            key = "<right>";
+            mode = "n";
+            action = "<nop>";
+          }
+          # Disable arrow keys in insert mode
+          {
+            key = "<up>";
+            mode = "i";
+            action = "<nop>";
+          }
+          {
+            key = "<down>";
+            mode = "i";
+            action = "<nop>";
+          }
+          {
+            key = "<left>";
+            mode = "i";
+            action = "<nop>";
+          }
+          {
+            key = "j";
+            mode = "n";
+            action = "gj";
+          }
+          {
+            key = "k";
+            mode = "n";
+            action = "gk";
+          }
         ];
 
         utility = {
@@ -281,10 +373,13 @@
               nix = "110";
               ruby = "120";
               java = "130";
-              go = ["90" "130"];
+              go = [
+                "90"
+                "130"
+              ];
             };
           };
-          fastaction.enable = false; #broken
+          fastaction.enable = false; # broken
         };
 
         session = {
@@ -393,4 +488,9 @@
       };
     };
   };
+
+  home.packages = with pkgs; [
+    nixfmt
+    nixd
+  ];
 }

@@ -1,20 +1,20 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   users.users.test = {
 
-
     isNormalUser = true;
-
 
     extraGroups = [ "wheel" ];
 
-
     password = "test";
 
-
   };
-
 
   services.openssh.enable = true;
 
@@ -43,11 +43,13 @@
     ];
     writableStoreOverlay = "/nix/.rw-store";
 
-    interfaces = [{
-      type = "tap";
-      id = "microvm-ddns";
-      mac = "02:00:00:00:00:01";
-    }];
+    interfaces = [
+      {
+        type = "tap";
+        id = "microvm-ddns";
+        mac = "02:00:00:00:00:01";
+      }
+    ];
   };
 
   systemd.network.enable = true;
@@ -73,7 +75,7 @@
     group = "ddns";
   };
 
-  users.groups.ddns = {};
+  users.groups.ddns = { };
 
   systemd.services.ddns-updater.serviceConfig = {
     DynamicUser = lib.mkForce false;
@@ -88,7 +90,7 @@
   services.ddns-updater = {
     enable = true;
     environment = {
-      SERVER_ENABLED="no";
+      SERVER_ENABLED = "no";
       CONFIG_FILEPATH = "/etc/ddns-updater/config.json";
       PERIOD = "5m";
     };

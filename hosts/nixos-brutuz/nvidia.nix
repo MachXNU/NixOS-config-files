@@ -1,5 +1,4 @@
-{ config, lib, pkgs, ... }:
-
+{ username, ... }:
 {
   # NixOS config
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -10,34 +9,20 @@
     modesetting.enable = true;
 
     powerManagement.enable = true;
-    powerManagement.finegrained = true;
+    powerManagement.finegrained = false;
 
-    open = false; # aka proprietary drivers 
+    open = false; # aka proprietary drivers
 
     nvidiaSettings = true;
 
-    prime = {
-      offload.enable = true;
-      offload.enableOffloadCmd = true;
-
-      amdgpuBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
-    };
+    #prime = {
+    #  offload.enable = true;
+    #  offload.enableOffloadCmd = true;
+    #
+    #  amdgpuBusId = "PCI:0:2:0";
+    #  nvidiaBusId = "PCI:1:0:0";
+    #};
   };
 
   boot.initrd.kernelModules = [ "amdgpu" ];
-
-  # Home-manager config (Wayland)
-  home-manager.users.jb = { ... }: {
-    wayland.windowManager.hyprland.settings = {
-      monitor = ",2560x1440@144,auto,1,bitdepth,10";
-
-      env = [
-        "LIBVA_DRIVER_NAME,nvidia"
-        "GBM_BACKEND,nvidia-drm"
-        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-        "WLR_NO_HARDWARE_CURSORS,1"
-      ];
-    };
-  };
 }

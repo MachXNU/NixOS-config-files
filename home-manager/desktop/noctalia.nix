@@ -2,7 +2,8 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   imports = [
     inputs.noctalia.homeModules.default
   ];
@@ -55,7 +56,7 @@
               useDistroLogo = false;
             }
             {
-              id = "WiFi";
+              id = "Network";
             }
             {
               id = "Bluetooth";
@@ -113,16 +114,16 @@
       controlCenter = {
         shortcuts = {
           left = [
-            {id = "AirplaneMode";}
-            {id = "Network";}
-            {id = "Bluetooth";}
-            {id = "DarkMode";}
+            { id = "AirplaneMode"; }
+            { id = "Network"; }
+            { id = "Bluetooth"; }
+            { id = "DarkMode"; }
           ];
           right = [
-            {id = "Notifications";}
-            {id = "PowerProfile";}
-            {id = "KeepAwake";}
-            {id = "NightLight";}
+            { id = "Notifications"; }
+            { id = "PowerProfile"; }
+            { id = "KeepAwake"; }
+            { id = "NightLight"; }
           ];
         };
       };
@@ -215,9 +216,10 @@
             id = "steam";
           }
         ];
-        enableUserTheming = true;
+        enableUserTheming = false;
       };
       ui = {
+        boxBorderEnabled = true;
         fontDefault = "DejaVu Sans";
         fontDefaultScale = 1;
         fontFixed = "Fira Mono";
@@ -233,10 +235,6 @@
     user-templates = ''
       [config]
       # General template settings
-      
-      [templates.hyprland]
-      input_path = '~/.config/matugen/hyprland-colors.css'
-      output_path = '~/.config/hypr/noctalia/noctalia-colors.conf'
     '';
   };
 }

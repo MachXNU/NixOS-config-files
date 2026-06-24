@@ -1,11 +1,19 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   networking.hostName = "nixos-garage";
   system.stateVersion = "25.11";
 
   networking.firewall.enable = false;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   users.users.root.hashedPassword = "!";
 
@@ -15,7 +23,7 @@
     extraGroups = [ "wheel" ];
     hashedPassword = "$6$EujOqFseDSt9/klh$nq7mr.rVhYGeVNwyfMoWmAH0dnVtN6e6zFoyTydFegrtw.5/QavGItK5TLmApdk90oJj13WINikyYrEUdlZil0";
   };
-  
+
   services.openssh.enable = true;
 
   environment.systemPackages = with pkgs; [
@@ -75,7 +83,7 @@
     group = "garage";
   };
 
-  users.groups.garage = {};
+  users.groups.garage = { };
 
   systemd.services.garage-copy-secrets = {
     description = "Copy Garage secrets locally";

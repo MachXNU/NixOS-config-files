@@ -1,4 +1,8 @@
-{ config, pkgs, ...}: {
+{
+  pkgs,
+  ...
+}:
+{
   imports = [
     ./hypridle.nix
     ./hyprland
@@ -7,12 +11,13 @@
     ./cursor.nix
     ./dconf.nix
     ./waypaper.nix
+    ./mangohud.nix
+    ./gpu-screen-recorder.nix
   ];
 
   home.packages = with pkgs; [
     adw-gtk3
     brightnessctl
-    obsidian
     hyprshot
     waypaper
   ];

@@ -35,6 +35,6 @@ _: {
         "workspacesOut, 1,     1.94,  almostLinear, fade"
         "zoomFactor,    1,     7,     quick"
       ];
-    };    
+    };
   };
 }

@@ -2,15 +2,16 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
-  config,
   lib,
   pkgs,
   inputs,
   headless,
+  username,
   hostName,
   hostsMicroVMs,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     # not needed anymore, due to the hosts separation
@@ -59,7 +60,8 @@
 
   # Unfree packages cannot be whitelisted in modules
   # thus this part must stay in configuration.nix
-  nixpkgs.config.allowUnfreePredicate = pkg:
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
     builtins.elem (lib.getName pkg) [
       "nvidia-x11"
       "nvidia-settings"
@@ -67,37 +69,36 @@
       "steam"
       "steam-unwrapped"
       "obsidian"
+      "davinci-resolve"
     ];
 
   nixpkgs = {
     overlays = [
       (final: prev: {
-        vimPlugins =
-          prev.vimPlugins
-          // {
-            nord-nvim = prev.vimUtils.buildVimPlugin {
-              name = "nord-nvim";
-              src = inputs.nord-nvim;
-            };
+        vimPlugins = prev.vimPlugins // {
+          nord-nvim = prev.vimUtils.buildVimPlugin {
+            name = "nord-nvim";
+            src = inputs.nord-nvim;
           };
+        };
       })
     ];
   };
 
-  services.getty.autologinUser = "jb";
+  services.getty.autologinUser = username;
 
   services.greetd = {
     enable = !headless;
     settings = {
       default_session = {
         command = "start-hyprland";
-        user = "jb";
+        user = username;
       };
 
       # optional: skip the greeter entirely
       initial_session = {
         command = "start-hyprland";
-        user = "jb";
+        user = username;
       };
     };
   };
@@ -131,9 +132,12 @@
   # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.jb = {
+  users.users.${username} = {
     isNormalUser = true;
-    extraGroups = ["wheel" "power"];
+    extraGroups = [
+      "wheel"
+      "power"
+    ];
     shell = pkgs.zsh;
   };
 
@@ -141,7 +145,8 @@
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
-  environment.systemPackages = with pkgs;
+  environment.systemPackages =
+    with pkgs;
     [
       # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       wget
@@ -150,13 +155,12 @@
       wireguard-tools
       home-manager
     ]
-    ++ (
-      if headless
-      then []
-      else [ddcutil]
-    );
+    ++ (if headless then [ ] else [ ddcutil ]);
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

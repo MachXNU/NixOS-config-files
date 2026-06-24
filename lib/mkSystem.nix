@@ -1,12 +1,27 @@
-{ inputs, nixpkgs, self }:
-
-{ system, hostName, headless ? false, hostsMicroVMs ? false }:
-
+{
+  inputs,
+  nixpkgs,
+  self,
+}:
+{
+  system,
+  hostName,
+  username ? "jb",
+  headless ? false,
+  hostsMicroVMs ? false,
+  runsVMs ? false,
+}:
 nixpkgs.lib.nixosSystem {
   inherit system;
 
   specialArgs = {
-    inherit inputs headless hostName hostsMicroVMs;
+    inherit
+      inputs
+      headless
+      hostName
+      hostsMicroVMs
+      username
+      ;
   };
 
   modules = [
@@ -15,25 +30,35 @@ nixpkgs.lib.nixosSystem {
     ../hosts/${hostName}/hardware-configuration.nix
     inputs.agenix.nixosModules.default
 
-    inputs.home-manager.nixosModules.home-manager {
+    inputs.home-manager.nixosModules.home-manager
+    {
       home-manager = {
         useGlobalPkgs = true;
-        useUserPackages = true;
+        useUserPackages = false;
 
-        users.jb = { ... }: {
-          imports = [
-            inputs.nvf.homeManagerModules.default
-            ../home-manager/jb.nix
-          ];
-        };
+        users.${username}.imports = [
+          inputs.nvf.homeManagerModules.default
+          ../home-manager/home.nix
+        ]
+        ++ (if runsVMs then [ ../modules/home-manager/kvm.nix ] else [ ]);
 
-        backupFileExtension = "backup";
-        extraSpecialArgs = { 
-          inherit inputs headless hostName;
-          myPackages = self.packages.${system};
+        extraSpecialArgs = {
+          inherit
+            inputs
+            headless
+            hostName
+            username
+            runsVMs
+            ;
+
+          homeDirectory = "/home/${username}";
+          isLinux = true;
+          isWork = false;
+          hyprlandConfig = import ../hosts/${hostName}/hyprland.nix;
+          hyprlockLayout = import ../hosts/${hostName}/hyprlock-layout.nix;
         };
       };
     }
   ]
-  ++ (if hostsMicroVMs then [ inputs.microvm.nixosModules.host ] else []);
+  ++ (if hostsMicroVMs then [ inputs.microvm.nixosModules.host ] else [ ]);
 }

@@ -10,7 +10,10 @@
 
   systemd.services."microvm@ente".serviceConfig.TimeoutStartSec = "240";
 
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
 
   services.caddy = {
     enable = true;

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+_:
 
 {
   programs.zsh = {
@@ -11,7 +11,7 @@
     oh-my-zsh = {
       enable = true;
 
-      theme = "robbyrussell"; 
+      theme = "robbyrussell";
 
       plugins = [
         "git"
@@ -24,6 +24,7 @@
     shellAliases = {
       # update = "sudo nixos-rebuild switch";
       # less = "TERM=xterm-256color less";
+      ff = "fastfetch";
     };
     history.size = 10000;
   };

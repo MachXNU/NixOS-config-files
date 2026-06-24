@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   # Time after idle until spindown (5 seconds * SPINDOWN_TIME)
@@ -23,8 +28,16 @@ in
   # Create a systemd service that runs at boot, after suspend, and after resume
   systemd.services.hdparm = {
     description = "Service to spin down HDDs after a specified time in idle";
-    wantedBy = [ "multi-user.target" "sleep.target" "post-resume.target" ];
-    after = [ "network.target" "suspend.target" "post-resume.target" ];
+    wantedBy = [
+      "multi-user.target"
+      "sleep.target"
+      "post-resume.target"
+    ];
+    after = [
+      "network.target"
+      "suspend.target"
+      "post-resume.target"
+    ];
     serviceConfig = {
       Type = "oneshot";
       User = "root";

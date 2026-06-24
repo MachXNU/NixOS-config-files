@@ -13,7 +13,8 @@ let
     inherit inputs self;
     nixpkgs = inputs.nixpkgs;
   };
-in {
+in
+{
   flake.nixosConfigurations = {
     nixos-vm = mkSystem {
       system = "aarch64-linux";
@@ -36,6 +37,7 @@ in {
     nixos-brutuz = mkSystem {
       system = "x86_64-linux";
       hostName = "nixos-brutuz";
+      runsVMs = true;
     };
 
     nixos-vivobook = mkSystem {

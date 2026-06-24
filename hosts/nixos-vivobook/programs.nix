@@ -1,4 +1,4 @@
-{ ... }:
+{ username, ... }:
 {
   boot.kernelModules = [ "kvm-intel" ];
   boot.kernelParams = [ "intel_iommu=on" ];
@@ -9,7 +9,9 @@
     ../../modules/steam.nix
   ];
 
-  home-manager.users.jb = { ... }: {
-    programs.noctalia-shell.settings.location.name = "Paris, France";
-  };
+  home-manager.users.${username} =
+    { ... }:
+    {
+      programs.noctalia-shell.settings.location.name = "Paris, France";
+    };
 }

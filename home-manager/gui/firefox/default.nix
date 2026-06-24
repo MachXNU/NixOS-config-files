@@ -1,20 +1,26 @@
-{ pkgs, lib, config, myPackages, ... }:
-
-let
-  myFirefox = myPackages.firefox.overrideAttrs (oldAttrs: {
-    passthru = oldAttrs.passthru // {
-      extraPolicies = import ./preferences.nix {
-        inherit pkgs;
-        downloadDir = "${config.home.homeDirectory}/Downloads"; 
-      };
-    };
-  });
-in
+{
+  pkgs,
+  lib,
+  config,
+  isWork,
+  ...
+}:
 {
   programs.firefox = {
     enable = true;
-    package = myFirefox;
-    profiles = import ./profiles.nix { inherit pkgs lib; };
+
+    # IMPORTANT: new XDG layout (your choice)
     configPath = "${config.xdg.configHome}/mozilla/firefox";
+
+    profiles.user = {
+      isDefault = true;
+
+      settings = import ./profiles.nix;
+    };
+
+    policies = import ./preferences.nix {
+      inherit pkgs isWork;
+      downloadDir = "${config.home.homeDirectory}/Downloads";
+    };
   };
 }

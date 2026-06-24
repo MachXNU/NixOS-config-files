@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   options.my.networking = {
@@ -35,7 +40,7 @@
       networkConfig.Bridge = "br0";
     };
 
-   # Bridge gets the LAN IP (DHCP example)
+    # Bridge gets the LAN IP (DHCP example)
     systemd.network.networks."30-br0" = {
       matchConfig.Name = "br0";
       networkConfig = {
