@@ -88,24 +88,26 @@ hl.config({
     animations = {
         enabled = "yes, please :)",
     },
-    layer_rule = {
-        blur = true,
-        blur_popups = true,
-        ignore_alpha = 0.300000,
-        match = { namespace = "noctalia-background-.*" },
-        name = "noctalia",
-    },
-    window_rule = {
-        border_size = 0,
-        center = true,
-        dim_around = true,
-        float = true,
-        focus_on_activate = true,
-        match = { class = "^(waypaper)$" },
-        name = "waypaper-launcher",
-        size = "1320 800",
-        stay_focused = true,
-    },
+})
+
+hl.layer_rule ({
+    blur = true,
+    blur_popups = true,
+    ignore_alpha = 0.300000,
+    match = { namespace = "noctalia-background-.*" },
+    name = "noctalia",
+})
+
+hl.window_rule ({
+    border_size = 0,
+    center = true,
+    dim_around = true,
+    float = true,
+    focus_on_activate = true,
+    match = { class = "^(waypaper)$" },
+    name = "waypaper-launcher",
+    size = "1320 800",
+    stay_focused = true,
 })
 
 hl.monitor({ output = "desc:BOE 0x093E", mode = "1920x1080", refresh = 60, position = "0x0" })
