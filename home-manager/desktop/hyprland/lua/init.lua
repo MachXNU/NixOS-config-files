@@ -18,10 +18,6 @@ hl.config({
     general = {
         allow_tearing = false,
         border_size = 2,
-        col = {
-          active_border = "$primary",
-          inactive_border = "$surface",
-        },
         gaps_in = 4,
         gaps_out = 8,
         layout = "dwindle",
@@ -75,18 +71,8 @@ hl.config({
         disable_hyprland_logo = true,
         force_default_wallpaper = 0,
     },
-    group = {
-        col = {
-            border_active = "$tertiary",
-        },
-        groupbar = {
-            col = {
-                active = "$surface",
-            },
-        },
-    },
     animations = {
-        enabled = "yes, please :)",
+        enabled = true;
     },
 })
 
@@ -110,12 +96,12 @@ hl.window_rule ({
     stay_focused = true,
 })
 
-hl.monitor({ output = "desc:BOE 0x093E", mode = "1920x1080", refresh = 60, position = "0x0" })
-hl.monitor({ output = "desc:BNQ BenQ EX2710Q C1R00852019", mode = "2560x1440", refresh = 144, position = "1920x-1080" })
-hl.monitor({ output = "desc:Philips Consumer Electronics Company PHL 243V7 UHB1720022390", mode = "1920x1080", refresh = 60, position = "1920x0" })
-hl.monitor({ output = "desc:Philips Consumer Electronics Company PHL 243V7 UHB1720023672", mode = "1920x1080", refresh = 60, position = "3840x0" })
-hl.monitor({ output = "desc:LG Electronics BK550Y 004NTDVGZ354", mode = "1920x1080", refresh = 60, position = "1920x0" })
-hl.monitor({ output = "desc:LG Electronics BK550Y 301MAPNG9616", mode = "1920x1080", refresh = 60, position = "3840x0" })
+hl.monitor({ output = "desc:BOE 0x093E", mode = "1920x1080@60", position = "0x0" })
+hl.monitor({ output = "desc:BNQ BenQ EX2710Q C1R00852019", mode = "2560x1440@144", position = "1920x-1080" })
+hl.monitor({ output = "desc:Philips Consumer Electronics Company PHL 243V7 UHB1720022390", mode = "1920x1080@60", position = "1920x0" })
+hl.monitor({ output = "desc:Philips Consumer Electronics Company PHL 243V7 UHB1720023672", mode = "1920x1080@60", position = "3840x0" })
+hl.monitor({ output = "desc:LG Electronics BK550Y 004NTDVGZ354", mode = "1920x1080@60", position = "1920x0" })
+hl.monitor({ output = "desc:LG Electronics BK550Y 301MAPNG9616", mode = "1920x1080@60", position = "3840x0" })
 
 hl.bind("SUPER + Q", function()
     hl.exec_cmd("kitty")
