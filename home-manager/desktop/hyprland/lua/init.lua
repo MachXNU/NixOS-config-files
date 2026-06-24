@@ -9,7 +9,10 @@ hl.env("XDG_SESSION_TYPE", "wayland")
 hl.env("XCURSOR_THEME", "Bibata-Modern-Ice")
 hl.env("XCURSOR_SIZE", "24")
 
-require("~/.config/hypr/noctalia/noctalia-colors")
+package.path = package.path ..
+    ";" .. os.getenv("HOME") .. "/.config/hypr/noctalia/?.lua"
+
+require("noctalia-colors")
 
 hl.config({
     general = {
