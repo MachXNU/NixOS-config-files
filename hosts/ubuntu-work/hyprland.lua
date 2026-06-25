@@ -1,0 +1,11 @@
+hl.env("LIBVA_DRIVER_NAME", "nvidia")
+hl.env("GBM_BACKEND", "nvidia-drm")
+hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
+hl.env("WLR_NO_HARDWARE_CURSORS", "1")
+
+hl.monitor({ output = "desc:BOE 0x093E", mode = "1920x1080@60", position = "0x0" })
+hl.monitor({ output = "desc:BNQ BenQ EX2710Q C1R00852019", mode = "2560x1440@144", position = "1920x-1080" })
+hl.monitor({ output = "desc:Philips Consumer Electronics Company PHL 243V7 UHB1720022390", mode = "1920x1080@60", position = "1920x0" })
+hl.monitor({ output = "desc:Philips Consumer Electronics Company PHL 243V7 UHB1720023672", mode = "1920x1080@60", position = "3840x0" })
+hl.monitor({ output = "desc:LG Electronics BK550Y 004NTDVGZ354", mode = "1920x1080@60", position = "1920x0" })
+hl.monitor({ output = "desc:LG Electronics BK550Y 301MAPNG9616", mode = "1920x1080@60", position = "3840x0" })

@@ -27,6 +27,7 @@
       pavucontrol
       networkmanagerapplet
       obsidian
+      typer
     ]
     ++ (
       if isWork then
