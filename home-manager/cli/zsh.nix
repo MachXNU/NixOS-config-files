@@ -25,6 +25,7 @@ _:
       # update = "sudo nixos-rebuild switch";
       # less = "TERM=xterm-256color less";
       ff = "fastfetch";
+      cdr = "cd $(git rev-parse --show-toplevel)";
     };
     history.size = 10000;
   };
