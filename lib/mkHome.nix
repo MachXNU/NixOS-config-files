@@ -10,7 +10,7 @@
   homeDirectory,
   isWork ? false,
   isLinux ? true,
-  hyprlandConfig ? { },
+  hyprlandConfig ? null,
   hyprlockLayout ? null,
   runsVMs ? false,
 }:
