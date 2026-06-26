@@ -8,7 +8,6 @@
   hostName,
   username ? "jb",
   headless ? false,
-  hostsMicroVMs ? false,
   runsVMs ? false,
 }:
 nixpkgs.lib.nixosSystem {
@@ -19,7 +18,6 @@ nixpkgs.lib.nixosSystem {
       inputs
       headless
       hostName
-      hostsMicroVMs
       username
       ;
   };
@@ -59,6 +57,5 @@ nixpkgs.lib.nixosSystem {
         };
       };
     }
-  ]
-  ++ (if hostsMicroVMs then [ inputs.microvm.nixosModules.host ] else [ ]);
+  ];
 }

@@ -8,7 +8,6 @@
   headless,
   username,
   hostName,
-  hostsMicroVMs,
   ...
 }:
 {
@@ -20,7 +19,7 @@
     ./modules/networking.nix
   ];
 
-  my.networking.useSystemdNetwork = hostsMicroVMs;
+  my.networking.useSystemdNetwork = false;
 
   boot.loader.grub = {
     enable = false;
@@ -42,7 +41,7 @@
   services.upower.enable = true;
 
   # Set your time zone.
-  time.timeZone = "Europe/Paris";
+  time.timeZone = "Europe/Amsterdam";
 
   networking.firewall.checkReversePath = false;
 

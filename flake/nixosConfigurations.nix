@@ -5,10 +5,6 @@ let
     inherit inputs self;
     nixpkgs = inputs.nixpkgs;
   };
-  mkSimpleSystem = import ../lib/mkSimpleSystem.nix {
-    inherit inputs self;
-    nixpkgs = inputs.nixpkgs;
-  };
   mkVMSystem = import ../lib/mkVMSystem.nix {
     inherit inputs self;
     nixpkgs = inputs.nixpkgs;
@@ -26,7 +22,6 @@ in
       system = "x86_64-linux";
       hostName = "nixos-asustor";
       headless = true;
-      hostsMicroVMs = true;
     };
 
     nixos-laptop = mkSystem {

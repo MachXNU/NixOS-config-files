@@ -16,7 +16,7 @@ in
       isWork = true;
       username = "jb";
       homeDirectory = "/home/jb";
-      hyprlandConfig = import ../hosts/ubuntu-work/hyprland.nix;
+      hyprlandConfig = toString ../hosts/ubuntu-work/hyprland.lua;
       hyprlockLayout = import ../hosts/ubuntu-work/hyprlock-layout.nix;
       runsVMs = true;
     };
