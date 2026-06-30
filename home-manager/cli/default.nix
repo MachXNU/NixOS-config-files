@@ -19,6 +19,7 @@
     with pkgs;
     [
       file
+      bat
       tree
       htop
       efibootmgr
