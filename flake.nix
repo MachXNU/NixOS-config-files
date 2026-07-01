@@ -9,7 +9,7 @@
     };
     flake-parts.url = "github:hercules-ci/flake-parts";
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
+      url = "github:noctalia-dev/noctalia/legacy-v4";
       #url = "github:MachXNU/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
