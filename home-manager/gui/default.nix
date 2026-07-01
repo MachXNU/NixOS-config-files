@@ -27,6 +27,7 @@
       pavucontrol
       networkmanagerapplet
       obsidian
+      thunar
       typer
     ]
     ++ (
