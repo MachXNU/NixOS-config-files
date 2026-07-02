@@ -29,6 +29,7 @@
       obsidian
       thunar
       typer
+      vial
     ]
     ++ (
       if isWork then
