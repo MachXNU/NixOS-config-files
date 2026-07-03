@@ -17,7 +17,7 @@
       ]
     else
       [
-        ./discord.nix
+        # ./discord.nix # Waiting for the issue with pnpm to be resolved
       ]
   );
 

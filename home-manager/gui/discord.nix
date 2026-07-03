@@ -45,7 +45,7 @@
         imageZoom.enable = true;
         fixCodeblockGap.enable = true;
         forceOwnerCrown.enable = true;
-        friendsSince.enable = true;
+        #friendsSince.enable = true;
         copyEmojiMarkdown = {
           enable = true;
           copyUnicode = true;
