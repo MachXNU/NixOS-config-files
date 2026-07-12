@@ -2,6 +2,7 @@
   inputs,
   pkgs,
   isWork,
+  isAppleSilicon,
   ...
 }:
 {
@@ -29,8 +30,14 @@
       obsidian
       thunar
       typer
-      vial
     ]
+    ++ (
+      if !isAppleSilicon 
+        then [ 
+          vial
+          davinci-resolve
+       ] else []
+    )
     ++ (
       if isWork then
         [
@@ -41,7 +48,6 @@
           telegram-desktop
           haruna
           ffmpeg
-          davinci-resolve
         ]
     );
 }

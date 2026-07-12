@@ -28,5 +28,10 @@ in
       hostName = "nixos-brutuz";
       runsVMs = true;
     };
+    nixos-m1pro = mkSystem {
+      system = "aarch64-linux";
+      hostName = "nixos-m1pro";
+      isAppleSilicon = true;
+    };
   };
 }

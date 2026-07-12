@@ -1,10 +1,12 @@
-{ lib, username, ... }:
+{ inputs, lib, username, ... }:
 {
   imports = [
-    ./apple-silicon-support
-    ../../modules/steam.nix
+    inputs.apple-silicon-support.nixosModules.apple-silicon-support
     ../../modules/tailscale.nix
   ];
+
+  # Specify path to peripheral firmware files
+  hardware.asahi.peripheralFirmwareDirectory = /mnt/boot/vendorfw;
 
   # Enable basic nixos-apple-silicon support.
   hardware.asahi.enable = true;
@@ -12,6 +14,12 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = lib.mkForce false;
+
+  # Implicitly enables IWD and disables wpa_supplicant
+  networking.networkmanager.wifi.backend = "iwd";
+
+  # Force disable 32Bit graphics
+  hardware.graphics.enable32Bit = lib.mkForce false;
 
   home-manager.users.${username} =
     { ... }:
