@@ -118,19 +118,12 @@ in
       installation_mode = "force_installed";
       private_browsing = true;
     };
-  }
-  // (
-    if !isWork then
-      {
-        "78272b6fa58f4a1abaac99321d503a20@proton.me" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/proton-pass/latest.xpi";
-          installation_mode = "force_installed";
-          private_browsing = true;
-        };
-      }
-    else
-      { }
-  );
+    "78272b6fa58f4a1abaac99321d503a20@proton.me" = {
+      install_url = "https://addons.mozilla.org/firefox/downloads/latest/proton-pass/latest.xpi";
+      installation_mode = "force_installed";
+      private_browsing = true;
+    };
+  };
   SkipTermsOfUse = true;
   Preferences = {
     "places.history.enabled" = locked_false; # don't save history to disk
