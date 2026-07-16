@@ -1,4 +1,9 @@
-{ inputs, lib, username, ... }:
+{
+  inputs,
+  lib,
+  username,
+  ...
+}:
 {
   imports = [
     inputs.apple-silicon-support.nixosModules.apple-silicon-support
@@ -6,7 +11,7 @@
   ];
 
   # Specify path to peripheral firmware files
-  hardware.asahi.peripheralFirmwareDirectory = /mnt/boot/vendorfw;
+  hardware.asahi.peripheralFirmwareDirectory = /boot/vendorfw;
 
   # Enable basic nixos-apple-silicon support.
   hardware.asahi.enable = true;
@@ -20,6 +25,9 @@
 
   # Force disable 32Bit graphics
   hardware.graphics.enable32Bit = lib.mkForce false;
+
+  # Re-enable the notch
+  # boot.kernelParams = [ "appledrm.show_notch=1" ];
 
   home-manager.users.${username} =
     { ... }:
