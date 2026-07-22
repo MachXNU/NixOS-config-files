@@ -103,7 +103,13 @@
           enableExtraDiagnostics = true;
 
           bash.enable = false;
-          clang.enable = false;
+          clang = {
+            enable = true;
+            lsp = {
+              enable = true;
+              servers = [ "clangd" ];
+            };
+          };
           markdown.enable = true;
           nix = {
             enable = true;
@@ -287,6 +293,21 @@
             key = "k";
             mode = "n";
             action = "gk";
+          }
+          {
+            key = "<leader>fe";
+            mode = "n";
+            action = "<cmd>Neotree toggle<CR>";
+          }
+          {
+            key = "<leader>fr";
+            mode = "n";
+            action = "<cmd>Neotree reveal<CR>";
+          }
+          {
+            key = "<leader>fo";
+            mode = "n";
+            action = "<cmd>Neotree focus<CR>";
           }
         ];
 
