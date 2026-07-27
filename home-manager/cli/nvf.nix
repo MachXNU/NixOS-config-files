@@ -290,6 +290,11 @@
           }
         ];
 
+        extraPackages = [
+          pkgs.ueberzugpp
+          pkgs.imagemagick
+        ];
+
         utility = {
           ccc.enable = false;
           vim-wakatime.enable = false;
@@ -307,7 +312,10 @@
             precognition.enable = false;
           };
           images = {
-            image-nvim.enable = false;
+            image-nvim = {
+              enable = true;
+              setupOpts.backend = "kitty";
+            };
             img-clip.enable = false;
           };
         };
