@@ -9,3 +9,5 @@ hl.monitor({ output = "desc:Philips Consumer Electronics Company PHL 243V7 UHB17
 hl.monitor({ output = "desc:Philips Consumer Electronics Company PHL 243V7 UHB1720023672", mode = "1920x1080@60", position = "3840x0" })
 hl.monitor({ output = "desc:LG Electronics BK550Y 004NTDVGZ354", mode = "1920x1080@60", position = "1920x0" })
 hl.monitor({ output = "desc:LG Electronics BK550Y 301MAPNG9616", mode = "1920x1080@60", position = "3840x0" })
+hl.monitor({ output = "Dell Inc. DELL U2723QE CB0FM04", mode = "3840x2160@60", scale = 1.5, position = "1920x0" })
+hl.monitor({ output = "Dell Inc. DELL U2723QE 3NV0M04", mode = "3840x2160@60", scale = 1.5, position = "4480x0" })
