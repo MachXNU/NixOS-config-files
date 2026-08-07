@@ -49,7 +49,10 @@ hl.config({
     input = {
         float_switch_override_focus = false,
         follow_mouse = true,
-        kb_layout = "us",
+        kb_layout = "us,us",
+        kb_variant = ",colemak_dh",
+        kb_options = "grp:caps_toggle",
+        resolve_binds_by_sym = true,
         left_handed = false,
         natural_scroll = true,
         numlock_by_default = true,
