@@ -2,7 +2,7 @@
 
 let
   mkDarwinSystem = import ../lib/mkDarwinSystem.nix {
-    inherit inputs self;
+    inherit inputs;
     #nixpkgs = inputs.nixpkgs;
   };
 in
@@ -10,7 +10,7 @@ in
   flake.darwinConfigurations = {
     macbook-pro-m4 = mkDarwinSystem {
       system = "aarch64-darwin";
-      hostName = "MacBook Pro M4";
+      hostName = "Jbs-MacBook-Pro-M4";
     };
   };
 }

@@ -19,7 +19,7 @@ inputs.nix-darwin.lib.darwinSystem {
   };
 
   modules = [
-    ../darwin-configuration.nix
+    ../config/darwin-configuration.nix
 
     # Host-specific config
     #../hosts/${hostName}/programs.nix
