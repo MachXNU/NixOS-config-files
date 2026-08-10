@@ -6,25 +6,21 @@
   isLinux,
   ...
 }:
+
 {
   home.username = username;
   home.homeDirectory = homeDirectory;
-
   home.stateVersion = "25.11";
 
-  imports = lib.flatten [
+  imports = [
     ./cli
-
-    (
-      if headless then
-        [ ]
-      else
-        [
-          (if isLinux then [ ./desktop ] else [ ])
-          ./gui
-          ./fonts
-        ]
-    )
+  ]
+  ++ lib.optionals (!headless) [
+    ./gui
+    ./fonts
+  ]
+  ++ lib.optionals (!headless && isLinux) [
+    ./desktop
   ];
 
   # Force override hyprland.conf by Home-Manager on rebuild

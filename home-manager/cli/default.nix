@@ -1,9 +1,12 @@
 {
+  inputs,
+  lib,
   pkgs,
   isWork,
   isLinux,
   ...
 }:
+
 {
   imports = [
     ./home-manager.nix
@@ -23,12 +26,15 @@
       htop
       jq
       fastfetch
-      jq
       zip
       unzip
     ]
-    ++ (if isLinux then [ efibootmgr ] else [])
-    ++ (if isWork then [ samba ] else [ ]);
+    ++ lib.optionals isLinux [
+      efibootmgr
+    ]
+    ++ lib.optionals isWork [
+      samba
+    ];
 
   home.shellAliases = {
     svim = "sudo -E ${pkgs.vim}/bin/vim";
