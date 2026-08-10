@@ -2,6 +2,7 @@
   inputs,
   pkgs,
   isWork,
+  isLinux,
   ...
 }:
 {
@@ -24,21 +25,24 @@
   home.packages =
     with pkgs;
     [
-      pavucontrol
-      networkmanagerapplet
       obsidian
     ]
     ++ (
+      if isLinux then [
+        pavucontrol
+        networkmanagerapplet
+      ] else []
+    ) ++ (
       if isWork then
         [
           thunderbird
         ]
       else
-        [
+        ( if isLinux then [
           telegram-desktop
           haruna
           ffmpeg
           davinci-resolve
-        ]
+        ] else [] )
     );
 }

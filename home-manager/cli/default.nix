@@ -1,6 +1,7 @@
 {
   pkgs,
   isWork,
+  isLinux,
   ...
 }:
 {
@@ -20,13 +21,13 @@
       file
       tree
       htop
-      efibootmgr
       jq
       fastfetch
       jq
       zip
       unzip
     ]
+    ++ (if isLinux then [ efibootmgr ] else [])
     ++ (if isWork then [ samba ] else [ ]);
 
   home.shellAliases = {
