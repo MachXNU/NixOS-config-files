@@ -1,5 +1,4 @@
 {
-  inputs,
   lib,
   pkgs,
   isWork,
@@ -28,6 +27,7 @@
       fastfetch
       zip
       unzip
+      restic
     ]
     ++ lib.optionals isLinux [
       efibootmgr
