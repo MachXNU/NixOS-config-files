@@ -22,6 +22,7 @@
     [
       bat
       file
+      home-manager
       tree
       htop
       jq
