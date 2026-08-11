@@ -127,6 +127,7 @@ in
   SkipTermsOfUse = true;
   Preferences = {
     "places.history.enabled" = locked_false; # don't save history to disk
+    # disable session restore
     "browser.sessionstore.max_tabs_undo" = {
       Value = 0;
       Locked = true;

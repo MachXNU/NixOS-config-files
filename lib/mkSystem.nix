@@ -23,7 +23,7 @@ nixpkgs.lib.nixosSystem {
   };
 
   modules = [
-    ../configuration.nix
+    ../config/nixos-configuration.nix
     ../hosts/${hostName}/programs.nix
     ../hosts/${hostName}/hardware-configuration.nix
     inputs.agenix.nixosModules.default

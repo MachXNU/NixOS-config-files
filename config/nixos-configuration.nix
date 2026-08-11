@@ -4,7 +4,6 @@
 {
   lib,
   pkgs,
-  inputs,
   headless,
   username,
   hostName,
@@ -15,8 +14,9 @@
     # Include the results of the hardware scan.
     # not needed anymore, due to the hosts separation
     # ./hardware-configuration.nix
-    ./modules/ssh.nix
-    ./modules/networking.nix
+    ./common.nix
+    ../modules/ssh.nix
+    ../modules/networking.nix
   ];
 
   my.networking.useSystemdNetwork = false;
@@ -32,16 +32,11 @@
   };
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = hostName;
-
   # Configure network connections interactively with nmcli or nmtui.
   hardware.bluetooth.enable = true;
 
   services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
-
-  # Set your time zone.
-  time.timeZone = "Europe/Amsterdam";
 
   networking.firewall.checkReversePath = false;
 
@@ -65,24 +60,7 @@
       "nvidia-x11"
       "nvidia-settings"
       "nvidia-kernel-modules"
-      "steam"
-      "steam-unwrapped"
-      "obsidian"
-      "davinci-resolve"
     ];
-
-  nixpkgs = {
-    overlays = [
-      (final: prev: {
-        vimPlugins = prev.vimPlugins // {
-          nord-nvim = prev.vimUtils.buildVimPlugin {
-            name = "nord-nvim";
-            src = inputs.nord-nvim;
-          };
-        };
-      })
-    ];
-  };
 
   services.getty.autologinUser = username;
 
@@ -106,8 +84,6 @@
     enable = !headless;
     # xwayland.enable = true;
   };
-
-  environment.variables.EDITOR = "nvim";
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;

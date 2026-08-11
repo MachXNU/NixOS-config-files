@@ -1,47 +1,44 @@
 {
   inputs,
+  lib,
   pkgs,
   isWork,
+  isLinux,
   ...
 }:
+
 {
   imports = [
     inputs.nixcord.homeModules.nixcord
     ./kitty.nix
     ./firefox
   ]
-  ++ (
-    if isWork then
-      [
-        ./picoscope.nix
-      ]
-    else
-      [
-        # ./discord.nix # Waiting for the issue with pnpm to be resolved
-      ]
-  );
+  ++ lib.optionals isWork [
+    ./picoscope.nix
+  ]
+  ++ lib.optionals (!isWork) [
+    ./discord.nix
+  ];
 
   home.packages =
     with pkgs;
     [
+      obsidian
+    ]
+    ++ lib.optionals isLinux [
       pavucontrol
       networkmanagerapplet
-      obsidian
       thunar
       typer
       vial
     ]
-    ++ (
-      if isWork then
-        [
-          thunderbird
-        ]
-      else
-        [
-          telegram-desktop
-          haruna
-          ffmpeg
-          davinci-resolve
-        ]
-    );
+    ++ lib.optionals isWork [
+      thunderbird
+    ]
+    ++ lib.optionals (!isWork && isLinux) [
+      telegram-desktop
+      haruna
+      ffmpeg
+      davinci-resolve
+    ];
 }

@@ -1,7 +1,6 @@
 {
   inputs,
   nixpkgs,
-  self,
 }:
 
 { system, hostName }:

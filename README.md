@@ -17,11 +17,6 @@ the desktop UI.
 
 ![Screenshot](./screenshots/screenshot-2.png)
 
-There are
-[many wallpapers](https://github.com/MachXNU/NixOS-config-files/tree/main/home-manager/desktop/Wallpapers)
-to choose from in the wallpaper selector panel (accessible from the control
-center).
-
 ## Repo organization
 
 Due to the strong requirement of managing several hosts in one config and the
@@ -32,11 +27,16 @@ things as possible ported to the Ubuntu machine.
 - In `flake.nix`, all hosts are defined.
 - `configuration.nix` is common to all NixOS hosts, with some programs being
   enabled or disabled based on this `headless` flag.
+
 - Per-host configs can be found `hosts/hostName`, for example:
   - Nvidia config
   - PCI buses
   - KVM-related boot-args
   - Location of the machine (for the weather app)
+- NixOS modules (like KVM, Steam) are defined in `modules/` and imported by
+  `programs.nix`
+- Home-Manager base configuration is common to all machines. Modules are
+  imported based on the `headless` flag
   - Hyprland and Hyprlock specifi configs (including screen sizes and positions,
     for example)
 - NixOS modules (like KVM, Steam) are defined in `modules/` and imported by
@@ -48,8 +48,6 @@ things as possible ported to the Ubuntu machine.
 
 ## Current status
 
-- Nvidia drivers for my desktop (can be easily adapted to other machines as
-  well)
 - Modular config for several hosts
 - Nice desktop environment
 - Basic utilities (zsh, git, SSH, vim...)
@@ -59,7 +57,10 @@ things as possible ported to the Ubuntu machine.
 - Firefox with privacy-oriented config
 - Telegram Desktop
 - Steam and Proton
-- Theming and cool wallpapers
+- Theming
+- MicroVMs for Ente on the NAS
+- Theme switcher + Wallpaper switcher
+- DDNS Updater running on the host with hardened systemd config
 - Nord theme and Wallpaper switcher
 - Working neovim config, could always be refined further though
 - Discord desktop app via [Vesktop](https://github.com/Vencord/Vesktop)
@@ -72,8 +73,6 @@ because Noctalia hasn't generated colors for it to use yet.
 Just change the wallpaper, or toggle dark/light mode. This will trigger a new
 color extraction, and Hyprland will find its colors.
 
-![Screenshot](./screenshots/screenshot-hyprland-error.png)
-
 ## Noctalia
 
 While Noctalia-shell is indeed a very good project with many amazing features,
@@ -82,6 +81,7 @@ some of them do not fit my needs.
 - The lock screen looks very bad to me, so I decided to reimplement a custom
   lock screen with hyprlock and hypridle, inspired by Style 7 of
   [Hyprlock-Styles](https://github.com/MrVivekRajan/Hyprlock-Styles/)
+
 - The power menu entries are thus overwritten with custom commands to trigger
   hyprlock
 - I am not using the IDLE feature, which ends up triggering Noctalia's native
@@ -123,6 +123,37 @@ git clone git@github.com:MachXNU/NixOS-config-files
 mkdir -p ~/.config/nix \
   && grep -qxF "experimental-features = nix-command flakes" ~/.config/nix/nix.conf 2>/dev/null || printf "%s\n" "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 ```
+
+## On non-NixOS hosts
+
+I need to use a non-NixOS system for work, but I wanted to use my Nix config as
+much as possible.\
+Fortunately, most of the interesting config is managed by Home Manager, so we
+can port that over to a non-NixOS system.
+
+I chose Ubuntu as my Linux distribution for this system.\
+The instructions below show how to run my Home Manager config on such an Ubuntu
+26.04 Server host.
+
+- Perform a clean install of Ubuntu Server (so we don't get a desktop
+  environment).
+- Login as your user, now referred to as `<username>`.
+- Install Nix, for example via the
+  [Determinate Systems](https://determinate.systems/nix-installer/) installer.
+- Create an SSH key, add it to your system and to GitHub, then clone this repo
+
+```
+git clone git@github.com:MachXNU/NixOS-config-files
+```
+
+- Enable flakes:
+
+```bash
+mkdir -p ~/.config/nix \
+  && grep -qxF "experimental-features = nix-command flakes" ~/.config/nix/nix.conf 2>/dev/null || printf "%s\n" "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
+```
+
+- Run Home Manager from its flake, to install my config:
 
 - Run Home Manager from its flake, to install my config:
 

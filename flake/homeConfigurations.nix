@@ -14,8 +14,8 @@ in
     "ubuntu" = mkHome {
       system = "x86_64-linux";
       isWork = true;
-      username = "jb";
-      homeDirectory = "/home/jb";
+      username = "jbamade";
+      homeDirectory = "/home/jbamade";
       hyprlandConfig = toString ../hosts/ubuntu-work/hyprland.lua;
       hyprlockLayout = import ../hosts/ubuntu-work/hyprlock-layout.nix;
       runsVMs = true;

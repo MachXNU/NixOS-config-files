@@ -1,12 +1,14 @@
 {
+  lib,
   pkgs,
   isWork,
+  isLinux,
   ...
 }:
+
 {
   imports = [
     ./fastfetch.nix
-    ./home-manager.nix
     ./git.nix
     ./neovim.nix
     ./nvf.nix
@@ -18,18 +20,24 @@
   home.packages =
     with pkgs;
     [
-      file
       bat
+      file
+      home-manager
       tree
       htop
-      efibootmgr
       jq
-      jq
+      fastfetch
       zip
       unzip
       usbutils
+      restic
     ]
-    ++ (if isWork then [ samba ] else [ ]);
+    ++ lib.optionals isLinux [
+      efibootmgr
+    ]
+    ++ lib.optionals isWork [
+      samba
+    ];
 
   home.shellAliases = {
     svim = "sudo -E ${pkgs.vim}/bin/vim";
