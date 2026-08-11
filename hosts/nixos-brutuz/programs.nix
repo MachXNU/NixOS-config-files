@@ -29,4 +29,17 @@
     enable = true;
     enableSSH = true;
   };
+
+  services.usbmuxd.enable = true;
+
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", ATTR{idVendor}=="05ac", MODE="0666", TAG+="uaccess"
+    KERNEL=="hidraw*", \
+      SUBSYSTEM=="hidraw", \
+      ATTRS{serial}=="*vial:f64c2b3c*", \
+      MODE="0660", \
+      GROUP="users", \
+      TAG+="uaccess", \
+      TAG+="udev-acl"
+  '';
 }

@@ -10,6 +10,7 @@
 {
   imports = [
     inputs.nixcord.homeModules.nixcord
+    inputs.nixcord.homeModules.nixcord
     ./kitty.nix
     ./firefox
   ]
@@ -28,6 +29,9 @@
     ++ lib.optionals isLinux [
       pavucontrol
       networkmanagerapplet
+      thunar
+      typer
+      vial
     ]
     ++ lib.optionals isWork [
       thunderbird

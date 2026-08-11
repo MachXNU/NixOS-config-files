@@ -1,13 +1,14 @@
 {
   inputs,
   nixpkgs,
+  self,
 }:
 {
   system,
   hostName,
   username ? "jb",
   headless ? false,
-  hostsMicroVMs ? false,
+  runsVMs ? false,
 }:
 nixpkgs.lib.nixosSystem {
   inherit system;
@@ -17,7 +18,6 @@ nixpkgs.lib.nixosSystem {
       inputs
       headless
       hostName
-      hostsMicroVMs
       username
       ;
   };
@@ -32,32 +32,30 @@ nixpkgs.lib.nixosSystem {
     {
       home-manager = {
         useGlobalPkgs = true;
-        #useUserPackages = true;
         useUserPackages = false;
 
-        users.${username} = {
-          imports = [
-            inputs.nvf.homeManagerModules.default
-            ../home-manager/home.nix
-          ];
-        };
+        users.${username}.imports = [
+          inputs.nvf.homeManagerModules.default
+          ../home-manager/home.nix
+        ]
+        ++ (if runsVMs then [ ../modules/home-manager/kvm.nix ] else [ ]);
 
-        backupFileExtension = "backup";
         extraSpecialArgs = {
           inherit
             inputs
             headless
             hostName
             username
+            runsVMs
             ;
+
           homeDirectory = "/home/${username}";
           isLinux = true;
           isWork = false;
-          hyprlandConfig = import ../hosts/${hostName}/hyprland.nix;
+          hyprlandConfig = toString ../hosts/${hostName}/hyprland.lua;
           hyprlockLayout = import ../hosts/${hostName}/hyprlock-layout.nix;
         };
       };
     }
-  ]
-  ++ (if hostsMicroVMs then [ inputs.microvm.nixosModules.host ] else [ ]);
+  ];
 }

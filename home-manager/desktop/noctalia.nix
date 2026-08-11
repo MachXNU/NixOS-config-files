@@ -4,6 +4,8 @@
   ...
 }:
 {
+}:
+{
   imports = [
     inputs.noctalia.homeModules.default
   ];
@@ -56,6 +58,7 @@
               useDistroLogo = false;
             }
             {
+              id = "Network";
               id = "Network";
             }
             {
@@ -118,14 +121,48 @@
             { id = "Network"; }
             { id = "Bluetooth"; }
             { id = "DarkMode"; }
+            { id = "AirplaneMode"; }
+            { id = "Network"; }
+            { id = "Bluetooth"; }
+            { id = "DarkMode"; }
           ];
           right = [
             { id = "Notifications"; }
             { id = "PowerProfile"; }
             { id = "KeepAwake"; }
             { id = "NightLight"; }
+            { id = "Notifications"; }
+            { id = "PowerProfile"; }
+            { id = "KeepAwake"; }
+            { id = "NightLight"; }
           ];
         };
+        cards = [
+          {
+            enabled = true;
+            id = "profile-card";
+          }
+          {
+            enabled = true;
+            id = "shortcuts-card";
+          }
+          {
+            enabled = true;
+            id = "audio-card";
+          }
+          {
+            enabled = true;
+            id = "brightness-card";
+          }
+          {
+            enabled = true;
+            id = "weather-card";
+          }
+          {
+            enabled = true;
+            id = "media-sysmon-card";
+          }
+        ];
       };
       dock = {
         enabled = false;
@@ -216,9 +253,10 @@
             id = "steam";
           }
         ];
-        enableUserTheming = true;
+        enableUserTheming = false;
       };
       ui = {
+        boxBorderEnabled = true;
         fontDefault = "DejaVu Sans";
         fontDefaultScale = 1;
         fontFixed = "Fira Mono";
@@ -234,10 +272,6 @@
     user-templates = ''
       [config]
       # General template settings
-
-      [templates.hyprland]
-      input_path = '~/.config/matugen/hyprland-colors.css'
-      output_path = '~/.config/hypr/noctalia/noctalia-colors.conf'
     '';
   };
 }

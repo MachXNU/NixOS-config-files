@@ -8,7 +8,7 @@
 
 {
   imports = [
-    ./home-manager.nix
+    ./fastfetch.nix
     ./git.nix
     ./neovim.nix
     ./nvf.nix
@@ -20,6 +20,7 @@
   home.packages =
     with pkgs;
     [
+      bat
       file
       tree
       htop
@@ -27,6 +28,7 @@
       fastfetch
       zip
       unzip
+      usbutils
       restic
     ]
     ++ lib.optionals isLinux [

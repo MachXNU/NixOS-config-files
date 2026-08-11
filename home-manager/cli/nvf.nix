@@ -18,6 +18,15 @@
           shiftwidth = 4;
           softtabstop = 4;
           expandtab = true;
+
+          # case-(in)sensitive search
+          smartcase = true;
+          ignorecase = true;
+
+          wrap = true;
+          textwidth = 85;
+          colorcolumn = "+1";
+          formatoptions = "qrn1c";
         };
 
         autocmds = [
@@ -257,6 +266,33 @@
             '';
             desc = "Show line diagnostic";
           }
+          {
+            key = "/";
+            mode = "n";
+            action = "/\\v";
+            desc = "Fix vim's regex handling";
+          }
+          {
+            key = "/";
+            mode = "v";
+            action = "/\\v";
+            desc = "Fix vim's regex handling";
+          }
+          {
+            key = "j";
+            mode = "n";
+            action = "gj";
+          }
+          {
+            key = "k";
+            mode = "n";
+            action = "gk";
+          }
+        ];
+
+        extraPackages = [
+          pkgs.ueberzugpp
+          pkgs.imagemagick
         ];
 
         utility = {
@@ -276,7 +312,10 @@
             precognition.enable = false;
           };
           images = {
-            image-nvim.enable = false;
+            image-nvim = {
+              enable = true;
+              setupOpts.backend = "kitty";
+            };
             img-clip.enable = false;
           };
         };

@@ -1,6 +1,6 @@
 {
   monitor = [
-    ",1920x1080@60,0x0,1,bitdepth,10"
+    "desc:BOE 0x093E,1920x1080@60,0x0,1,bitdepth,10"
     "desc:BNQ BenQ EX2710Q C1R00852019,2560x1440@144,1920x-1080,1,bitdepth,10"
     # Desk 1
     "desc:Philips Consumer Electronics Company PHL 243V7 UHB1720022390,1920x1080@60,1920x0,1,bitdepth,8"

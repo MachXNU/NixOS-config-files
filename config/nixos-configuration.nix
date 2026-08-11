@@ -6,7 +6,7 @@
   pkgs,
   headless,
   username,
-  hostsMicroVMs,
+  hostName,
   ...
 }:
 {
@@ -19,7 +19,7 @@
     ../modules/networking.nix
   ];
 
-  my.networking.useSystemdNetwork = hostsMicroVMs;
+  my.networking.useSystemdNetwork = false;
 
   boot.loader.grub = {
     enable = false;

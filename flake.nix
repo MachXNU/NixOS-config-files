@@ -28,7 +28,7 @@
       flake = false;
     };
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
+      url = "github:noctalia-dev/noctalia/legacy-v4";
       #url = "github:MachXNU/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -49,10 +49,6 @@
     };
     agenix = {
       url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    microvm = {
-      url = "github:astro/microvm.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ranger-devicons = {
