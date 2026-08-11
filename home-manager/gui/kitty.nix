@@ -5,8 +5,8 @@
     enable = true;
     font = {
       #name = "FiraCode Nerd Font Mono";
-      name = "Maple Mono";
-      size = 11;
+      #name = "Maple Mono";
+      #size = 11;
     };
     settings = {
       include = "themes/noctalia.conf";
@@ -28,8 +28,8 @@
 
       window_padding_width = "10 15";
       hide_window_decorations = "yes";
-      background_opacity = 0.95;
-      dynamic_background_opacity = "yes";
+      #background_opacity = 0.95;
+      #dynamic_background_opacity = "yes";
 
       # cursor = "#8fee96";
 

@@ -24,6 +24,7 @@ inputs.nix-darwin.lib.darwinSystem {
     # Host-specific config
     #../hosts/${hostName}/programs.nix
 
+    inputs.stylix.darwinModules.stylix
     inputs.agenix.darwinModules.default
 
     inputs.home-manager.darwinModules.home-manager

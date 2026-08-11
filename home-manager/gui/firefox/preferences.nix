@@ -113,13 +113,18 @@ in
       installation_mode = "force_installed";
       private_browsing = true;
     };
-    "{f4c9e1d6-6630-4600-ad50-d223eab7f3e7}" = {
-      install_url = "https://addons.mozilla.org/firefox/downloads/latest/nord-firefox/latest.xpi";
+    #"{f4c9e1d6-6630-4600-ad50-d223eab7f3e7}" = {
+    #install_url = "https://addons.mozilla.org/firefox/downloads/latest/nord-firefox/latest.xpi";
+    #installation_mode = "force_installed";
+    #private_browsing = true;
+    #};
+    "78272b6fa58f4a1abaac99321d503a20@proton.me" = {
+      install_url = "https://addons.mozilla.org/firefox/downloads/latest/proton-pass/latest.xpi";
       installation_mode = "force_installed";
       private_browsing = true;
     };
-    "78272b6fa58f4a1abaac99321d503a20@proton.me" = {
-      install_url = "https://addons.mozilla.org/firefox/downloads/latest/proton-pass/latest.xpi";
+    "FirefoxColor@mozilla.com" = {
+      install_url = "https://addons.mozilla.org/firefox/downloads/latest/firefox-color/latest.xpi";
       installation_mode = "force_installed";
       private_browsing = true;
     };

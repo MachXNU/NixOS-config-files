@@ -2,10 +2,14 @@
   lib,
   pkgs,
   inputs,
+  username,
   hostName,
   ...
 }:
-
+let
+  lightScheme = "${pkgs.base24-schemes}/share/themes/catppuccin-latte.yaml";
+  darkScheme = "${pkgs.base24-schemes}/share/themes/catppuccin-macchiato.yaml";
+in
 {
   nix.settings.experimental-features = [
     "nix-command"
@@ -43,4 +47,20 @@
   time.timeZone = "Europe/Amsterdam";
 
   environment.variables.EDITOR = "nvim";
+
+  stylix = {
+    enable = true;
+    polarity = "light";
+    autoEnable = true;
+    base16Scheme = lightScheme;
+    fonts = {
+      monospace = {
+        package = import ../home-manager/fonts/MapleMono.nix { inherit pkgs; };
+        name = "Maple Mono";
+      };
+      sizes = {
+        terminal = 15;
+      };
+    };
+  };
 }

@@ -146,7 +146,7 @@
         statusline = {
           lualine = {
             enable = true;
-            theme = "auto";
+            #theme = "auto";
           };
         };
 
@@ -446,7 +446,7 @@
           end
 
           -- initial load
-          apply_theme()
+          -- apply_theme()
 
           -- reapply if anything resets colorscheme later
           vim.api.nvim_create_autocmd("ColorScheme", {
