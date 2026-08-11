@@ -11,7 +11,6 @@ in
 {
   home.packages = with pkgs; [
     awww
-    awww
   ];
 
   wayland.windowManager.hyprland = {

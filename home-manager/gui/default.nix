@@ -10,7 +10,6 @@
 {
   imports = [
     inputs.nixcord.homeModules.nixcord
-    inputs.nixcord.homeModules.nixcord
     ./kitty.nix
     ./firefox
   ]

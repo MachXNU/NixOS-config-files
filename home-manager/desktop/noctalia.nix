@@ -1,9 +1,6 @@
 {
-  pkgs,
   inputs,
   ...
-}:
-{
 }:
 {
   imports = [
@@ -58,7 +55,6 @@
               useDistroLogo = false;
             }
             {
-              id = "Network";
               id = "Network";
             }
             {
@@ -121,16 +117,8 @@
             { id = "Network"; }
             { id = "Bluetooth"; }
             { id = "DarkMode"; }
-            { id = "AirplaneMode"; }
-            { id = "Network"; }
-            { id = "Bluetooth"; }
-            { id = "DarkMode"; }
           ];
           right = [
-            { id = "Notifications"; }
-            { id = "PowerProfile"; }
-            { id = "KeepAwake"; }
-            { id = "NightLight"; }
             { id = "Notifications"; }
             { id = "PowerProfile"; }
             { id = "KeepAwake"; }

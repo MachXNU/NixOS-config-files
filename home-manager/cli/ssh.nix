@@ -4,7 +4,7 @@ _: {
     enable = true;
 
     # Disable soon-to-be-removed implicit defaults
-    # enableDefaultConfig = false;
+    enableDefaultConfig = false;
 
     settings = {
       "*" = {
