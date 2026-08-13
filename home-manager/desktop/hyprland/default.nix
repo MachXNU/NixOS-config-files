@@ -26,4 +26,16 @@ in
   imports = [
     ./screensharing.nix
   ];
+
+  xdg.portal = {
+    enable = true;
+
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+    ];
+
+    configPackages = [
+      pkgs.xdg-desktop-portal-hyprland
+    ];
+  };
 }
