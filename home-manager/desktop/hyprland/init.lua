@@ -8,7 +8,7 @@ hl.env("XCURSOR_SIZE", "24")
 package.path = package.path ..
     ";" .. os.getenv("HOME") .. "/.config/hypr/noctalia/?.lua"
 
-require("noctalia-colors")
+-- require("noctalia-colors")
 
 @hostImport@
 

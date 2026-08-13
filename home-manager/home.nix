@@ -1,4 +1,5 @@
 {
+  pkgs,
   lib,
   headless,
   username,
@@ -6,13 +7,17 @@
   isLinux,
   ...
 }:
-
+let
+  light_theme = "${pkgs.base16-schemes}/share/themes/penumbra-light-contrast-plus-plus.yaml";
+  dark_theme = "${pkgs.base16-schemes}/share/themes/phd.yaml";
+in
 {
   home.username = username;
   home.homeDirectory = homeDirectory;
   home.stateVersion = "25.11";
 
   imports = [
+    ../modules/theming.nix
     ./cli
   ]
   ++ lib.optionals (!headless) [

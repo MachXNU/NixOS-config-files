@@ -40,9 +40,9 @@
         viewMode = "grid";
       };
       bar = {
-        backgroundOpacity = 0.35;
+        #backgroundOpacity = 0.35;
         barType = "floating";
-        capsuleOpacity = 0.75;
+        #capsuleOpacity = 0.75;
         density = "default";
         floating = true;
         position = "left";
@@ -247,8 +247,8 @@
         boxBorderEnabled = true;
         fontDefault = "DejaVu Sans";
         fontDefaultScale = 1;
-        fontFixed = "Fira Mono";
-        fontFixedScale = 1;
+        #fontFixed = "Fira Mono";
+        #fontFixedScale = 1;
         #panelBackgroundOpacity = 0.76;
         panelsAttachedToBar = true;
       };

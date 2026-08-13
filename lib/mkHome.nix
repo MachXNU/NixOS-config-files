@@ -37,6 +37,7 @@ inputs.home-manager.lib.homeManagerConfiguration {
 
   modules = [
     inputs.nvf.homeManagerModules.default
+    inputs.stylix.homeModules.stylix
     ../home-manager/home.nix
   ]
   ++ (if runsVMs then [ ../modules/home-manager/kvm.nix ] else [ ]);

@@ -1,11 +1,10 @@
 {
   inputs,
-  self,
   ...
 }:
 let
   mkHome = import ../lib/mkHome.nix {
-    inherit inputs self;
+    inherit inputs;
     nixpkgs = inputs.nixpkgs;
   };
 in

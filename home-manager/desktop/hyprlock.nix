@@ -1,5 +1,6 @@
 {
-  hostName,
+  config,
+  lib,
   hyprlockLayout ? null,
   ...
 }:
@@ -27,7 +28,7 @@ in
           {
             monitor = "";
             text = "cmd[update:1000] echo \"<span>$(date +\"%I\")</span>\"";
-            color = "rgb(236, 239, 244)";
+            color = "rgb(${config.lib.stylix.colors.base00})";
             #font_size = 200;
             font_family = "Stretch Pro";
           }
@@ -39,7 +40,7 @@ in
           {
             monitor = "";
             text = "cmd[update:1000] echo \"<span>$(date +\"%M\")</span>\"";
-            color = "rgba(113, 130, 155, 0.9)";
+            color = "rgb(${config.lib.stylix.colors.base03})";
             #font_size = 200;
             font_family = "Stretch Pro";
           }
@@ -51,7 +52,7 @@ in
           {
             monitor = "";
             text = "cmd[update:1000] echo \"<span>$(date +\"%d %B, %a.\")</span>\"";
-            color = "rgba(59, 66, 82, 0.95)";
+            color = "rgb(${config.lib.stylix.colors.base05})";
             #font_size = 28;
             font_family = "DejaVu Sans";
           }
@@ -63,7 +64,7 @@ in
           {
             monitor = "";
             text = " Hi,  $USER";
-            color = "rgba(236, 239, 244, 0.8)";
+            color = "rgb(${config.lib.stylix.colors.base00})";
             font_family = "SF Pro Display Bold";
           }
           // layout.user
@@ -75,7 +76,7 @@ in
         monitor = "";
         path = toString ./.face;
         border_size = 2;
-        border_color = "rgba(216, 222, 233, 0.80)";
+        border_color = lib.mkForce "rgb(${config.lib.stylix.colors.base02})";
         rounding = -1;
         rotate = 0;
         reload_time = -1;
@@ -86,12 +87,9 @@ in
       input-field = {
         monitor = "";
         outline_thickness = 2;
-        outer_color = "rgba(0, 0, 0, 0)";
-        inner_color = "rgba(255, 255, 255, 0.1)";
-        font_color = "rgb(200, 200, 200)";
+        inner_color = lib.mkForce "rgb(${config.lib.stylix.colors.base06})";
+        font_color = lib.mkForce "rgb(${config.lib.stylix.colors.base02})";
         fade_on_empty = false;
-        check_color = "$primary";
-        fail_color = "$on_error";
         font_family = "Deja Vu Sans";
         placeholder_text = "<span foreground=\"##ffffff99\">Enter password</span>";
         hide_input = false;
@@ -106,6 +104,7 @@ in
         brightness = 0.5;
         vibrancy = 0.1696;
         vibrancy_darkness = 0.0;
+        color = lib.mkForce "rgb(${config.lib.stylix.colors.base07})";
       };
       auth = {
         pam.enabled = true;

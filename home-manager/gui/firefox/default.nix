@@ -9,7 +9,7 @@
     enable = true;
 
     # IMPORTANT: new XDG layout (your choice)
-    # configPath = "${config.xdg.configHome}/mozilla/firefox";
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
 
     profiles.user = {
       isDefault = true;
