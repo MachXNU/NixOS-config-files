@@ -31,6 +31,7 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    tinted-kitty.follows = "stylix/tinted-kitty";
     noctalia = {
       url = "github:noctalia-dev/noctalia/legacy-v4";
       #url = "github:MachXNU/noctalia-shell";

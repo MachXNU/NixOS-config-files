@@ -1,5 +1,16 @@
-{ pkgs, ... }:
-
+{
+  config,
+  lib,
+  inputs,
+  pkgs,
+  ...
+}:
+let
+  kittyTheme = config.lib.stylix.colors {
+    templateRepo = inputs.tinted-kitty;
+    target = "base16";
+  };
+in
 {
   programs.kitty = {
     enable = true;
@@ -38,9 +49,14 @@
 
       shell_integration = "enabled";
     };
+
+    #extraConfig = lib.mkForce "";
   };
 
   home.packages = [
     pkgs.kitty.terminfo
   ];
+
+  stylix.targets.kitty.colors.enable = false;
+  xdg.configFile."kitty/light-colors.auto.conf".source = kittyTheme;
 }

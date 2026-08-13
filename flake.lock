@@ -725,7 +725,11 @@
         "nvf": "nvf",
         "obsidian-nvim": "obsidian-nvim",
         "ranger-devicons": "ranger-devicons",
-        "stylix": "stylix"
+        "stylix": "stylix",
+        "tinted-kitty": [
+          "stylix",
+          "tinted-kitty"
+        ]
       }
     },
     "stylix": {

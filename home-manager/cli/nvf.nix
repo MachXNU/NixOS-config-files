@@ -1,4 +1,21 @@
-{ pkgs, ... }:
+{
+  lib,
+  pkgs,
+  ...
+}:
+let
+  recolor = pkgs.vimUtils.buildVimPlugin {
+    pname = "recolor.nvim";
+    version = "2026-08-13";
+
+    src = pkgs.fetchFromGitHub {
+      owner = "podorozhnick";
+      repo = "recolor.nvim";
+      rev = "a52eaa8e3cd08d03c5fd8f745aff63c0b9ffb7ab";
+      hash = "sha256-szRTplWazwHZPzJHBjn8l1IcG5UtRCYS83sgos+iRkU=";
+    };
+  };
+in
 {
   programs.nvf = {
     enable = true;
@@ -43,6 +60,10 @@
             package = pkgs.vimPlugins.onenord-nvim;
           };
         };
+
+        startPlugins = [
+          recolor
+        ];
 
         lsp = {
           # This must be enabled for the language modules to hook into
@@ -369,93 +390,10 @@
           neocord.enable = false;
         };
 
-        luaConfigPost = ''
-          local function get_dark_mode()
-            local handle = io.popen(
-              "noctalia-shell ipc call state all | jq -r '.settings.colorSchemes.darkMode'"
-            )
-
-            local result = handle and handle:read("*a") or "true"
-            if handle then handle:close() end
-
-            result = result:gsub("%s+", "")
-            return result == "true"
-          end
-
-          local function apply_light_overrides()
-            local bg = "#eceff4"
-
-            local groups = {
-              "Normal",
-              "NormalNC",
-              "NormalFloat",
-              "FloatBorder",
-              "SignColumn",
-              "EndOfBuffer",
-              "CursorLine",
-
-              "TreesitterContext",
-              "TreesitterContextBottom",
-              "TreesitterContextLineNumber",
-              "TreesitterContextSeparator",
-            }
-
-            for _, g in ipairs(groups) do
-              vim.api.nvim_set_hl(0, g, { bg = bg })
-            end
-          end
-
-          local function apply_dark_overrides()
-            local bg = vim.api.nvim_get_hl(0, { name = "Normal" }).bg
-            if not bg then bg = "NONE" end
-
-            local groups = {
-              -- treesitter context
-              "TreesitterContext",
-              "TreesitterContextBottom",
-              "TreesitterContextLineNumber",
-              "TreesitterContextSeparator",
-
-              -- window / split separators (THIS is the missing piece)
-              "WinSeparator",
-              "VertSplit",
-
-              -- floating context edge cases
-              "FloatBorder",
-              "NormalFloat",
-            }
-
-            for _, g in ipairs(groups) do
-              vim.api.nvim_set_hl(0, g, { bg = bg })
-            end
-          end
-
-          local function apply_theme()
-            local is_dark = get_dark_mode()
-
-            vim.o.background = is_dark and "dark" or "light"
-
-            require("onenord").setup()
-            vim.cmd("colorscheme onenord")
-
-            if is_dark then
-              apply_dark_overrides()
-            else
-              apply_light_overrides()
-            end
-          end
-
-          -- initial load
-          -- apply_theme()
-
-          -- reapply if anything resets colorscheme later
-          vim.api.nvim_create_autocmd("ColorScheme", {
-            pattern = "*",
-            callback = function()
-              apply_theme()
-            end,
-          })
+        luaConfigRC.recolor = ''
+          require('recolor').setup()
         '';
+
       };
     };
   };
