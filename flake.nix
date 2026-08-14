@@ -34,7 +34,6 @@
     tinted-kitty.follows = "stylix/tinted-kitty";
     noctalia = {
       url = "github:noctalia-dev/noctalia/legacy-v4";
-      #url = "github:MachXNU/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     millennium = {
@@ -58,10 +57,6 @@
     };
     ranger-devicons = {
       url = "github:alexanderjeurissen/ranger_devicons";
-      flake = false;
-    };
-    nord-nvim = {
-      url = "github:shaunsingh/nord.nvim";
       flake = false;
     };
     nixcord.url = "github:FlameFlag/nixcord";

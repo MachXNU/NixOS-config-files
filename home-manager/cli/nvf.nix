@@ -53,13 +53,15 @@ in
             pattern = [ "nix" ];
             command = "setlocal tabstop=2 shiftwidth=2 softtabstop=2";
           }
+          #{
+          #  event = [ "ColorScheme" ];
+          #  callback = lib.mkLuaInline ''
+          #  function()
+          #    require("bufferline").setup()
+          #  end
+          #  '';
+          #}
         ];
-
-        extraPlugins = {
-          onenord = {
-            package = pkgs.vimPlugins.onenord-nvim;
-          };
-        };
 
         startPlugins = [
           recolor
@@ -171,12 +173,6 @@ in
             enable = true;
           };
         };
-
-        #theme = {
-        #  enable = true;
-        #  name = "onenord";
-        #  transparent = false;
-        #};
 
         autopairs.nvim-autopairs.enable = true;
 

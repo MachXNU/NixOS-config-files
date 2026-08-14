@@ -168,6 +168,8 @@ in
   };
 
   programs.nvf.settings.vim = {
+    theme.enable = lib.mkForce false;
+
     startPlugins = [
       pkgs.vimPlugins.mini-base16
 
@@ -185,11 +187,21 @@ in
         vim.cmd.colorscheme(themes[vim.o.background])
       end
 
+      local function reload_bufferline()
+        require("bufferline").setup(
+          ${lib.generators.toLua { } config.programs.nvf.settings.vim.tabline.nvimBufferline.setupOpts}
+        )
+        require("bufferline.highlights").reset_icon_hl_cache()
+      end
+
       apply_theme()
 
       vim.api.nvim_create_autocmd("OptionSet", {
         pattern = "background",
-        callback = apply_theme,
+        callback = function()
+          apply_theme()
+          reload_bufferline()
+        end,
       })
     '';
   };
