@@ -43,6 +43,103 @@ let
       }
     '';
 
+  mkColorscheme =
+    {
+      name,
+      colors,
+    }:
+    pkgs.vimUtils.buildVimPlugin {
+      pname = name;
+      version = "1.0.0";
+
+      src = pkgs.runCommand name { } ''
+        mkdir -p $out/colors
+
+        cat > $out/colors/${name}.lua <<'EOF'
+        local palette = ${base16ToLua colors}
+
+        require("mini.base16").setup({
+          palette = palette,
+          plugins = {
+            default = false,
+          },
+        })
+
+        local bg = palette.base00
+        local muted_fg = palette.base04
+
+        local function set_bg(group)
+          local hl = vim.api.nvim_get_hl(0, {
+            name = group,
+            link = false,
+          })
+
+          vim.api.nvim_set_hl(0, group, {
+            fg = hl.fg,
+            bg = bg,
+          })
+        end
+
+        for _, group in ipairs({
+          -- Line-number gutter
+          "CursorLineNr",
+          "SignColumn",
+
+          -- Treesitter context
+          "TreesitterContext",
+          "TreesitterContextBottom",
+          "TreesitterContextSeparator",
+
+          -- Window / split separators
+          "WinSeparator",
+          "VertSplit",
+
+          -- Floating windows
+          "FloatBorder",
+          "NormalFloat",
+
+          -- Diagnostic floating windows
+          "DiagnosticFloatingError",
+          "DiagnosticFloatingWarn",
+          "DiagnosticFloatingInfo",
+          "DiagnosticFloatingHint",
+          "DiagnosticFloatingOk",
+
+          -- Tabline
+          "TabLine",
+          "TabLineFill",
+          "TabLineSel",
+        }) do
+          set_bg(group)
+        end
+
+        for _, group in ipairs({
+          "LineNr",
+          "LineNrAbove",
+          "LineNrBelow",
+          "TreesitterContextLineNumber",
+        }) do
+          vim.api.nvim_set_hl(0, group, {
+            fg = muted_fg,
+            bg = bg,
+          })
+        end
+
+        vim.g.colors_name = "${name}"
+        EOF
+      '';
+    };
+
+  mytheme-light = mkColorscheme {
+    name = "mytheme-light";
+    colors = lightColors;
+  };
+
+  mytheme-dark = mkColorscheme {
+    name = "mytheme-dark";
+    colors = darkColors;
+  };
+
 in
 {
   stylix = {
@@ -73,100 +170,26 @@ in
   programs.nvf.settings.vim = {
     startPlugins = [
       pkgs.vimPlugins.mini-base16
+
+      mytheme-light
+      mytheme-dark
     ];
 
     luaConfigRC.theme = ''
-      local palettes = {
-        light = ${base16ToLua lightColors},
-        dark = ${base16ToLua darkColors},
+      local themes = {
+        light = "mytheme-light",
+        dark = "mytheme-dark",
       }
 
-      local function apply_theme_overrides(palette)
-        local bg = vim.api.nvim_get_hl(0, {
-          name = "Normal",
-        }).bg
-
-        local muted_fg = palette.base04
-
-        if not bg then
-          return
-        end
-
-        local function set_bg_preserve_fg(group, bg)
-          local hl = vim.api.nvim_get_hl(0, {
-            name = group,
-            link = false,
-          })
-
-          vim.api.nvim_set_hl(0, group, {
-            fg = hl.fg,
-            bg = bg,
-          })
-        end
-
-        local groups = {
-          -- Line-number gutter
-          "CursorLineNr",
-          "SignColumn",
-
-          -- Treesitter context
-          "TreesitterContext",
-          "TreesitterContextBottom",
-          "TreesitterContextLineNumber",
-          "TreesitterContextSeparator",
-
-          -- Window / split separators
-          "WinSeparator",
-          "VertSplit",
-
-          -- Floating windows
-          "FloatBorder",
-          "NormalFloat",
-
-          -- Tabline
-          "TabLine",
-          "TabLineFill",
-          "TabLineSel",
-        }
-
-        local line_number_groups = {
-          "LineNr",
-          "LineNrAbove",
-          "LineNrBelow",
-        }
-
-        for _, group in ipairs(groups) do
-          vim.api.nvim_set_hl(0, group, {
-            bg = bg,
-          })
-        end
-
-        for _, group in ipairs(line_number_groups) do
-          vim.api.nvim_set_hl(0, group, {
-            fg = muted_fg,
-            bg = bg,
-          })
-        end
+      local function apply_theme()
+        vim.cmd.colorscheme(themes[vim.o.background])
       end
 
-      local function apply_theme_with_overrides()
-        local palette = palettes[vim.o.background]
-
-        require("mini.base16").setup({
-          palette = palette,
-          plugins = {
-            default = false,
-          },
-        })
-
-        apply_theme_overrides(palette)
-      end
-
-      apply_theme_with_overrides()
+      apply_theme()
 
       vim.api.nvim_create_autocmd("OptionSet", {
         pattern = "background",
-        callback = apply_theme_with_overrides,
+        callback = apply_theme,
       })
     '';
   };

@@ -73,7 +73,9 @@ in
           formatOnSave = true;
           lspkind.enable = false; # adds icons to autocompletion (fcts, class, structs, etc.)
           lightbulb.enable = true;
-          lspsaga.enable = false; # improves Nvim's default LSP experience
+          lspsaga.enable = false;
+          # improves nvim's default LSP experience
+          # also displays the function protoype on top
           trouble.enable = true; # shows diagnostics, and warnings to help debug
           lspSignature.enable = false; # conflicts with blink in maximal
           otter-nvim.enable = false; # LSP support for files with multiple programming languages
@@ -156,18 +158,17 @@ in
         visuals = {
           nvim-scrollbar.enable = false;
           nvim-web-devicons.enable = true;
-          nvim-cursorline.enable = true;
-          cinnamon-nvim.enable = true;
-          fidget-nvim.enable = true;
+          nvim-cursorline.enable = true; # highlight text at cursor
+          cinnamon-nvim.enable = true; # smooth scrolling
+          fidget-nvim.enable = true; # notifictations and LSP progress
 
           highlight-undo.enable = true;
-          blink-indent.enable = true;
+          blink-indent.enable = true; # indent guides
         };
 
         statusline = {
           lualine = {
             enable = true;
-            #theme = "auto";
           };
         };
 
