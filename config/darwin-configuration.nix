@@ -15,6 +15,14 @@
   # Enable Touch ID with sudo
   security.pam.services.sudo_local.touchIdAuth = true;
 
+  system = {
+    primaryUser = username;
+    defaults.NSGlobalDomain = {
+      InitialKeyRepeat = 18;
+      KeyRepeat = 3;
+    };
+  };
+
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 7;
