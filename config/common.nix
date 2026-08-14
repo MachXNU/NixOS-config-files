@@ -11,10 +11,16 @@ let
   darkScheme = "${pkgs.base24-schemes}/share/themes/catppuccin-macchiato.yaml";
 in
 {
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix.settings = {
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+
+    extra-experimental-features = [
+      "pipe-operators"
+    ];
+  };
 
   nixpkgs.config.allowUnfreePredicate =
     pkg:

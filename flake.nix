@@ -32,6 +32,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     tinted-kitty.follows = "stylix/tinted-kitty";
+    themeNix.url = "github:RGBCube/ThemeNix";
     noctalia = {
       url = "github:noctalia-dev/noctalia/legacy-v4";
       inputs.nixpkgs.follows = "nixpkgs";

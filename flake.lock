@@ -611,22 +611,6 @@
         "type": "github"
       }
     },
-    "nord-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1703048036,
-        "narHash": "sha256-8uPbkaJBXsOGeYCyXSO/aMzf87PE5McwZeww4eoYZy8=",
-        "owner": "shaunsingh",
-        "repo": "nord.nvim",
-        "rev": "80c1e5321505aeb22b7a9f23eb82f1e193c12470",
-        "type": "github"
-      },
-      "original": {
-        "owner": "shaunsingh",
-        "repo": "nord.nvim",
-        "type": "github"
-      }
-    },
     "nur": {
       "inputs": {
         "flake-parts": [
@@ -721,11 +705,11 @@
         "nixcord": "nixcord",
         "nixpkgs": "nixpkgs_3",
         "noctalia": "noctalia",
-        "nord-nvim": "nord-nvim",
         "nvf": "nvf",
         "obsidian-nvim": "obsidian-nvim",
         "ranger-devicons": "ranger-devicons",
         "stylix": "stylix",
+        "themeNix": "themeNix",
         "tinted-kitty": [
           "stylix",
           "tinted-kitty"
@@ -808,6 +792,21 @@
         "owner": "nix-systems",
         "ref": "future-26.11",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "themeNix": {
+      "locked": {
+        "lastModified": 1770999457,
+        "narHash": "sha256-018znIdT/TBFsNcDYv6l4NCnK96gDiJMODoIGqnVn7o=",
+        "owner": "RGBCube",
+        "repo": "ThemeNix",
+        "rev": "3779a7ba289d88ea092063e8bc512cfe80f293ba",
+        "type": "github"
+      },
+      "original": {
+        "owner": "RGBCube",
+        "repo": "ThemeNix",
         "type": "github"
       }
     },

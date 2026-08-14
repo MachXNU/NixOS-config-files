@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  inputs,
   config,
   ...
 }:
@@ -140,6 +141,86 @@ let
     colors = darkColors;
   };
 
+  mkThemeNixTheme =
+    {
+      name,
+      colors,
+    }:
+    inputs.themeNix.custom {
+      inherit name;
+
+      author = "local";
+
+      base00 = colors.base00;
+      base01 = colors.base01;
+      base02 = colors.base02;
+      base03 = colors.base03;
+      base04 = colors.base04;
+      base05 = colors.base05;
+      base06 = colors.base06;
+      base07 = colors.base07;
+      base08 = colors.base08;
+      base09 = colors.base09;
+      base0A = colors.base0A;
+      base0B = colors.base0B;
+      base0C = colors.base0C;
+      base0D = colors.base0D;
+      base0E = colors.base0E;
+      base0F = colors.base0F;
+    };
+
+  lightFirefoxTheme = builtins.fromJSON (
+    (mkThemeNixTheme {
+      name = "MyTheme Light";
+      colors = lightColors;
+    }).firefoxTheme
+  );
+
+  darkFirefoxTheme = builtins.fromJSON (
+    (mkThemeNixTheme {
+      name = "MyTheme Dark";
+      colors = darkColors;
+    }).firefoxTheme
+  );
+
+  addonId = "mytheme-base16@example.com";
+
+  firefoxTheme =
+    pkgs.runCommand "firefox-mytheme"
+      {
+        passthru = {
+          inherit addonId;
+        };
+      }
+      ''
+        mkdir -p "$out"
+
+        cat > manifest.json <<'EOF'
+        ${builtins.toJSON {
+          manifest_version = 2;
+
+          name = "MyTheme";
+          version = "1.0.0";
+
+          browser_specific_settings = {
+            gecko = {
+              id = addonId;
+            };
+          };
+
+          theme = {
+            colors = lightFirefoxTheme.colors;
+          };
+
+          dark_theme = {
+            colors = darkFirefoxTheme.colors;
+          };
+        }}
+        EOF
+
+        ${pkgs.zip}/bin/zip -q "$out/mytheme.xpi" manifest.json
+      '';
+
 in
 {
   stylix = {
@@ -158,6 +239,7 @@ in
     };
     targets = {
       nvf.enable = false;
+      firefox.enable = false;
     };
   };
 
@@ -168,7 +250,7 @@ in
   };
 
   programs.nvf.settings.vim = {
-    theme.enable = lib.mkForce false;
+    theme.enable = false;
 
     startPlugins = [
       pkgs.vimPlugins.mini-base16
@@ -204,6 +286,15 @@ in
         end,
       })
     '';
+  };
+
+  programs.firefox.policies = {
+    ExtensionSettings = {
+      ${addonId} = {
+        installation_mode = "force_installed";
+        install_url = "file://${firefoxTheme}/mytheme.xpi";
+      };
+    };
   };
 
   specialisation = {

@@ -8,6 +8,8 @@
   programs.firefox = {
     enable = true;
 
+    package = pkgs.firefox-esr;
+
     # IMPORTANT: new XDG layout (your choice)
     configPath = "${config.xdg.configHome}/mozilla/firefox";
 
@@ -25,11 +27,5 @@
       inherit pkgs isWork;
       downloadDir = "${config.home.homeDirectory}/Downloads";
     };
-  };
-
-  stylix.targets.firefox = {
-    enable = true;
-    colorTheme.enable = true;
-    profileNames = [ "user" ];
   };
 }
