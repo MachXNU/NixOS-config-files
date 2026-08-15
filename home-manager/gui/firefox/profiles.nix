@@ -5,4 +5,5 @@
   "privacy.donottrackheader.enabled" = true;
   "privacy.globalprivacycontrol.enabled" = true;
   "xpinstall.signatures.required" = false;
+  "extensions.webextensions.ExtensionStorageIDB.enabled" = false;
 }

@@ -220,6 +220,36 @@ let
 
         ${pkgs.zip}/bin/zip -q "$out/mytheme.xpi" manifest.json
       '';
+  darkReaderTheme =
+    {
+      light,
+      dark,
+    }:
+    {
+      mode = 1;
+      brightness = 100;
+      contrast = 100;
+      grayscale = 0;
+      sepia = 0;
+
+      useFont = false;
+      fontFamily = "Maple Mono";
+      textStroke = 0;
+
+      engine = "dynamicTheme";
+      stylesheet = "";
+
+      lightSchemeBackgroundColor = "#${light.base00}";
+      lightSchemeTextColor = "#${light.base07}";
+
+      darkSchemeBackgroundColor = "#${dark.base00}";
+      darkSchemeTextColor = "#${dark.base06}";
+
+      scrollbarColor = "#${dark.base01}";
+      selectionColor = "#${dark.base02}";
+
+      styleSystemControls = true;
+    };
 
 in
 {
@@ -291,8 +321,51 @@ in
   programs.firefox.policies = {
     ExtensionSettings = {
       ${addonId} = {
-        installation_mode = "force_installed";
+        #installation_mode = "force_installed";
         install_url = "file://${firefoxTheme}/mytheme.xpi";
+      };
+    };
+  };
+
+  programs.firefox.profiles.user.extensions = {
+    force = true;
+
+    settings."addon@darkreader.org" = {
+      force = true;
+
+      settings = {
+        schemeVersion = 2;
+        enabled = true;
+
+        theme = darkReaderTheme {
+          light = lightColors;
+          dark = darkColors;
+        };
+
+        siteList = [ ];
+        siteListEnabled = [ ];
+        applyToListedOnly = false;
+        enabledFor = [ ];
+        disabledFor = [
+          "tinted-theming.github.io"
+          "example.com"
+        ];
+
+        automation = {
+          enabled = true;
+          mode = "system";
+          behavior = "Scheme";
+        };
+        changeBrowserTheme = false;
+
+        syncSettings = false;
+        syncSitesFixes = false;
+
+        enableForPDF = true;
+        enableForProtectedPages = false;
+        enableContextMenus = true;
+        notifyOfNews = false;
+        previewNewDesign = true;
       };
     };
   };
