@@ -27,6 +27,7 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+    default-browser.url = "github:szympajka/nix-browser";
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";

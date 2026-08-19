@@ -26,6 +26,7 @@ inputs.nix-darwin.lib.darwinSystem {
 
     inputs.stylix.darwinModules.stylix
     inputs.agenix.darwinModules.default
+    inputs.default-browser.darwinModules.default-browser
 
     inputs.home-manager.darwinModules.home-manager
     {
