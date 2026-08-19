@@ -35,6 +35,9 @@
     ++ lib.optionals isWork [
       thunderbird
     ]
+    ++ lib.optionals (!isWork) [
+      blender
+    ]
     ++ lib.optionals (!isWork && isLinux) [
       telegram-desktop
       haruna
