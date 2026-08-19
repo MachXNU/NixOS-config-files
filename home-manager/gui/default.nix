@@ -9,15 +9,11 @@
 
 {
   imports = [
-    inputs.nixcord.homeModules.nixcord
     ./kitty.nix
     ./firefox
   ]
   ++ lib.optionals isWork [
     ./picoscope.nix
-  ]
-  ++ lib.optionals (!isWork) [
-    ./discord.nix
   ];
 
   home.packages =
@@ -37,6 +33,7 @@
     ]
     ++ lib.optionals (!isWork) [
       blender
+      inputs.concord.packages.${pkgs.system}.default
     ]
     ++ lib.optionals (!isWork && isLinux) [
       telegram-desktop

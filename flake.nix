@@ -61,7 +61,10 @@
       url = "github:alexanderjeurissen/ranger_devicons";
       flake = false;
     };
-    nixcord.url = "github:FlameFlag/nixcord";
+    concord = {
+      url = "github:chojs23/concord";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
