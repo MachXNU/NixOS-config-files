@@ -40,5 +40,8 @@
       haruna
       ffmpeg
       davinci-resolve
+    ]
+    ++ lib.optionals (!isWork && !isLinux) [
+      iina
     ];
 }
