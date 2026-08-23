@@ -31,6 +31,7 @@
       unzip
       usbutils
       restic
+      fzf
     ]
     ++ lib.optionals isLinux [
       efibootmgr
