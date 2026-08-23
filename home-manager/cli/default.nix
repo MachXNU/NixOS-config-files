@@ -12,6 +12,7 @@
     ./git.nix
     ./neovim.nix
     ./nvf.nix
+    ./nh.nix
     ./ranger.nix
     ./ssh.nix
     ./zsh.nix
@@ -26,7 +27,6 @@
       tree
       htop
       jq
-      fastfetch
       zip
       unzip
       usbutils
