@@ -27,6 +27,7 @@ nixpkgs.lib.nixosSystem {
     ../hosts/${hostName}/programs.nix
     ../hosts/${hostName}/hardware-configuration.nix
     inputs.agenix.nixosModules.default
+    inputs.stylix.nixosModules.default
 
     inputs.home-manager.nixosModules.home-manager
     {

@@ -54,13 +54,11 @@
 
   # Unfree packages cannot be whitelisted in modules
   # thus this part must stay in configuration.nix
-  nixpkgs.config.allowUnfreePredicate =
-    pkg:
-    builtins.elem (lib.getName pkg) [
-      "nvidia-x11"
-      "nvidia-settings"
-      "nvidia-kernel-modules"
-    ];
+  nixpkgs.config.allowUnfreePackages = lib.mkAfter [
+    "nvidia-x11"
+    "nvidia-settings"
+    "nvidia-kernel-modules"
+  ];
 
   services.getty.autologinUser = username;
 

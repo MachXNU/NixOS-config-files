@@ -1,5 +1,6 @@
 {
   lib,
+  config,
   pkgs,
   inputs,
   username,
@@ -11,61 +12,66 @@ let
   darkScheme = "${pkgs.base24-schemes}/share/themes/catppuccin-macchiato.yaml";
 in
 {
-  nix.settings = {
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-
-    extra-experimental-features = [
-      "pipe-operators"
-    ];
+  options.my.unfreePackages = lib.mkOption {
+    type = lib.types.listOf lib.types.str;
+    default = [ ];
   };
 
-  nixpkgs.config.allowUnfreePredicate =
-    pkg:
-    builtins.elem (lib.getName pkg) [
+  config = {
+    nix.settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+
+      extra-experimental-features = [
+        "pipe-operators"
+      ];
+    };
+
+    nixpkgs.config.allowUnfreePackages = [
       "steam"
       "steam-unwrapped"
       "obsidian"
       "davinci-resolve"
     ];
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      vimPlugins = prev.vimPlugins // {
-        nord-nvim = prev.vimUtils.buildVimPlugin {
-          name = "nord-nvim";
-          src = inputs.nord-nvim;
+    nixpkgs.overlays = [
+      (final: prev: {
+        vimPlugins = prev.vimPlugins // {
+          nord-nvim = prev.vimUtils.buildVimPlugin {
+            name = "nord-nvim";
+            src = inputs.nord-nvim;
+          };
         };
-      };
-    })
-  ];
+      })
+    ];
 
-  environment.systemPackages = with pkgs; [
-    git
-    wireguard-tools
-    home-manager
-  ];
+    environment.systemPackages = with pkgs; [
+      git
+      wireguard-tools
+      home-manager
+    ];
 
-  networking.hostName = hostName;
+    networking.hostName = hostName;
 
-  time.timeZone = "Europe/Amsterdam";
+    time.timeZone = "Europe/Amsterdam";
 
-  environment.variables.EDITOR = "nvim";
+    environment.variables.EDITOR = "nvim";
 
-  stylix = {
-    enable = true;
-    polarity = "light";
-    autoEnable = true;
-    base16Scheme = lightScheme;
-    fonts = {
-      monospace = {
-        package = import ../home-manager/fonts/MapleMono.nix { inherit pkgs; };
-        name = "Maple Mono";
-      };
-      sizes = {
-        terminal = 15;
+    stylix = {
+      enable = true;
+      polarity = "light";
+      autoEnable = true;
+      base16Scheme = lightScheme;
+      fonts = {
+        monospace = {
+          package = import ../home-manager/fonts/MapleMono.nix { inherit pkgs; };
+          name = "Maple Mono";
+        };
+        sizes = {
+          terminal = 15;
+        };
       };
     };
   };
