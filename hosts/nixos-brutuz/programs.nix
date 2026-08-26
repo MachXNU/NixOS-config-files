@@ -17,7 +17,7 @@
   home-manager.users.${username} =
     { ... }:
     {
-      programs.noctalia-shell.settings.location.name = "Rotterdam, NL";
+      #programs.noctalia-shell.settings.location.name = "Rotterdam, NL";
     };
 
   # For external monitor brightness control

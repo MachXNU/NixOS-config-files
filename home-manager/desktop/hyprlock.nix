@@ -112,4 +112,6 @@ in
       // layout.auth;
     };
   };
+
+  xdg.configFile."hypr/hyprlock.conf".force = true;
 }
