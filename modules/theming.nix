@@ -255,16 +255,16 @@ in
 {
   stylix = {
     enable = true;
-    polarity = "dark";
+    polarity = "light";
     autoEnable = true;
-    base16Scheme = dark_theme;
+    base16Scheme = light_theme;
     fonts = {
       monospace = {
         package = import ../home-manager/fonts/MapleMono.nix { inherit pkgs; };
         name = "Maple Mono";
       };
       sizes = {
-        terminal = 15;
+        terminal = 12;
       };
     };
     targets = {
