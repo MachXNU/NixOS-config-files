@@ -270,6 +270,7 @@ in
     targets = {
       nvf.enable = false;
       firefox.enable = false;
+      noctalia.enable = false;
     };
   };
 

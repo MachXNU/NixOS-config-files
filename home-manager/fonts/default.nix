@@ -12,6 +12,7 @@ in
     pkgs.nerd-fonts.jetbrains-mono
     pkgs.fira
     pkgs.fira-sans
+    pkgs.googlesans-code
     maplemono
     stretchpro
     suisseintlmono
