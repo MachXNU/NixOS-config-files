@@ -54,7 +54,8 @@
 
   # Unfree packages cannot be whitelisted in modules
   # thus this part must stay in configuration.nix
-  nixpkgs.config.allowUnfreePackages = lib.mkAfter [
+  # nixpkgs.config.allowUnfreePackages = lib.mkAfter [
+  my.unfreePackages = [
     "nvidia-x11"
     "nvidia-settings"
     "nvidia-kernel-modules"
