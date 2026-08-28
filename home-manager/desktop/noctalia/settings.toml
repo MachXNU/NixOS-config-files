@@ -7,6 +7,7 @@ ui_scale = 1.1000000089406967
 order = [ "default" ]
 
     [bar.default]
+    capsule_radius = 5
     center = [ "workspaces" ]
     concave_edge_corners = false
     end = [ "group:g1", "battery", "clock" ]
@@ -15,7 +16,7 @@ order = [ "default" ]
     padding = 10
     position = "left"
     scale = 0.95000000670552254
-    start = [ "control-center", "network", "bluetooth", "cat" ]
+    start = [ "control-center", "network", "bluetooth", "cat", "session" ]
     thickness = 30
     widget_spacing = 14
 
@@ -29,6 +30,27 @@ order = [ "default" ]
         opacity = 1.0
         padding = 6.0
 
+[control_center]
+show_shortcut_labels = false
+
+    [[control_center.shortcuts]]
+    type = "wifi"
+
+    [[control_center.shortcuts]]
+    type = "bluetooth"
+
+    [[control_center.shortcuts]]
+    type = "caffeine"
+
+    [[control_center.shortcuts]]
+    type = "nightlight"
+
+    [[control_center.shortcuts]]
+    type = "power_profile"
+
+    [[control_center.shortcuts]]
+    type = "dark_mode"
+
 [location]
 address = "Rotterdam, NL"
 
@@ -38,7 +60,12 @@ enabled = false
 [lockscreen_widgets]
 enabled = false
 schema_version = 2
-widget_order = [ "lockscreen-login-box@DP-1" ]
+widget_order = [
+    "lockscreen-login-box@DP-7",
+    "lockscreen-login-box@DP-4",
+    "lockscreen-login-box@eDP-1",
+    "lockscreen-login-box@DP-1"
+]
 
     [lockscreen_widgets.grid]
     cell_size = 16
@@ -72,14 +99,98 @@ widget_order = [ "lockscreen-login-box@DP-1" ]
         show_unlock_hint = true
         show_weather = true
 
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-4"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 1280.0
+    cy = 1258.0
+    output = "DP-4"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-4".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-7"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 1280.0
+    cy = 1258.0
+    output = "DP-7"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-7".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 898.0
+    output = "eDP-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
 [nightlight]
 enabled = true
+
+[osd]
+offset_y = 20
 
 [plugins]
 enabled = [ "noctalia/screen_recorder", "noctalia/kaomoji", "noctalia/mpvpaper", "oldirtty/color_picker", "noctalia/bongocat" ]
 
 [shell]
-corner_radius_scale = 1.3000000193715096
+corner_radius_scale = 1.2500000186264515
 font_family = "DejaVu Sans"
 lang = "en"
 
@@ -92,8 +203,7 @@ lang = "en"
     [shell.panel]
     launcher_placement = "floating"
     open_near_click_control_center = true
-    open_near_click_session = true
-    transparency_mode = "soft"
+    transparency_mode = "glass"
 
     [shell.screen_corners]
     enabled = true
@@ -101,7 +211,9 @@ lang = "en"
 
 [theme]
 builtin = "Nord"
-mode = "dark"
+community_palette = "Oxocarbon"
+custom_palette = "stylix"
+mode = "light"
 source = "builtin"
 wallpaper_scheme = "m3-content"
 
@@ -109,7 +221,9 @@ wallpaper_scheme = "m3-content"
     builtin_ids = [ "gtk3", "gtk4", "hyprland", "qt" ]
 
 [wallpaper]
-enabled = false
+directory = "/home/jbamade/NixOS-config-files/home-manager/desktop/wallpapers"
+directory_dark = "/home/jbamade/NixOS-config-files/home-manager/desktop/wallpapers/dark"
+directory_light = "/home/jbamade/NixOS-config-files/home-manager/desktop/wallpapers/light"
 
     [wallpaper.default]
     path = "/nix/store/9d9xp7d8xrdmv8ywhbakm7b71x3wv02i-noctalia-5.0.0/share/noctalia/assets/noctalia-wallpaper.png"
@@ -143,4 +257,6 @@ show_value = false
 show_value = false
 
 [widget.workspaces]
+capsule = true
+capsule_radius = 8
 show_labels = false
