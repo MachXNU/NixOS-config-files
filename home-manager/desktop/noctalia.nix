@@ -186,10 +186,10 @@
 
         widget = {
           "desktop-widget-0000000000000001" = {
-            box_height = 168.0;
+            box_height = 152.0;
             box_width = 192.0;
             cx = 352.0;
-            cy = 276.0;
+            cy = 284.0;
             output = "DP-1";
             placement_height = 1440.0;
             placement_width = 2560.0;
@@ -208,10 +208,10 @@
           };
 
           "desktop-widget-0000000000000002" = {
-            box_height = 168.0;
+            box_height = 152.0;
             box_width = 192.0;
-            cx = 504.0;
-            cy = 480.0;
+            cx = 496.0;
+            cy = 472.0;
             output = "DP-1";
             placement_height = 1440.0;
             placement_width = 2560.0;
@@ -251,8 +251,8 @@
 
           "desktop-widget-0000000000000004" = {
             box_height = 8.0;
-            box_width = 360.0;
-            cx = 436.0;
+            box_width = 344.0;
+            cx = 428.0;
             cy = 380.0;
             output = "DP-1";
             placement_height = 1440.0;
