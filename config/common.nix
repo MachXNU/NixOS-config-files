@@ -29,12 +29,14 @@ in
       ];
     };
 
-    nixpkgs.config.allowUnfreePackages = [
+    my.unfreePackages = [
       "steam"
       "steam-unwrapped"
       "obsidian"
       "davinci-resolve"
     ];
+
+    nixpkgs.config.allowUnfreePackages = config.my.unfreePackages;
 
     nixpkgs.overlays = [
       (final: prev: {
