@@ -127,6 +127,10 @@
         };
       };
 
+      hooks = {
+        theme_mode_changed = "noctalia msg wallpaper-random";
+      };
+
       widget = {
         cat = {
           type = "noctalia/bongocat:cat";
@@ -175,6 +179,7 @@
           "desktop-widget-0000000000000004"
           "desktop-widget-0000000000000005"
           "desktop-widget-0000000000000006"
+          "desktop-widget-0000000000000007"
         ];
 
         grid = {
@@ -304,6 +309,27 @@
               center_text = true;
               color = "tertiary";
               format = "{:%d}";
+            };
+          };
+
+          "desktop-widget-0000000000000007" = {
+            box_height = 40.0;
+            box_width = 184.0;
+            cx = 2412.0;
+            cy = 1384.0;
+            output = "DP-1";
+            placement_height = 1440.0;
+            placement_width = 2560.0;
+            rotation = 0.0;
+            type = "label";
+
+            settings = {
+              background = false;
+              color = "on_surface";
+              font_family = "Chilanka";
+              opacity = 0.75;
+              shadow = false;
+              title = "I use Nix btw";
             };
           };
         };
