@@ -116,7 +116,6 @@
       };
 
       theme = {
-        custom_palette = "stylix";
         mode = "auto";
         templates = {
           builtin_ids = [
