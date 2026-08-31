@@ -26,7 +26,6 @@
       networkmanagerapplet
       thunar
       typer
-      vial
     ]
     ++ lib.optionals isWork [
       thunderbird

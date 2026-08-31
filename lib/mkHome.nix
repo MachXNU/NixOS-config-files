@@ -9,7 +9,8 @@
   homeDirectory,
   isWork ? false,
   isLinux ? true,
-  hyprlandConfig ? { },
+  isAppleSilicon ? false,
+  hyprlandConfig ? null,
   hyprlockLayout ? null,
   runsVMs ? false,
 }:
@@ -30,6 +31,7 @@ inputs.home-manager.lib.homeManagerConfiguration {
       homeDirectory
       isWork
       isLinux
+      isAppleSilicon
       hyprlandConfig
       hyprlockLayout
       ;

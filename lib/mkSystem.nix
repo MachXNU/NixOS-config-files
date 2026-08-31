@@ -7,6 +7,7 @@
   system,
   hostName,
   username ? "jb",
+  isAppleSilicon ? false,
   headless ? false,
   runsVMs ? false,
 }:
@@ -19,6 +20,7 @@ nixpkgs.lib.nixosSystem {
       headless
       hostName
       username
+      isAppleSilicon
       ;
   };
 
@@ -47,6 +49,7 @@ nixpkgs.lib.nixosSystem {
             headless
             hostName
             username
+            isAppleSilicon
             runsVMs
             ;
 

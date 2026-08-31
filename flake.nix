@@ -34,6 +34,10 @@
     };
     tinted-kitty.follows = "stylix/tinted-kitty";
     themeNix.url = "github:RGBCube/ThemeNix";
+    apple-silicon-support = {
+      url = "github:nix-community/nixos-apple-silicon";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     noctalia = {
       url = "github:noctalia-dev/noctalia/legacy-v4";
       inputs.nixpkgs.follows = "nixpkgs";
