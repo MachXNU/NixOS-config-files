@@ -4,6 +4,7 @@
   pkgs,
   isWork,
   isLinux,
+  isAppleSilicon,
   ...
 }:
 
@@ -38,6 +39,8 @@
       telegram-desktop
       haruna
       ffmpeg
+    ]
+    ++ lib.optionals (!isWork && isLinux && !isAppleSilicon) [
       davinci-resolve
     ]
     ++ lib.optionals (!isWork && !isLinux) [
