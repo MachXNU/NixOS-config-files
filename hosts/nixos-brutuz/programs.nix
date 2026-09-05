@@ -9,7 +9,6 @@
   imports = [
     ./nvidia.nix
     ../../modules/kvm.nix
-    ../../modules/virtualbox.nix
     ../../modules/steam.nix
     ../../modules/tailscale.nix
   ];
@@ -17,7 +16,7 @@
   home-manager.users.${username} =
     { ... }:
     {
-      programs.noctalia-shell.settings.location.name = "Rotterdam, NL";
+      programs.noctalia.settings.location.address = "Rotterdam, NL";
     };
 
   # For external monitor brightness control

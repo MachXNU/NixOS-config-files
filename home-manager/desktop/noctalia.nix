@@ -7,259 +7,334 @@
     inputs.noctalia.homeModules.default
   ];
 
-  programs.noctalia-shell = {
+  programs.noctalia = {
     enable = true;
 
-    plugins = {
-      sources = [
-        {
-          enabled = true;
-          name = "Official Noctalia Plugins";
-          url = "https://github.com/noctalia-dev/noctalia-plugins";
-        }
-      ];
-      states = {
-        privacy-indicator = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-        };
-      };
-      version = 2;
-    };
-
-    pluginSettings = {
-      privacy-indicator = {
-        hideInactive = true;
-      };
-    };
-
     settings = {
-      # configure noctalia here; defaults will
-      # be deep merged with these attributes.
-      appLauncher = {
-        viewMode = "grid";
+      accessibility = {
+        ui_scale = 1.1;
       };
-      bar = {
-        #backgroundOpacity = 0.35;
-        barType = "floating";
-        #capsuleOpacity = 0.75;
-        density = "default";
-        floating = true;
-        position = "left";
-        showCapsule = true;
-        useSeparateOpacity = true;
-        widgets = {
-          left = [
-            {
-              id = "ControlCenter";
-              useDistroLogo = false;
-            }
-            {
-              id = "Network";
-            }
-            {
-              id = "Bluetooth";
-            }
-            {
-              id = "MediaMini";
-            }
-            {
-              id = "VPN";
-            }
-          ];
-          center = [
-            {
-              hideUnoccupied = false;
-              id = "Workspace";
-              labelMode = "none";
-            }
-          ];
-          right = [
-            {
-              id = "plugin:privacy-indicator";
-            }
-            {
-              id = "SystemMonitor";
-            }
-            {
-              alwaysShowPercentage = false;
-              deviceNativePath = "__default__";
-              displayMode = "icon-hover";
-              hideIfNotDetected = true;
-              id = "Battery";
-              warningThreshold = 30;
-              showPowerProfiles = true;
-            }
-            {
-              formatHorizontal = "HH:mm";
-              formatVertical = "HH mm";
-              id = "Clock";
-              useMonospacedFont = true;
-              usePrimaryColor = true;
-            }
-          ];
-        };
-      };
-      brightness = {
-        enableDdcSupport = true;
-        enforceMinimum = false;
-      };
-      colorSchemes = {
-        predefinedScheme = "Nord";
-        manualSunrise = "06:30";
-        manualSunset = "20:00";
-        schedulingMode = "manual";
-      };
-      controlCenter = {
-        shortcuts = {
-          left = [
-            { id = "AirplaneMode"; }
-            { id = "Network"; }
-            { id = "Bluetooth"; }
-            { id = "DarkMode"; }
-          ];
-          right = [
-            { id = "Notifications"; }
-            { id = "PowerProfile"; }
-            { id = "KeepAwake"; }
-            { id = "NightLight"; }
-          ];
-        };
-        cards = [
-          {
-            enabled = true;
-            id = "profile-card";
-          }
-          {
-            enabled = true;
-            id = "shortcuts-card";
-          }
-          {
-            enabled = true;
-            id = "audio-card";
-          }
-          {
-            enabled = true;
-            id = "brightness-card";
-          }
-          {
-            enabled = true;
-            id = "weather-card";
-          }
-          {
-            enabled = true;
-            id = "media-sysmon-card";
-          }
-        ];
-      };
-      dock = {
-        enabled = false;
-      };
-      general = {
-        animationSpeed = 1.35;
-        avatarImage = ./.face;
-        clockFormat = "h:mm AP";
-        dimmerOpacity = 0.35;
-        enableLockScreenCountdown = false;
-        forceBlackScreenCorners = true;
-        iRadiusRatio = 0.98;
-        lockScreenTint = 0.2;
-        radiusRatio = 0.75;
-        screenRadiusRatio = 0.55;
-        showScreenCorners = true;
-        telemetryEnabled = false;
-      };
-      hooks = {
-        enabled = true;
-        #startup = "sed -i \"/^[[:space:]]*background[[:space:]]*{/,/^[[:space:]]*}/ s|^[[:space:]]*path=.*|  path=$(noctalia-shell ipc call wallpaper get $(hyprctl monitors -j | jq -r '.[] | select(.focused == true) | .name'))|\" ~/.config/hypr/hyprlock.conf";
-        #wallpaperChange = "sed -i \"/^[[:space:]]*background[[:space:]]*{/,/^[[:space:]]*}/ s|^[[:space:]]*path=.*|  path=$1|\" ~/.config/hypr/hyprlock.conf";
-      };
-      location = {
-        monthBeforeDay = true;
-      };
-      sessionMenu = {
-        enableCountdown = false;
-        largeButtonsStyle = false;
-        position = "top_left";
-        powerOptions = [
-          {
-            action = "lock";
-            command = "hyprlock";
-            enabled = true;
-            keybind = "1";
-          }
-          {
-            action = "suspend";
-            command = "hyprlock & (loginctl lock-session && sleep 0.5 && systemctl suspend)";
-            enabled = true;
-            keybind = "2";
-          }
-          {
-            action = "hibernate";
-            enabled = false;
-          }
-          {
-            action = "reboot";
-            enabled = true;
-            keybind = "3";
-          }
-          {
-            action = "logout";
-            enabled = false;
-          }
-          {
-            action = "shutdown";
-            enabled = true;
-            keybind = "4";
-          }
-          {
-            action = "rebootToUefi";
-            enabled = false;
-          }
-        ];
-      };
-      templates = {
-        activeTemplates = [
-          {
-            enabled = false;
-            id = "hyprland";
-          }
-          {
-            enabled = true;
-            id = "kitty";
-          }
-          {
-            enabled = true;
-            id = "telegram";
-          }
-          {
-            enabled = true;
-            id = "gtk";
-          }
-          {
-            enabled = true;
-            id = "steam";
-          }
-        ];
-        enableUserTheming = false;
-      };
-      ui = {
-        boxBorderEnabled = true;
-        fontDefault = "DejaVu Sans";
-        fontDefaultScale = 1;
-        #fontFixed = "Fira Mono";
-        #fontFixedScale = 1;
-        #panelBackgroundOpacity = 0.76;
-        panelsAttachedToBar = true;
-      };
-      wallpaper = {
-        enabled = false;
-      };
-    };
 
-    user-templates = ''
-      [config]
-      # General template settings
-    '';
+      bar = {
+        order = [ "default" ];
+
+        default = {
+          capsule_radius = 5;
+          concave_edge_corners = false;
+          margin_edge = 5;
+          margin_ends = 4;
+          padding = 10;
+          position = "left";
+          scale = 0.95;
+          thickness = 30;
+          widget_spacing = 14;
+
+          start = [
+            "control-center"
+            "network"
+            "bluetooth"
+            "cat"
+            "audio_visualizer"
+          ];
+          center = [ "workspaces" ];
+          end = [
+            "group:g1"
+            "battery"
+            "clock"
+          ];
+
+          capsule_group = [
+            {
+              accordion = false;
+              accordion_direction = "end";
+              enabled = true;
+              fill = "surface_variant";
+              id = "g1";
+              members = [
+                "sysmon"
+                "cpu"
+                "ram"
+              ];
+              opacity = 1.0;
+              padding = 6.0;
+            }
+          ];
+        };
+      };
+
+      control_center = {
+        show_shortcut_labels = false;
+
+        shortcuts = [
+          { type = "wifi"; }
+          { type = "bluetooth"; }
+          { type = "caffeine"; }
+          { type = "nightlight"; }
+          { type = "power_profile"; }
+          { type = "dark_mode"; }
+        ];
+      };
+
+      lockscreen = {
+        enabled = false;
+      };
+
+      nightlight = {
+        enabled = true;
+      };
+
+      wallpaper = {
+        enabled = true;
+        default = ./wallpapers/light/675027.png;
+        directory_light = ./wallpapers/light;
+        directory_dark = ./wallpapers/dark;
+      };
+
+      plugins = {
+        enabled = [
+          "noctalia/screen_recorder"
+          "noctalia/kaomoji"
+          "noctalia/mpvpaper"
+          "oldirtty/color_picker"
+          "noctalia/bongocat"
+        ];
+      };
+
+      shell = {
+        avatar_path = ./.face;
+        panel = {
+          launcher_placement = "floating";
+          open_near_click_control_center = true;
+          open_near_click_session = true;
+          transparency_mode = "soft";
+        };
+
+        screen_corners = {
+          enabled = true;
+          size = 13;
+        };
+      };
+
+      theme = {
+        mode = "auto";
+        templates = {
+          builtin_ids = [
+            "gtk3"
+            "gtk4"
+            "hyprland"
+            "qt"
+          ];
+        };
+      };
+
+      hooks = {
+        theme_mode_changed = "noctalia msg wallpaper-random";
+      };
+
+      widget = {
+        cat = {
+          type = "noctalia/bongocat:cat";
+        };
+
+        clock = {
+          vertical_format = "{:%H\\n%M}";
+        };
+
+        cpu = {
+          show_value = false;
+          stat = "cpu_temp";
+        };
+
+        launcher = {
+          enabled = false;
+        };
+
+        network = {
+          show_label = false;
+        };
+
+        ram = {
+          show_value = false;
+        };
+
+        sysmon = {
+          show_value = false;
+        };
+
+        workspaces = {
+          capsule = true;
+          capsule_opacity = 0.0;
+          capsule_radius = 20;
+          show_labels = false;
+        };
+      };
+
+      desktop_widgets = {
+        schema_version = 2;
+
+        widget_order = [
+          "desktop-widget-0000000000000001"
+          "desktop-widget-0000000000000002"
+          "desktop-widget-0000000000000003"
+          "desktop-widget-0000000000000004"
+          "desktop-widget-0000000000000005"
+          "desktop-widget-0000000000000006"
+          "desktop-widget-0000000000000007"
+        ];
+
+        grid = {
+          cell_size = 8;
+          major_interval = 4;
+          visible = true;
+        };
+
+        widget = {
+          "desktop-widget-0000000000000001" = {
+            box_height = 152.0;
+            box_width = 192.0;
+            cx = 352.0;
+            cy = 284.0;
+            output = "DP-1";
+            placement_height = 1440.0;
+            placement_width = 2560.0;
+            rotation = 0.0;
+            type = "clock";
+
+            settings = {
+              background = true;
+              background_color = "surface";
+              background_opacity = 0.6;
+              background_radius = 5;
+              color = "primary";
+              format = "{:%H}";
+              shadow = false;
+            };
+          };
+
+          "desktop-widget-0000000000000002" = {
+            box_height = 152.0;
+            box_width = 192.0;
+            cx = 496.0;
+            cy = 472.0;
+            output = "DP-1";
+            placement_height = 1440.0;
+            placement_width = 2560.0;
+            rotation = 0.0;
+            type = "clock";
+
+            settings = {
+              background = true;
+              background_color = "surface_variant";
+              background_opacity = 0.7;
+              background_radius = 5;
+              color = "secondary";
+              format = "{:%M}";
+              shadow = false;
+            };
+          };
+
+          "desktop-widget-0000000000000003" = {
+            box_height = 32.0;
+            box_width = 72.0;
+            cx = 328.0;
+            cy = 412.0;
+            output = "DP-1";
+            placement_height = 1440.0;
+            placement_width = 2560.0;
+            rotation = 0.0;
+            type = "clock";
+
+            settings = {
+              background_opacity = 0.8;
+              background_padding = 4;
+              background_radius = 0;
+              color = "on_surface";
+              format = "{:%Y}";
+            };
+          };
+
+          "desktop-widget-0000000000000004" = {
+            box_height = 8.0;
+            box_width = 344.0;
+            cx = 428.0;
+            cy = 380.0;
+            output = "DP-1";
+            placement_height = 1440.0;
+            placement_width = 2560.0;
+            rotation = 0.0;
+            type = "label";
+
+            settings = {
+              background_padding = 0;
+              background_radius = 0;
+              opacity = 1.0;
+              title = "";
+            };
+          };
+
+          "desktop-widget-0000000000000005" = {
+            box_height = 32.0;
+            box_width = 112.0;
+            cx = 532.0;
+            cy = 280.0;
+            output = "DP-1";
+            placement_height = 1440.0;
+            placement_width = 2560.0;
+            rotation = 0.0;
+            type = "clock";
+
+            settings = {
+              background_padding = 5;
+              background_radius = 0;
+              center_text = false;
+              color = "secondary";
+              format = "{:%a,  %b}";
+            };
+          };
+
+          "desktop-widget-0000000000000006" = {
+            box_height = 48.0;
+            box_width = 56.0;
+            cx = 504.0;
+            cy = 336.0;
+            output = "DP-1";
+            placement_height = 1440.0;
+            placement_width = 2560.0;
+            rotation = 0.0;
+            type = "clock";
+
+            settings = {
+              background_padding = 5;
+              background_radius = 0;
+              center_text = true;
+              color = "tertiary";
+              format = "{:%d}";
+            };
+          };
+
+          "desktop-widget-0000000000000007" = {
+            box_height = 40.0;
+            box_width = 184.0;
+            cx = 2412.0;
+            cy = 1384.0;
+            output = "DP-1";
+            placement_height = 1440.0;
+            placement_width = 2560.0;
+            rotation = 0.0;
+            type = "label";
+
+            settings = {
+              background = false;
+              color = "on_surface";
+              font_family = "Chilanka";
+              opacity = 0.75;
+              shadow = false;
+              title = "I use Nix btw";
+            };
+          };
+        };
+      };
+
+    };
   };
 }

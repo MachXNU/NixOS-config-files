@@ -5,6 +5,7 @@ let
   sfproregular = pkgs.callPackage ./SFProRegular.nix { inherit pkgs; };
   sfprobold = pkgs.callPackage ./SFProBold.nix { inherit pkgs; };
   maplemono = pkgs.callPackage ./MapleMono.nix { inherit pkgs; };
+  chilanka = pkgs.callPackage ./Chilanka-Regular.nix { inherit pkgs; };
 in
 {
   home.packages = [
@@ -12,6 +13,8 @@ in
     pkgs.nerd-fonts.jetbrains-mono
     pkgs.fira
     pkgs.fira-sans
+    pkgs.googlesans-code
+    chilanka
     maplemono
     stretchpro
     suisseintlmono
