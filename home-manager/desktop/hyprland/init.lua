@@ -193,7 +193,7 @@ hl.bind("SUPER + mouse:273", hl.dsp.window.resize())
 hl.on("hyprland.start", function()
     hl.exec_cmd("@dbusCmd@ --systemd DISPLAY HYPRLAND_INSTANCE_SIGNATURE WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE && systemctl --user stop hyprland-session.target && systemctl --user start hyprland-session.target")
     hl.exec_cmd("noctalia")
-    hl.exec_cmd("@waypaper@ --restore --state-file $HOME/.config/waypaper/status")
+    -- hl.exec_cmd("@waypaper@ --restore --state-file $HOME/.config/waypaper/status")
 end)
 
 hl.curve("easeOutQuint", {
