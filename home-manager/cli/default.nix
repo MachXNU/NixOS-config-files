@@ -38,6 +38,7 @@
     ]
     ++ lib.optionals isWork [
       samba
+      typst
     ];
 
   home.shellAliases = {

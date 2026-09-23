@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  isWork,
   ...
 }:
 let
@@ -84,6 +85,7 @@ in
           nvim-docs-view.enable = false;
           presets = {
             harper.enable = true;
+            tinymist.enable = isWork;
           };
           servers = {
             harper = {
@@ -121,7 +123,6 @@ in
         };
 
         # Languages with LSP support
-        # See nvf options for more details
         languages = {
           enableFormat = true;
           enableTreesitter = true;
@@ -153,6 +154,15 @@ in
                 "basedpyright"
                 "ruff"
               ];
+            };
+          };
+          typst = {
+            enable = isWork;
+            extensions = {
+              typst-preview-nvim = {
+                enable = isWork;
+
+              };
             };
           };
         };
