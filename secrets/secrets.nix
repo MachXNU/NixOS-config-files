@@ -11,4 +11,9 @@ in
     publicKeys = [ macbook-pro-m4 ];
     armor = true;
   };
+
+  "MacBook-Pro-M4-pwncollege.age" = {
+    publicKeys = [ macbook-pro-m4 ];
+    armor = true;
+  };
 }

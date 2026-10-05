@@ -22,7 +22,7 @@ inputs.nix-darwin.lib.darwinSystem {
     ../config/darwin-configuration.nix
 
     # Host-specific config
-    #../hosts/${hostName}/programs.nix
+    ../hosts/${hostName}/programs.nix
 
     inputs.stylix.darwinModules.stylix
     inputs.agenix.darwinModules.default
