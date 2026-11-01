@@ -77,7 +77,6 @@
 
       location = {
         auto_locate = false;
-        address = "Delft, NL";
       };
 
       lockscreen = {
