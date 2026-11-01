@@ -35,6 +35,7 @@
     ]
     ++ lib.optionals isLinux [
       efibootmgr
+      cifs-utils
     ]
     ++ lib.optionals isWork [
       samba
