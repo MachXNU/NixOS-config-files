@@ -155,7 +155,7 @@ in
     "browser.discovery.enabled" = locked_false;
 
     # Disable WebRC (IP leaks)`
-    "media.peerconnection.enabled" = locked_false;
+    #"media.peerconnection.enabled" = locked_false;
 
     # Resist Fingerprinting
     "privacy.resistFingerprinting" = locked_true;
@@ -180,7 +180,7 @@ in
     "geo.enabled" = locked_false;
     "dom.gamepad.enabled" = locked_false;
     "dom.vr.enabled" = locked_false;
-    "media.navigator.enabled" = locked_false;
+    #"media.navigator.enabled" = locked_false;
 
     # Disable DNS prefetching
     "network.dns.disablePrefetch" = locked_true;
