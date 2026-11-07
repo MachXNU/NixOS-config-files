@@ -75,6 +75,7 @@ in
           terminal = 15;
         };
       };
+      targets.console.enable = false;
     };
   };
 }
