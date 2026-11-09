@@ -192,7 +192,7 @@ hl.bind("SUPER + mouse:272", hl.dsp.window.drag())
 hl.bind("SUPER + mouse:273", hl.dsp.window.resize())
 
 hl.on("hyprland.start", function()
-    hl.exec_cmd("@dbusCmd@ --systemd DISPLAY HYPRLAND_INSTANCE_SIGNATURE WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE && systemctl --user stop hyprland-session.target && systemctl --user start hyprland-session.target")
+    -- hl.exec_cmd("@dbusCmd@ --systemd DISPLAY HYPRLAND_INSTANCE_SIGNATURE WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE GBM_BACKEND GBM_BACKENDS_PATH __GLX_VENDOR_LIBRARY_NAME WLR_NO_HARDWARE_CURSORS && systemctl --user stop hyprland-session.target && systemctl --user start hyprland-session.target")
     hl.exec_cmd("noctalia")
     -- hl.exec_cmd("@waypaper@ --restore --state-file $HOME/.config/waypaper/status")
 end)

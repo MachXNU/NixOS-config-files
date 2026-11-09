@@ -18,7 +18,10 @@ in
 
     configType = "lua";
 
-    systemd.enable = true;
+    systemd = {
+      enable = true;
+      variables = [ "--all" ];
+    };
 
     extraConfig = builtins.readFile generatedLua;
   };
@@ -30,12 +33,26 @@ in
   xdg.portal = {
     enable = true;
 
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gtk
     ];
 
-    configPackages = [
-      pkgs.xdg-desktop-portal-hyprland
-    ];
+    config = {
+      common = {
+        default = [ "gtk" ];
+      };
+
+      Hyprland = {
+        default = [
+          "hyprland"
+          "gtk"
+        ];
+
+        "org.freedesktop.impl.portal.ScreenCast" = [ "hyprland" ];
+        "org.freedesktop.impl.portal.Screenshot" = [ "hyprland" ];
+        "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+      };
+    };
   };
 }
