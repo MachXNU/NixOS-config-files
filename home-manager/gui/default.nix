@@ -30,6 +30,7 @@
     ]
     ++ lib.optionals isWork [
       thunderbird
+      beamerpresenter-mupdf
     ]
     ++ lib.optionals (!isWork) [
       blender
