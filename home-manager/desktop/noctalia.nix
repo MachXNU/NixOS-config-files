@@ -48,7 +48,7 @@
               accordion = false;
               accordion_direction = "end";
               enabled = true;
-              fill = "surface_variant";
+              fill = "surface_container";
               id = "g1";
               members = [
                 "sysmon"
@@ -80,7 +80,7 @@
       };
 
       lockscreen = {
-        enabled = false;
+        enabled = true;
       };
 
       nightlight = {
@@ -228,7 +228,7 @@
 
             settings = {
               background = true;
-              background_color = "surface_variant";
+              background_color = "surface_container";
               background_opacity = 0.7;
               background_radius = 5;
               color = "secondary";
