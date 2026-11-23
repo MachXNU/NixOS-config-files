@@ -443,19 +443,4 @@ in
     source = "custom";
     custom_palette = "mytheme";
   };
-
-  specialisation = {
-    light.configuration = {
-      stylix = {
-        polarity = lib.mkForce "light";
-        base16Scheme = lib.mkForce light_theme;
-      };
-    };
-    dark.configuration = {
-      stylix = {
-        polarity = lib.mkForce "dark";
-        base16Scheme = lib.mkForce dark_theme;
-      };
-    };
-  };
 }
