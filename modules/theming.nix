@@ -336,6 +336,7 @@ in
       nvf.enable = false;
       firefox.enable = false;
       noctalia.enable = false;
+      wayprompt.enable = false;
     };
   };
 
